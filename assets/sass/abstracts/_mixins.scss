@@ -1,0 +1,110 @@
+@mixin on-event($self: false) {
+    @if $self {
+
+        &,
+        &:hover,
+        &:active,
+        &:focus,
+        &:focus-within {
+            @content;
+        }
+    }
+
+    @else {
+
+        &:hover,
+        &:active,
+        &:focus,
+        &:focus-within {
+            @content;
+        }
+    }
+}
+
+@mixin prefix($property, $value) {
+    -webkit-#{$property}: #{$value};
+    -moz-#{$property}: #{$value};
+    #{$property}: #{$value};
+}
+
+@mixin placeholder($color) {
+    &::placeholder {
+        color: $color;
+    }
+}
+
+@mixin transition($property, $duration: 0.3s, $timing-function: ease) {
+    transition: $property $duration $timing-function;
+}
+
+@mixin ellipsis() {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+@mixin sizing($width, $height: $width) {
+    width: $width;
+    height: $height;
+}
+
+@mixin flex-column {
+    display: flex;
+    flex-direction: column;
+}
+
+@mixin flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@mixin flex-center-column {
+    @include flex-center;
+    flex-direction: column;
+}
+
+@mixin flex-center-vert {
+    display: flex;
+    align-items: center;
+}
+
+@mixin flex-center-horiz {
+    display: flex;
+    justify-content: center;
+}
+
+@mixin font-size($font-size, $line-height: normal, $letter-spacing: normal) {
+    font-size: $font-size * 1px;
+    // font-size: $font-size * 0.1rem;
+    // example using rem values and 62.5% font-size so 1rem = 10px
+
+    @if $line-height==normal {
+        line-height: normal;
+    }
+
+    @else {
+        line-height: $line-height / $font-size;
+    }
+
+    @if $letter-spacing==normal {
+        letter-spacing: normal;
+    }
+
+    @else {
+        letter-spacing: #{$letter-spacing / $font-size}em;
+    }
+}
+
+@mixin pseudo($width: 100%,
+    $height: 100%,
+    $display: inline-block,
+    $pos: absolute,
+    $content: ""
+
+) {
+    content: $content;
+    display: $display;
+    position: $pos;
+    @include box($width, $height);
+}

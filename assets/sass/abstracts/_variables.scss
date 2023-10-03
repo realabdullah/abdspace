@@ -1,0 +1,15 @@
+// colors
+$primary-color: #F3F3F3;
+$secondary-color: #606060;
+$text-color: #181717;
+$light-text-color: #2429AF;
+
+// fonts
+$primary-font: 'Roboto', sans-serif;
+
+// breakpoints
+$breakpoints: (
+  'small': 320px,
+  'medium': 768px,
+  'large': 1024px,
+) !default;

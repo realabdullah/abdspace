@@ -1,0 +1,31 @@
+:root {
+    --main-color: $primary-color;
+    --secondary-color: $secondary-color;
+    --text-color: $text-color;
+    --light-text-color: $light-text-color;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --main-color: $secondary-color;
+        --secondary-color: $primary-color;
+        --text-color: $light-text-color;
+        --light-text-color: $text-color;
+    }
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 62.5%;
+
+    body {
+        background-color: var(--main-color);
+        font-family: $primary-font;
+        font-size: 1.6rem;
+    }
+}
