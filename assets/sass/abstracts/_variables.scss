@@ -5,11 +5,11 @@ $text-color: #181717;
 $light-text-color: #2429AF;
 
 // fonts
-$primary-font: 'Roboto', sans-serif;
+$primary-font: "DM Sans";
 
 // breakpoints
 $breakpoints: (
-  'small': 320px,
-  'medium': 768px,
-  'large': 1024px,
-) !default;
+    'small': 320px,
+    'medium': 768px,
+    'large': 1024px,
+    ) !default;

@@ -1,16 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500&display=swap');
+
 :root {
-    --main-color: $primary-color;
-    --secondary-color: $secondary-color;
-    --text-color: $text-color;
-    --light-text-color: $light-text-color;
+    --main-color: #F3F3F3;
+    --secondary-color: #2429AF;
+    --text-color: #181717;
 }
 
 @media (prefers-color-scheme: dark) {
     :root {
-        --main-color: $secondary-color;
-        --secondary-color: $primary-color;
-        --text-color: $light-text-color;
-        --light-text-color: $text-color;
+        --main-color: #181717;
+        --secondary-color: #2429AF;
+        --text-color: #F3F3F3;
     }
 }
 
@@ -21,7 +21,7 @@
 }
 
 html {
-    font-size: 62.5%;
+    font-size: 62.5% !important;
 
     body {
         background-color: var(--main-color);

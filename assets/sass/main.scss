@@ -1,6 +1,6 @@
-@use "./abstracts/mixins";
-@use "./abstracts/variables";
+@import "./abstracts/mixins";
+@import "./abstracts/variables";
 
-@use "./base/base";
-@use "./base/reset";
-@use "./base/utilities";
+@import "./base/base";
+@import "./base/reset";
+@import "./base/utilities";

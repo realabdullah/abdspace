@@ -2,16 +2,30 @@ $colors: (
     'primary': var(--main-color),
     'secondary': var(--secondary-color),
     'text': var(--text-color),
-    'light-text': var(--light-text-color),
+    'white': #FFFFFF,
+    'black': #000000,
+    'transparent': transparent,
 );
 
 @each $name, $color in $colors {
-    .text-#{$name} {
+    .col-#{$name} {
         color: $color;
     }
 
     .bg-#{$name} {
         background-color: $color;
+    }
+}
+
+// weight
+$weights: (
+    '400': 400,
+    '500': 500,
+);
+
+@each $name, $weight in $weights {
+    .weight-#{$name} {
+        font-weight: $weight;
     }
 }
 
@@ -33,6 +47,12 @@ $displays: (
     .d-#{$name} {
         display: $display;
     }
+
+    .md\:d-#{$name} {
+        @media (max-width: 768px) {
+            display: $display !important;
+        }
+    }
 }
 
 // flex
@@ -47,6 +67,12 @@ $flex-directions: (
     .flex-#{$name} {
         flex-direction: $direction;
     }
+
+    .md\:flex-#{$name} {
+        @media (max-width: 768px) {
+            flex-direction: $direction !important;
+        }
+    }
 }
 
 $flex-wraps: (
@@ -59,6 +85,12 @@ $flex-wraps: (
     .flex-#{$name} {
         flex-wrap: $wrap;
     }
+
+    .md\:flex-#{$name} {
+        @media (max-width: 768px) {
+            flex-wrap: $wrap !important;
+        }
+    }
 }
 
 $flex-justifies: (
@@ -67,25 +99,18 @@ $flex-justifies: (
     'center': center,
     'between': space-between,
     'around': space-around,
+    'unset': unset,
 );
 
 @each $name, $justify in $flex-justifies {
     .content-#{$name} {
         justify-content: $justify;
     }
-}
 
-$flex-aligns: (
-    'start': flex-start,
-    'end': flex-end,
-    'center': center,
-    'baseline': baseline,
-    'stretch': stretch,
-);
-
-@each $name, $align in $flex-aligns {
-    .items-#{$name} {
-        align-items: $align;
+    .md\:content-#{$name} {
+        @media (max-width: 768px) {
+            justify-content: $justify !important;
+        }
     }
 }
 
@@ -95,11 +120,39 @@ $flex-aligns: (
     'center': center,
     'baseline': baseline,
     'stretch': stretch,
+    'unset': unset,
+);
+
+@each $name, $align in $flex-aligns {
+    .items-#{$name} {
+        align-items: $align;
+    }
+
+    .md\:items-#{$name} {
+        @media (max-width: 768px) {
+            align-items: $align !important;
+        }
+    }
+}
+
+$flex-aligns: (
+    'start': flex-start,
+    'end': flex-end,
+    'center': center,
+    'baseline': baseline,
+    'stretch': stretch,
+    'unset': unset,
 );
 
 @each $name, $align in $flex-aligns {
     .self-#{$name} {
         align-self: $align;
+    }
+
+    .md\:self-#{$name} {
+        @media (max-width: 768px) {
+            align-self: $align !important;
+        }
     }
 }
 
@@ -120,6 +173,7 @@ $positions: (
 
 // spacing
 $spacings: (
+    'auto': auto,
     '0': 0,
     '1': 0.25rem,
     '2': 0.5rem,
@@ -238,6 +292,68 @@ $spacings: (
     .py-#{$name} {
         padding-top: $spacing;
         padding-bottom: $spacing;
+    }
+
+    @media (max-width: 768px) {
+        .md\:m-#{$name} {
+            margin: $spacing !important;
+        }
+
+        .md\:mt-#{$name} {
+            margin-top: $spacing !important;
+        }
+
+        .md\:mr-#{$name} {
+            margin-right: $spacing !important;
+        }
+
+        .md\:mb-#{$name} {
+            margin-bottom: $spacing !important;
+        }
+
+        .md\:ml-#{$name} {
+            margin-left: $spacing !important;
+        }
+
+        .md\:mx-#{$name} {
+            margin-left: $spacing !important;
+            margin-right: $spacing !important;
+        }
+
+        .md\:my-#{$name} {
+            margin-top: $spacing !important;
+            margin-bottom: $spacing !important;
+        }
+
+        .md\:p-#{$name} {
+            padding: $spacing !important;
+        }
+
+        .md\:pt-#{$name} {
+            padding-top: $spacing !important;
+        }
+
+        .md\:pr-#{$name} {
+            padding-right: $spacing !important;
+        }
+
+        .md\:pb-#{$name} {
+            padding-bottom: $spacing !important;
+        }
+
+        .md\:pl-#{$name} {
+            padding-left: $spacing !important;
+        }
+
+        .md\:px-#{$name} {
+            padding-left: $spacing !important;
+            padding-right: $spacing !important;
+        }
+
+        .md\:py-#{$name} {
+            padding-top: $spacing !important;
+            padding-bottom: $spacing !important;
+        }
     }
 }
 
@@ -395,5 +511,80 @@ $heights: (
 
     .max-h-#{$name} {
         max-height: $height;
+    }
+}
+
+// word break
+$word-breaks: (
+    'normal': normal,
+    'all': break-all,
+    'keep-all': keep-all,
+    'word': break-word,
+);
+
+@each $name, $word-break in $word-breaks {
+    .break-#{$name} {
+        word-break: $word-break;
+    }
+}
+
+.border-none {
+    border: none;
+}
+
+.text-one {
+    @include font-properties(6rem, 97.2%, -1.8px);
+
+    @media (max-width: 600px) {
+        @include font-properties(4.8rem, 97.2%, -1.44px);
+    }
+}
+
+.text-two {
+    @include font-properties(3.2rem, 117%, -0.96px);
+
+    @media (max-width: 600px) {
+        @include font-properties(2.56rem, 117%, -0.768px);
+    }
+}
+
+.text-three {
+    @include font-properties(2.1rem, 120%, -0.63px);
+
+    @media (max-width: 600px) {
+        @include font-properties(1.68rem, 120%, -0.504px);
+    }
+}
+
+.text-four {
+    @include font-properties(1.8rem, 121.5%, -0.54px);
+
+    @media (max-width: 600px) {
+        @include font-properties(1.44rem, 121.5%, -0.432px);
+    }
+}
+
+.text-five {
+    @include font-properties(1.4rem, 121.5%, -0.42px);
+
+    @media (max-width: 600px) {
+        @include font-properties(1.12rem, 121.5%, -0.336px);
+    }
+}
+
+.hover\:link {
+    &::after {
+        content: "";
+        position: absolute;
+        bottom: -10px;
+        left: 0;
+        @include sizing(0, 2px);
+        background-color: var(--secondary-color);
+        @include transition(width, 0.3s, ease-in-out);
+    }
+
+    &.active::after,
+    &:hover::after {
+        @include sizing(50%, 2px);
     }
 }

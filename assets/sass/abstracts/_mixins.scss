@@ -1,26 +1,3 @@
-@mixin on-event($self: false) {
-    @if $self {
-
-        &,
-        &:hover,
-        &:active,
-        &:focus,
-        &:focus-within {
-            @content;
-        }
-    }
-
-    @else {
-
-        &:hover,
-        &:active,
-        &:focus,
-        &:focus-within {
-            @content;
-        }
-    }
-}
-
 @mixin prefix($property, $value) {
     -webkit-#{$property}: #{$value};
     -moz-#{$property}: #{$value};
@@ -48,53 +25,12 @@
     height: $height;
 }
 
-@mixin flex-column {
-    display: flex;
-    flex-direction: column;
+@mixin font-properties($font-size, $line-height: normal, $letter-spacing: normal) {
+    font-size: $font-size;
+    line-height: $line-height;
+    letter-spacing: $letter-spacing;
 }
 
-@mixin flex-center {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-@mixin flex-center-column {
-    @include flex-center;
-    flex-direction: column;
-}
-
-@mixin flex-center-vert {
-    display: flex;
-    align-items: center;
-}
-
-@mixin flex-center-horiz {
-    display: flex;
-    justify-content: center;
-}
-
-@mixin font-size($font-size, $line-height: normal, $letter-spacing: normal) {
-    font-size: $font-size * 1px;
-    // font-size: $font-size * 0.1rem;
-    // example using rem values and 62.5% font-size so 1rem = 10px
-
-    @if $line-height==normal {
-        line-height: normal;
-    }
-
-    @else {
-        line-height: $line-height / $font-size;
-    }
-
-    @if $letter-spacing==normal {
-        letter-spacing: normal;
-    }
-
-    @else {
-        letter-spacing: #{$letter-spacing / $font-size}em;
-    }
-}
 
 @mixin pseudo($width: 100%,
     $height: 100%,
