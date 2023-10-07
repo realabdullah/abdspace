@@ -13,16 +13,7 @@ const navs = [
             <IconsLogo />
         </NuxtLink>
 
-        <nav class="header__nav d-flex items-center md:d-none">
-            <ul class="header__nav-list d-flex">
-                <li v-for="nav in navs" :key="nav.route" class="header__nav-list--item position-relative">
-                    <NuxtLink :to="nav.route" class="col-text text-none text-three hover:link"
-                        :class="{ 'active': nav.route === $route.name }">
-                        {{ nav.name }}
-                    </NuxtLink>
-                </li>
-            </ul>
-        </nav>
+        <div class="listening"></div>
     </header>
 </template>
 

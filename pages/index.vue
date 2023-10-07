@@ -46,9 +46,9 @@
 
 			span {
 				.avatar {
-					width: 2.7rem;
-					height: 2.7rem;
-					top: 50%;
+					width: 2.3rem;
+					height: 2.3rem;
+					top: 48%;
 					left: 42%;
 					transform: translate(-50%, -50%);
 					border-radius: 50%;
