@@ -10,15 +10,15 @@ const socials = [
 
 <template>
     <footer class="footer d-flex flex-column">
-        <div class="footer__contact d-flex items-start content-between md:flex-column">
+        <div class="footer__contact d-flex items-start content-between">
             <h2 class="footer__contact-text col-text weight-400 text-two">I am eager to discuss your next project with you.
                 <IconsUtility icon="arrow-right" />
             </h2>
 
-            <div class="footer__contact-ctas d-flex flex-column items-start md:ml-auto">
+            <div class="footer__contact-ctas d-flex flex-column items-start">
                 <a href="mailto:abdulodesanmi@gmail.com"
                     class="footer__contact-ctas--item col-text text-two weight-400 text-none break-all">abdulodesanmi@gmail.com</a>
-                <a href="https://www.linkedin.com/in/abd/" target="_blank"
+                <a href="https://drive.google.com/file/d/1cYdJI5CHq2lERoxPZL3r26ErQssM3itL/view?usp=sharing" target="_blank"
                     class="footer__contact-ctas--item col-text text-four weight-400 text-none">View
                     Resume</a>
             </div>
@@ -48,16 +48,31 @@ const socials = [
         gap: 2rem;
         margin-bottom: 17rem;
 
+        @media screen and (max-width: 900px) {
+            flex-direction: column;
+            align-items: flex-start;
+            padding-top: 5rem;
+            margin-bottom: 10rem;
+        }
+
         &-text {
             max-width: 34.7rem;
 
             svg {
                 margin-left: 2rem;
+
+                @media screen and (max-width: 900px) {
+                    display: none;
+                }
             }
         }
 
         &-ctas {
             gap: 2.7rem;
+
+            @media screen and (max-width: 900px) {
+                text-align: left;
+            }
         }
     }
 

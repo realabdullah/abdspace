@@ -23,7 +23,6 @@ const navs = [
                 </li>
             </ul>
         </nav>
-        <button class="col-text md:d-block d-none text-three bg-transparent cursor-pointer">menu</button>
     </header>
 </template>
 

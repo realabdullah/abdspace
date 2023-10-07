@@ -294,6 +294,10 @@ $spacings: (
         padding-bottom: $spacing;
     }
 
+    .gap-#{$name} {
+        gap: $spacing;
+    }
+
     @media (max-width: 768px) {
         .md\:m-#{$name} {
             margin: $spacing !important;
@@ -587,4 +591,10 @@ $word-breaks: (
     &:hover::after {
         @include sizing(50%, 2px);
     }
+}
+
+.blurry-text {
+    color: transparent;
+    text-shadow: 0 0 7px var(--text-color);
+    @include prefix(user-select, none);
 }
