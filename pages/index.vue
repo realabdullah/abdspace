@@ -14,10 +14,6 @@
 			<p class="col-text weight-400 text-two text-right">An experienced Frontend Engineer with passion for building beautiful and functional user interfaces.</p>
 		</section>
 
-		<br />
-		<IconsUtility icon="arrow-down" />
-		<br />
-
 		<AboutSection />
 		<WorkExperience />
 		<ProjectSection />

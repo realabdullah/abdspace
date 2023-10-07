@@ -16,7 +16,7 @@ const projects = [
                 <div class="details">
                     <h3 class="title text-three col-primary">{{ project.title }}</h3>
                     <p class="desc text-four col-primary mt-6">{{ project.description }}</p>
-                    <span class="tools text-four col-primary mt-20 weight-500 d-flex flex-wrap items-center gap-2">Tools/Skills: <span v-for="(tools, idx) in project.tools" :key="idx" class="text-five weight-400">{{ tools + (idx !== project.tools.length - 1 ? "," : ".") }}</span></span>
+                    <span class="tools text-four col-primary mt-20 weight-500 d-flex flex-wrap items-center gap-2">Tools/Skills: <span v-for="(tools, idx) in project.tools" :key="idx" class="weight-400">{{ tools + (idx !== project.tools.length - 1 ? "," : ".") }}</span></span>
                     <div class="links d-flex items-center gap-5 mt-15">
                         <a v-if="!!project.live" :href="project.live" target="_blank" class="link text-five col-primary">View Live</a>
                         <a :href="project.source" target="_blank" class="link text-five col-primary">View Source</a>
@@ -34,6 +34,10 @@ const projects = [
 
     @media screen and (max-width: 900px) {
         grid-template-columns: 1fr;
+    }
+
+    @media screen and (max-width: 600px) {
+        padding: 5rem 0;
     }
 
     &__header {
