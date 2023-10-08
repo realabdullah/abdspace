@@ -45,7 +45,7 @@ onMounted(async () => {
 			</span>
 			<span v-else class="text-five col-text">Not listening atm 🫣</span>
 
-			<div v-if="isModalOpen" class="playing__modal position-absolute z-2 d-flex items-center gap-6 w-auto h-auto">
+			<div v-show="isModalOpen" class="playing__modal position-absolute z-2 d-flex items-center gap-6 w-auto h-auto">
 				<img :src="playingData.l_cover_art" alt="cover_art" />
 				<div class="details d-flex flex-column gap-2">
 					<a :href="playingData.link" target="_blank" class="title text-five weight-500 col-text">{{ playingData.title }}</a>
