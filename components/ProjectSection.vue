@@ -55,11 +55,7 @@ const projects = [
         &-item {
             padding: 3rem;
             max-width: 64rem;
-            background-color: #ffffff;
-
-            @media (prefers-color-scheme: dark) {
-                background-color: #000000;
-            }
+            background-color: var(--white);
 
             @media screen and (max-width: 900px) {
                 max-width: 100%;

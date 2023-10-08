@@ -4,6 +4,7 @@
     --main-color: #F3F3F3;
     --secondary-color: #2429AF;
     --text-color: #181717;
+    --white: #FFFFFF;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -11,6 +12,7 @@
         --main-color: #181717;
         --secondary-color: #2429AF;
         --text-color: #F3F3F3;
+        --white: #000000;
     }
 }
 
