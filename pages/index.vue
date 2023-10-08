@@ -1,6 +1,7 @@
 <script lang="ts" setup></script>
 
 <template>
+	<TheHeader />
 	<main class="container">
 		<section class="container__intro d-flex items-end content-between">
 			<h1 class="col-text weight-500 text-one">
@@ -18,6 +19,7 @@
 		<WorkExperience />
 		<ProjectSection />
 	</main>
+	<TheFooter />
 </template>
 
 <style lang="scss" scoped>

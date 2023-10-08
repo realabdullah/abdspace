@@ -5,7 +5,7 @@ export default defineNuxtConfig({
 		  htmlAttrs: {
 			lang: "en",
 		  },
-		  title: "Abdullahi O. — Frontend Engineer",
+		  title: "Abdullahi Odesanmi — Frontend Engineer",
 		  meta: [
 			{
 			  name: "viewport",
@@ -16,12 +16,11 @@ export default defineNuxtConfig({
 			},
 			{
 				name: "title",
-				content: "Abdullahi O. — Frontend Engineer",
+				content: "Abdullahi Odesanmi — Frontend Engineer",
 			},
 			{
 			  name: "description",
-			  content:
-				"A Frontend Engineer with passion for building beautiful and functional user interfaces.",
+			  content: "A Frontend Engineer with passion for building beautiful and functional user interfaces.",
 			},
 			{
 				property: "og:type",
@@ -33,7 +32,7 @@ export default defineNuxtConfig({
 			},
 			{
 				property: "og:title",
-				content: "Abdullahi O. — Frontend Engineer"
+				content: "Abdullahi Odesanmi — Frontend Engineer"
 			},
 			{
 				property: "og:description",
@@ -53,7 +52,7 @@ export default defineNuxtConfig({
 			},
 			{
 				property: "twitter:title",
-				content: "Abdullahi O. — Frontend Engineer"
+				content: "Abdullahi Odesanmi — Frontend Engineer"
 			},
 			{
 				property: "twitter:description",

@@ -14,12 +14,12 @@ const projects = [
         <ul class="projects__content d-flex flex-column items-start">
             <li v-for="(project, index) in projects" :key="index" class="projects__content-item w-full h-auto">
                 <div class="details">
-                    <h3 class="title text-three col-primary">{{ project.title }}</h3>
-                    <p class="desc text-four col-primary mt-6">{{ project.description }}</p>
-                    <span class="tools text-four col-primary mt-20 weight-500 d-flex flex-wrap items-center gap-2">Tools/Skills: <span v-for="(tools, idx) in project.tools" :key="idx" class="weight-400">{{ tools + (idx !== project.tools.length - 1 ? "," : ".") }}</span></span>
+                    <h3 class="title text-three col-text">{{ project.title }}</h3>
+                    <p class="desc text-four col-text mt-6">{{ project.description }}</p>
+                    <span class="tools text-four col-text mt-20 weight-500 d-flex flex-wrap items-center gap-2">Tools/Skills: <span v-for="(tools, idx) in project.tools" :key="idx" class="weight-400">{{ tools + (idx !== project.tools.length - 1 ? "," : ".") }}</span></span>
                     <div class="links d-flex items-center gap-5 mt-15">
-                        <a v-if="!!project.live" :href="project.live" target="_blank" class="link text-five col-primary">View Live</a>
-                        <a :href="project.source" target="_blank" class="link text-five col-primary">View Source</a>
+                        <a v-if="!!project.live" :href="project.live" target="_blank" class="link text-five col-text">View Live</a>
+                        <a :href="project.source" target="_blank" class="link text-five col-text">View Source</a>
                     </div>
                 </div>
             </li>
@@ -55,7 +55,11 @@ const projects = [
         &-item {
             padding: 3rem;
             max-width: 64rem;
-            background-color: var(--text-color);
+            background-color: #ffffff;
+
+            @media (prefers-color-scheme: dark) {
+                background-color: #000000;
+            }
 
             @media screen and (max-width: 900px) {
                 max-width: 100%;
