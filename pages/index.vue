@@ -9,15 +9,14 @@ const playingData = ref({
 });
 
 const getCurrentlyPlaying = async () => {
-	const response = await fetch("/api/playing");
-	const data = await response.json();
-	isCurrentlyPlaying.value = data.isPlaying;
-	if (isCurrentlyPlaying.value) playingData.value = data.data;
+	const { data } = await useFetch("/api/playing");
+	if (data.value) {
+		isCurrentlyPlaying.value = data.value.isPlaying;
+		if (isCurrentlyPlaying.value) playingData.value = data.value.data;
+	}
 };
 
-onMounted(async () => {
-	await getCurrentlyPlaying();
-});
+await getCurrentlyPlaying();
 </script>
 
 <template>
