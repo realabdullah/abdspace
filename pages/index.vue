@@ -1,7 +1,27 @@
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+const isCurrentlyPlaying = ref(false);
+const playingData = ref({
+	title: "",
+	link: "",
+	cover_art: "",
+	l_cover_art: "",
+	artists: "",
+});
+
+const getCurrentlyPlaying = async () => {
+	const response = await fetch("/api/playing");
+	const data = await response.json();
+	isCurrentlyPlaying.value = data.isPlaying;
+	if (isCurrentlyPlaying.value) playingData.value = data.data;
+};
+
+onMounted(async () => {
+	await getCurrentlyPlaying();
+});
+</script>
 
 <template>
-	<TheHeader />
+	<TheHeader :is-currently-playing="isCurrentlyPlaying" :playing-data="playingData" />
 	<main class="container">
 		<section class="container__intro d-flex items-end content-between">
 			<h1 class="col-text weight-500 text-one">

@@ -1,20 +1,16 @@
 <script lang="ts" setup>
-const isModalOpen = ref(false);
-const isCurrentlyPlaying = ref(false);
-const playingData = ref({
-	title: "",
-	link: "",
-	cover_art: "",
-	l_cover_art: "",
-	artists: "",
-});
+defineProps<{
+	isCurrentlyPlaying: boolean;
+	playingData: {
+		title: string;
+		link: string;
+		cover_art: string;
+		l_cover_art: string;
+		artists: string;
+	};
+}>();
 
-const getCurrentlyPlaying = async () => {
-	const response = await fetch("/api/playing");
-	const data = await response.json();
-	isCurrentlyPlaying.value = data.isPlaying;
-	if (isCurrentlyPlaying.value) playingData.value = data.data;
-};
+const isModalOpen = ref(false);
 
 const navs = [
 	{ name: "Work", route: "work" },
@@ -22,10 +18,6 @@ const navs = [
 	{ name: "Blog", route: "blog" },
 	{ name: "Contact", route: "contact" },
 ];
-
-onMounted(async () => {
-	await getCurrentlyPlaying();
-});
 </script>
 
 <template>
@@ -35,26 +27,25 @@ onMounted(async () => {
 		</NuxtLink>
 
 		<div class="listening col-text position-relative">
-			<ClientOnly>
-				<template v-if="isCurrentlyPlaying">
-					<img :src="playingData.cover_art" alt="cover" class="cover_art" />
-					<span class="text-five col-text">
-						Listening to
-						<button class="bg-transparent col-text cursor-pointer" @click="isModalOpen = !isModalOpen">
-							<strong>{{ playingData.title }}</strong>
-						</button>
-					</span>
-				</template>
-				<template v-else>
-					<IconsSpotify />
-					<span class="text-five col-text">Not listening atm 🫣</span>
-				</template>
-			</ClientOnly>
+			<template v-if="isCurrentlyPlaying">
+				<img :src="playingData.cover_art" alt="cover" class="cover_art" />
+				<span class="text-five col-text">
+					Listening to
+					<button class="bg-transparent col-text cursor-pointer" @click="isModalOpen = !isModalOpen">
+						<strong>{{ playingData.title }}</strong>
+					</button>
+				</span>
+			</template>
+			<template v-else>
+				<IconsSpotify />
+				<span class="text-five col-text">Not listening atm 🫣</span>
+			</template>
 
 			<div v-show="isModalOpen" class="playing__modal position-absolute z-2 d-flex items-center gap-6 w-auto h-auto">
 				<img :src="playingData.l_cover_art" alt="cover_art" />
 				<div class="details d-flex flex-column gap-2">
-					<a :href="playingData.link" target="_blank" class="title text-five weight-500 col-text">{{ playingData.title }}</a>
+					<a :href="playingData.link" target="_blank" class="title text-five weight-500 col-text">{{
+						playingData.title }}</a>
 					<p class="artists text-nowrap text-five weight-400 col-text">{{ playingData.artists }}</p>
 				</div>
 				<div class="bar d-flex content-between ml-5">
@@ -153,15 +144,19 @@ onMounted(async () => {
 		opacity: 0;
 		transform: scale(1, 1);
 	}
+
 	10% {
 		transform: scale(1.1, 0.9);
 	}
+
 	30% {
 		transform: scale(0.9, 1.1);
 	}
+
 	50% {
 		transform: scale(1.05, 0.95);
 	}
+
 	100% {
 		opacity: 1;
 		transform: scale(1, 1);
@@ -188,5 +183,4 @@ onMounted(async () => {
 	100% {
 		transform: scaleY(0.6);
 	}
-}
-</style>
+}</style>
