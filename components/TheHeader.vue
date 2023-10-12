@@ -35,15 +35,21 @@ onMounted(async () => {
 		</NuxtLink>
 
 		<div class="listening col-text position-relative">
-			<img v-if="isCurrentlyPlaying" :src="playingData.cover_art" alt="cover" class="cover_art" />
-			<IconsSpotify v-else />
-			<span v-if="isCurrentlyPlaying" class="text-five col-text">
-				Listening to
-				<button class="bg-transparent col-text cursor-pointer" @click="isModalOpen = !isModalOpen">
-					<strong>{{ playingData.title }}</strong>
-				</button>
-			</span>
-			<span v-else class="text-five col-text">Not listening atm 🫣</span>
+			<ClientOnly>
+				<template v-if="isCurrentlyPlaying">
+					<img :src="playingData.cover_art" alt="cover" class="cover_art" />
+					<span class="text-five col-text">
+						Listening to
+						<button class="bg-transparent col-text cursor-pointer" @click="isModalOpen = !isModalOpen">
+							<strong>{{ playingData.title }}</strong>
+						</button>
+					</span>
+				</template>
+				<template v-else>
+					<IconsSpotify />
+					<span class="text-five col-text">Not listening atm 🫣</span>
+				</template>
+			</ClientOnly>
 
 			<div v-show="isModalOpen" class="playing__modal position-absolute z-2 d-flex items-center gap-6 w-auto h-auto">
 				<img :src="playingData.l_cover_art" alt="cover_art" />
