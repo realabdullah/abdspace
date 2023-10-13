@@ -14,6 +14,7 @@ interface Post {
 	readTime: string;
 }
 
+const config = useRuntimeConfig()
 const { params } = useRoute();
 const post = ref<Post>({
 	title: "",
@@ -56,6 +57,15 @@ onMounted(() => {
 });
 
 await getPost();
+
+useSeoMeta({
+	title: () => post.value.title + " | Abdullahi Odesanmi — Frontend Engineer",
+	ogTitle: () => post.value.title + " | Abdullahi Odesanmi — Frontend Engineer",
+	description: () => post.value.content,
+	ogDescription: () => post.value.content,
+	ogImage: () => post.value.coverImage,
+	ogUrl: () => config.public.baseUrl + "/blog/" + params.slug,
+});
 </script>
 
 <template>
