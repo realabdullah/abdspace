@@ -67,6 +67,9 @@ useSeoMeta({
 	ogDescription: () => post.value.content,
 	ogImage: () => post.value.ogImage,
 	ogUrl: () => config.public.baseUrl + "/blog/" + params.slug,
+	twitterImage: () => post.value.ogImage,
+	twitterTitle: () => post.value.title + " | Abdullahi Odesanmi — Frontend Engineer",
+	twitterDescription: () => post.value.content,
 });
 </script>
 
