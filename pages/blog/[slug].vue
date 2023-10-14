@@ -7,6 +7,7 @@ interface Post {
 	dateUpdated: string;
 	content: string;
 	coverImage: string;
+	ogImage: string;
 	author: {
 		name: string;
 		photo: string;
@@ -22,6 +23,7 @@ const post = ref<Post>({
 	dateUpdated: "",
 	content: "",
 	coverImage: "",
+	ogImage: "",
 	author: {
 		name: "",
 		photo: "",
@@ -63,7 +65,7 @@ useSeoMeta({
 	ogTitle: () => post.value.title + " | Abdullahi Odesanmi — Frontend Engineer",
 	description: () => post.value.content,
 	ogDescription: () => post.value.content,
-	ogImage: () => post.value.coverImage,
+	ogImage: () => post.value.ogImage,
 	ogUrl: () => config.public.baseUrl + "/blog/" + params.slug,
 });
 </script>
