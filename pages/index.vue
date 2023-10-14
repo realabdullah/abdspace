@@ -1,4 +1,17 @@
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+useSeoMeta({
+	title: "Abdullahi Odesanmi — Frontend Engineer",
+	description: "A Frontend Engineer with passion for building beautiful and functional user interfaces.",
+	keywords: "Abdullahi Odesanmi",
+	ogTitle: "Abdullahi Odesanmi — Frontend Engineer",
+	ogDescription: "A Frontend Engineer with passion for building beautiful and functional user interfaces.",
+	ogImage: "https://res.cloudinary.com/dxvhsze0l/image/upload/w_1000,ar_16:9,c_fill,g_auto,e_sharpen/v1694834839/website/wbh3unrtssz9mmbxcgl3.jpg",
+	twitterTitle: "Abdullahi Odesanmi — Frontend Engineer",
+	twitterDescription: "A Frontend Engineer with passion for building beautiful and functional user interfaces.",
+	twitterCard: "summary_large_image",
+	twitterImage: "https://res.cloudinary.com/dxvhsze0l/image/upload/w_1000,ar_16:9,c_fill,g_auto,e_sharpen/v1694834839/website/wbh3unrtssz9mmbxcgl3.jpg",
+});
+</script>
 
 <template>
 	<section class="intro d-flex items-start content-between">
