@@ -15,7 +15,7 @@ interface Post {
 	readTime: string;
 }
 
-const config = useRuntimeConfig()
+const config = useRuntimeConfig();
 const { params } = useRoute();
 const post = ref<Post>({
 	title: "",
@@ -90,6 +90,12 @@ useSeoMeta({
 		line-height: 3rem;
 		margin-bottom: 2rem;
 		color: var(--text-color);
+	}
+
+	img {
+		width: 100%;
+		height: auto;
+		margin-bottom: 2rem;
 	}
 
 	pre {
