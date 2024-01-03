@@ -18,7 +18,7 @@ const socials = [
             <div class="footer__contact-ctas d-flex flex-column items-start">
                 <a href="mailto:abdulodesanmi@gmail.com"
                     class="footer__contact-ctas--item col-text text-two weight-400 text-none break-all">abdulodesanmi@gmail.com</a>
-                <a href="https://drive.google.com/file/d/1cYdJI5CHq2lERoxPZL3r26ErQssM3itL/view?usp=sharing" target="_blank"
+                <a href="https://docs.google.com/document/d/1kRlBn5TDxDaHplEORpbV0NLQw75PNbdHh9GMb3xS62Y/edit?usp=sharing" target="_blank"
                     class="footer__contact-ctas--item col-text text-four weight-400 text-none">View
                     Resume</a>
             </div>
