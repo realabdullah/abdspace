@@ -3,8 +3,8 @@ import hljs from "highlight.js";
 
 interface Post {
 	title: string;
-	dateAdded: string;
-	dateUpdated: string;
+	publishedAt: string;
+	updatedAt: string;
 	content: string;
 	coverImage: string;
 	ogImage: string;
@@ -19,8 +19,8 @@ const config = useRuntimeConfig();
 const { params } = useRoute();
 const post = ref<Post>({
 	title: "",
-	dateAdded: "",
-	dateUpdated: "",
+	publishedAt: "",
+	updatedAt: "",
 	content: "",
 	coverImage: "",
 	ogImage: "",
@@ -32,7 +32,7 @@ const post = ref<Post>({
 });
 
 const getPost = async () => {
-	const { data, error } = await useFetch("/api/post?slug=" + params.slug);
+	const { data, error } = await useFetch("/api/post?id=" + params.id);
 	if (error.value) {
 		throw createError({ statusCode: 500, message: error.value.message });
 	}
@@ -66,7 +66,7 @@ useSeoMeta({
 	description: () => post.value.content,
 	ogDescription: () => post.value.content,
 	ogImage: () => post.value.ogImage,
-	ogUrl: () => config.public.baseUrl + "/blog/" + params.slug,
+	ogUrl: () => config.public.baseUrl + "/blog/" + params.id,
 	twitterImage: () => post.value.ogImage,
 	twitterTitle: () => post.value.title + " | Abdullahi Odesanmi — Frontend Engineer",
 	twitterDescription: () => post.value.content,

@@ -5,20 +5,24 @@ export default defineEventHandler(async (event) => {
 
 	const query = `
         query {
-            post(slug: "${apiQuery.slug}", hostname: "") {
-                _id
-                title
-                dateAdded
-                dateUpdated
-                content
-                coverImage
-                author {
-                    _id
-                    username
-                    name
-                    photo
-                }
-                readTime
+            post(id: "${apiQuery.id}") {
+				id
+				title
+				publishedAt
+				updatedAt
+				content {
+				  html
+				}
+				coverImage {
+				  url
+				}
+				author {
+				  id
+				  username
+				  name
+				  profilePicture
+				}
+				readTimeInMinutes
             }
         }
     `;
@@ -45,15 +49,15 @@ export default defineEventHandler(async (event) => {
 
 	return {
 		title: data.post.title,
-		dateAdded: data.post.dateAdded,
-		dateUpdated: data.post.dateUpdated,
-		content: data.post.content,
-		coverImage: data.post.coverImage,
+		publishedAt: data.post.publishedAt,
+		updatedAt: data.post.updatedAt,
+		content: data.post.content.html,
+		coverImage: data.post.coverImage.url,
 		ogImage,
 		author: {
 			name: data.post.author.name,
-			photo: data.post.author.photo,
+			photo: data.post.author.profilePicture,
 		},
-		readTime: data.post.readTime,
+		readTime: data.post.readTimeInMinutes,
 	};
 });
