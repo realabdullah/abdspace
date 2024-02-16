@@ -5,18 +5,30 @@ export default defineEventHandler(async () => {
     const query = `
         query {
             user(username: "${username}") {
-            _id
-            username
-            name
-            publication {
-                title
-                posts(page: 0) {
-                slug
-                title
-                brief
-                coverImage
+                id
+                username
+                name
+                publications(first: 20) {
+                    edges {
+                        node {
+                            title
+                            posts(first: 20) {
+                            edges {
+                                node {
+                                    id
+                                    slug
+                                    title
+                                    brief
+                                    coverImage {
+                                        attribution
+                                        photographer
+                                    }
+                                }
+                                }
+                            }
+                        }
+                    }
                 }
-            }
             }
         }
     `;
@@ -30,6 +42,6 @@ export default defineEventHandler(async () => {
     });
 
     const data = await response.json();
-    
-    return data.data.user.publication.posts;
+
+    return data.data.user.publications.edges[0].node.posts.edges;
 });

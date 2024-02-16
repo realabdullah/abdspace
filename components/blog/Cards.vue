@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 interface BlogPost {
-    slug: string;
+    id: string;
     title: string;
     brief: string;
 }
@@ -21,7 +21,7 @@ await getBlogPosts();
     <section v-if="blogPosts.length > 0" class="cards">
         <h1 class="cards__header col-text weight-500 text-one">Articles.</h1>
         <div class="cards__content d-grid">
-            <BlogCard v-for="blog in blogPosts" :key="blog.slug" :blog="blog" />
+            <BlogCard v-for="blog in blogPosts" :key="blog.id" :blog="blog.node" />
         </div>
     </section>
 </template>
