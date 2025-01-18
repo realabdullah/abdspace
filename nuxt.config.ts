@@ -16,18 +16,7 @@ export default defineNuxtConfig({
 			],
 		},
 	},
-	css: ["~/assets/sass/main.scss"],
-	vite: {
-		css: {
-			preprocessorOptions: {
-				scss: {
-					additionalData: `
-						@import "@/assets/sass/abstracts/_mixins.scss";
-					`,
-				},
-			},
-		},
-	},
+	css: ["~/assets/css/main.css"],
 	runtimeConfig: {
 		public: {
 			baseUrl: process.env.SITE_URL ?? "http://localhost:2000",
@@ -40,7 +29,13 @@ export default defineNuxtConfig({
 	imports: {
 		dirs: ["types/**/*"],
 	},
-	modules: ["@nuxtjs/supabase"],
+	modules: ["@nuxtjs/supabase", "@nuxtjs/tailwindcss"],
+	tailwindcss: {
+		cssPath: ['~/assets/css/tailwind.css', { injectPosition: "first" }],
+		config: {},
+		viewer: true,
+		exposeConfig: false,
+	},
 	supabase: {
 		redirect: false,
 	},

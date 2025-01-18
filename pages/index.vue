@@ -14,9 +14,9 @@ useSeoMeta({
 </script>
 
 <template>
-	<section class="intro d-flex items-start content-between">
-		<h1 class="col-text weight-500 text-one">Hello, I’m Abdullahi.</h1>
-		<p class="col-text weight-400 text-two text-right">An experienced Frontend Engineer with passion for building beautiful and functional user interfaces.</p>
+	<section class="intro flex items-start justify-between">
+		<h1 class="text-dark font-medium text-4xl sm:text-6xl">Hello, I’m Abdullahi.</h1>
+		<p class="text-dark font-normal text-2xl sm:text-3xl text-right">An experienced Frontend Engineer with passion for building beautiful and functional user interfaces.</p>
 	</section>
 
 	<AboutSection />

@@ -61,7 +61,7 @@ useSeoMeta({
 </script>
 
 <template>
-	<h1 class="col-text weight-500 text-one">{{ post.title }}</h1>
+	<h1 class="text-dark font-medium text-7xl leading-[-1.4px] sm:text-text-8xl sm:leading-[-1.8px]">{{ post.title }}</h1>
 	<div class="content" v-html="post.content"></div>
 </template>
 

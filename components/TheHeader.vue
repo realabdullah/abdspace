@@ -1,186 +1,51 @@
 <script lang="ts" setup>
+import type { IPlayerData } from "~/types";
+
 defineProps<{
 	isCurrentlyPlaying: boolean;
-	playingData: {
-		title: string;
-		link: string;
-		cover_art: string;
-		l_cover_art: string;
-		artists: string;
-	};
+	playingData: IPlayerData;
 }>();
 
 const isModalOpen = ref(false);
-
-const navs = [
-	{ name: "Work", route: "work" },
-	{ name: "About", route: "about" },
-	{ name: "Blog", route: "blog" },
-	{ name: "Contact", route: "contact" },
-];
 </script>
 
 <template>
-	<header class="header d-flex items-center content-between">
-		<NuxtLink to="/" class="col-text">
+	<header class="flex items-center justify-between py-12 px-7 md:py-24 md:px-7 max-w-[1200px] mx-auto gap-5">
+		<NuxtLink to="/" class="text-dark">
 			<IconsLogo />
 		</NuxtLink>
 
-		<div class="listening col-text position-relative">
+		<div class="text-dark relative flex items-center gap-2.5">
 			<template v-if="isCurrentlyPlaying">
-				<img :src="playingData.cover_art" alt="cover" class="cover_art" />
-				<span class="text-five col-text">
+				<img :src="playingData.cover_art" alt="cover" class="w-5 h-5" />
+				<span class="text-xs sm:text-sm text-dark">
 					Listening to
-					<button class="bg-transparent col-text cursor-pointer" @click="isModalOpen = !isModalOpen">
+					<button class="bg-transparent text-dark cursor-pointer max-w-36 overflow-hidden whitespace-nowrap text-ellipsis" @click="isModalOpen = !isModalOpen">
 						<strong>{{ playingData.title }}</strong>
 					</button>
 				</span>
 			</template>
 			<template v-else>
 				<IconsSpotify />
-				<span class="text-five col-text">Not listening atm 🫣</span>
+				<span class="text-xs sm:text-sm text-dark">Not listening atm 🫣</span>
 			</template>
 
-			<div v-show="isModalOpen" class="playing__modal position-absolute z-2 d-flex items-center gap-6 w-auto h-auto">
-				<img :src="playingData.l_cover_art" alt="cover_art" />
-				<div class="details d-flex flex-column gap-2">
-					<a :href="playingData.link" target="_blank" class="title text-five weight-500 col-text">{{
-						playingData.title }}</a>
-					<p class="artists text-nowrap text-five weight-400 col-text">{{ playingData.artists }}</p>
+			<div
+				v-show="isModalOpen"
+				class="animate-ellastic p-2.5 pr-7 absolute z-50 flex items-center shadow-2xl top-10 right-0 opacity-0 bg-white backdrop:blur-md after:bg-white after:w-5 after:h-5 after:absolute after:right-[3.5rem] after:-top-2 after:transform after:rotate-45 after:z-0">
+				<img :src="playingData.l_cover_art" alt="cover_art" class="h-12 w-12 object-cover rounded-lg shadow-[0_0.7rem_2.9rem_0_#64646f33]" />
+				<div class="flex flex-col">
+					<a :href="playingData.link" target="_blank" class="text-xs sm:text-sm font-medium text-dark max-w-[15rem] overflow-hidden whitespace-nowrap text-ellipsis">
+						{{ playingData.title }}
+					</a>
+					<p class="whitespace-nowrap text-sm sm:text-base font-normal text-dark">{{ playingData.artists }}</p>
 				</div>
-				<div class="bar d-flex content-between ml-5">
-					<span></span>
-					<span></span>
-					<span></span>
+				<div class="bar h-3 w-3 flex justify-between gap-1">
+					<span class="animate-bar bg-dark rounded-sm w-[0.3rem] h-full"></span>
+					<span class="animate-bar -animate-delay-2000 bg-dark rounded-sm w-[0.3rem] h-full"></span>
+					<span class="animate-bar -animate-delay-3000 bg-dark rounded-sm w-[0.3rem] h-full"></span>
 				</div>
 			</div>
 		</div>
 	</header>
 </template>
-
-<style lang="scss" scoped>
-.header {
-	padding: 10rem 3rem;
-	max-width: 120rem;
-	margin: 0 auto;
-	gap: 2rem;
-
-	@media screen and (max-width: 768px) {
-		padding: 5rem 3rem;
-	}
-
-	.listening {
-		display: flex;
-		align-items: center;
-		gap: 1rem;
-
-		.cover_art {
-			@include sizing(2rem, 2rem);
-		}
-
-		button {
-			@include ellipsis;
-		}
-	}
-}
-
-.playing__modal {
-	padding: 1rem;
-	padding-right: 3rem;
-	box-shadow: 0 1rem 3rem rgba(#8d9097, 0.05);
-	top: 4rem;
-	right: 0;
-	opacity: 0;
-	animation: ellastic 1s ease-out forwards 0.15s;
-	background-color: var(--white);
-	backdrop-filter: blur(1rem);
-
-	img {
-		@include sizing(5rem, 5rem);
-		object-fit: cover;
-		border-radius: 0.5rem;
-		box-shadow: #64646f33 0 0.7rem 2.9rem 0;
-	}
-
-	&::after {
-		content: "";
-		background-color: var(--white);
-		@include sizing(2rem, 2rem);
-		position: absolute;
-		right: 0.35rem;
-		top: -0.8rem;
-		transform: rotate(45deg);
-		z-index: 0;
-	}
-
-	.details {
-		.title {
-			@include ellipsis;
-		}
-	}
-
-	.bar {
-		@include sizing(1.3rem, 1.3rem);
-
-		span {
-			@include sizing(0.3rem, 100%);
-			background-color: var(--text-color);
-			border-radius: 0.3rem;
-			animation: bar 2.2s ease infinite alternate;
-
-			&:nth-of-type(2) {
-				animation-delay: -2.2s;
-			}
-
-			&:nth-of-type(3) {
-				animation-delay: -3.7s;
-			}
-		}
-	}
-}
-
-@keyframes ellastic {
-	0% {
-		opacity: 0;
-		transform: scale(1, 1);
-	}
-
-	10% {
-		transform: scale(1.1, 0.9);
-	}
-
-	30% {
-		transform: scale(0.9, 1.1);
-	}
-
-	50% {
-		transform: scale(1.05, 0.95);
-	}
-
-	100% {
-		opacity: 1;
-		transform: scale(1, 1);
-	}
-}
-
-@keyframes bar {
-	10% {
-		transform: scaleY(0.3);
-	}
-
-	30% {
-		transform: scaleY(1);
-	}
-
-	60% {
-		transform: scaleY(0.5);
-	}
-
-	80% {
-		transform: scaleY(0.75);
-	}
-
-	100% {
-		transform: scaleY(0.6);
-	}
-}</style>

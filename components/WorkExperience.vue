@@ -1,17 +1,17 @@
 <template>
-	<section class="work__experiences d-flex flex-column items-start">
-		<h1 class="work__experiences-header col-text weight-500 text-one">Work Experiences.</h1>
-		<ul class="work__experiences-content d-flex flex-column items-start">
-			<li class="col-text text-four weight-400">
-				<span class="weight-500">Frontend Engineer</span>
+	<section class="work__experiences flex flex-col items-start">
+		<h1 class="work__experiences-header text-dark font-medium text-7xl leading-[-1.4px] sm:text-8xl sm:leading-[-1.8px]">Work Experiences.</h1>
+		<ul class="work__experiences-content flex flex-col items-start">
+			<li class="text-dark text-2xl sm:text-text-3xl font-normal">
+				<span class="font-medium">Frontend Engineer</span>
 				at
-				<span class="col-text weight-500"><span class="blurry-text" @contextmenu.prevent>unknown 🫣</span></span>
+				<span class="text-dark font-medium"><span class="blurry-text text-transparent" @contextmenu.prevent>unknown 🫣</span></span>
 				(Sept, 2023 - Present)
 			</li>
-			<li class="col-text text-four weight-400">
-				<span class="weight-500">Frontend Engineer</span>
+			<li class="text-dark text-2xl sm:text-text-3xl font-normal">
+				<span class="font-medium">Frontend Engineer</span>
 				at
-				<a href="https://getfidia.com" target="_blank" class="col-text weight-500">Fidia Inc.</a>
+				<a href="https://getfidia.com" target="_blank" class="text-dark font-medium">Fidia Inc.</a>
 				(Jun, 2022 - Sept, 2023)
 			</li>
 		</ul>

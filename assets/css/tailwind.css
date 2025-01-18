@@ -1,0 +1,48 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+	:root {
+		--main-color: 243, 243, 243;
+		--secondary-color: 36, 41, 175;
+		--text-color: 24, 23, 23;
+        --white: 255, 255, 255;
+	}
+
+    @media (prefers-color-scheme: dark) { 
+        :root {
+            --main-color: 24, 23, 23;
+            --secondary-color: 36, 41, 175;
+            --text-color: 243, 243, 243;
+            --white: 0, 0, 0;
+        }
+    }
+}
+
+.blurry-text {
+	color: transparent;
+	text-shadow: 0 0 7px var(--text-color);
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	user-select: none;
+}
+
+.hover\:link {
+	&::after {
+		content: "";
+		position: absolute;
+		bottom: -10px;
+		left: 0;
+		width: 0;
+		height: 2px;
+		background-color: var(--secondary-color);
+		transition: width 0.3s ease-in-out;
+	}
+
+	&.active::after,
+	&:hover::after {
+		width: 50%;
+		height: 2px;
+	}
+}

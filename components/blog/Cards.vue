@@ -15,8 +15,8 @@ await getBlogPosts();
 
 <template>
 	<section v-if="blogPosts.length > 0" class="cards">
-		<h1 class="cards__header col-text weight-500 text-one">Articles.</h1>
-		<div class="cards__content d-grid">
+		<h1 class="cards__header text-dark font-medium text-7xl leading-[-1.4px] sm:text-text-8xl sm:leading-[-1.8px]">Articles.</h1>
+		<div class="cards__content grid">
 			<BlogCard v-for="blog in blogPosts" :key="blog.id" :blog="blog" />
 		</div>
 	</section>

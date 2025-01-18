@@ -4,6 +4,7 @@ export interface IProject {
     tags: string[];
     live_url: string;
     github_url: string;
+	in_progress: boolean;
 }
 
 export interface IBlogPost {
@@ -24,4 +25,12 @@ export interface IPost {
 		photo: string;
 	};
 	readTime: string;
+}
+
+export interface IPlayerData {
+	title: string;
+	link: string;
+	cover_art: string;
+	l_cover_art: string;
+	artists: string;
 }

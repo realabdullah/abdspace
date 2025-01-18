@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 const isCurrentlyPlaying = ref(false);
-const playingData = ref({
+const playingData = ref<IPlayerData>({
 	title: "",
 	link: "",
 	cover_art: "",
@@ -11,8 +11,10 @@ const playingData = ref({
 const getCurrentlyPlaying = async () => {
 	const { data } = await useFetch("/api/playing");
 	if (data.value) {
-		isCurrentlyPlaying.value = data.value.isPlaying;
-		if (isCurrentlyPlaying.value) playingData.value = data.value.data;
+		if (data.value.isPlaying) {
+			isCurrentlyPlaying.value = data.value.isPlaying;
+			playingData.value = data.value.data as IPlayerData;
+		}
 	}
 };
 
@@ -35,17 +37,11 @@ await getCurrentlyPlaying();
 
 <template>
 	<NuxtLoadingIndicator :height="4" :color="color" />
-	<TheHeader :is-currently-playing="isCurrentlyPlaying" :playing-data="playingData" />
-	<main class="container">
-		<slot />
-	</main>
-	<TheFooter />
+	<div class="bg-primary">
+		<TheHeader :is-currently-playing="isCurrentlyPlaying" :playing-data="playingData" />
+		<main class="container mx-auto my-0 max-w-[1200px] px-7 py-24">
+			<NuxtPage />
+		</main>
+		<TheFooter />
+	</div>
 </template>
-
-<style lang="scss" scoped>
-.container {
-	padding: 10rem 3rem;
-	max-width: 120rem;
-	margin: 0 auto;
-}
-</style>

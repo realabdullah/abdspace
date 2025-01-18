@@ -32,7 +32,7 @@ export default defineEventHandler(async () => {
 		});
 
 		const data = await response.json();
-
+		console.log("data is  => ", data);
 		return {
 			isPlaying: true,
 			data: {

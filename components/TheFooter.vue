@@ -9,28 +9,28 @@ const socials = [
 </script>
 
 <template>
-    <footer class="footer d-flex flex-column">
-        <div class="footer__contact d-flex items-start content-between">
-            <h2 class="footer__contact-text col-text weight-400 text-two">I am eager to discuss your next project with you.
+    <footer class="footer flex flex-col">
+        <div class="footer__contact flex items-start justify-between">
+            <h2 class="footer__contact-text text-dark font-normal text-4xl leading-[-0.8px] sm:text-text-5xl sm:leading-[-1px]">I am eager to discuss your next project with you.
                 <IconsUtility icon="arrow-right" />
             </h2>
 
-            <div class="footer__contact-ctas d-flex flex-column items-start">
+            <div class="footer__contact-ctas flex flex-col items-start">
                 <a href="mailto:abdulodesanmi@gmail.com"
-                    class="footer__contact-ctas--item col-text text-two weight-400 text-none break-all">abdulodesanmi@gmail.com</a>
+                    class="footer__contact-ctas--item text-dark text-4xl leading-[-0.8px] sm:text-text-5xl sm:leading-[-1px] font-normal no-underline break-all">abdulodesanmi@gmail.com</a>
                 <a href="https://docs.google.com/document/d/1kRlBn5TDxDaHplEORpbV0NLQw75PNbdHh9GMb3xS62Y/edit?usp=sharing" target="_blank"
-                    class="footer__contact-ctas--item col-text text-four weight-400 text-none">View
+                    class="footer__contact-ctas--item text-dark text-2xl sm:text-text-3xl font-normal no-underline">View
                     Resume</a>
             </div>
         </div>
 
-        <div class="footer__socials d-flex items-center content-between md:flex-column md:items-start">
-            <span class="footer__socials-author col-secondary weight-500 text-three">Abdullahi Odesanmi ⏤
+        <div class="footer__socials flex items-center justify-between md:flex-col md:items-start">
+            <span class="footer__socials-author text-secondary font-medium text-2xl leading-[-0.5px] sm:text-text-4xl sm:leading-[-0.6px]">Abdullahi Odesanmi ⏤
                 {{ currentYear }}</span>
 
-            <div class="footer__socials-links d-flex items-center">
+            <div class="footer__socials-links flex items-center">
                 <a v-for="social in socials" :key="social.name" :href="social.link" target="_blank"
-                    class="col-text weight-500 text-three text-none position-relative hover:link">{{ social.name }}</a>
+                    class="text-dark font-medium text-2xl leading-[-0.5px] sm:text-text-4xl sm:leading-[-0.6px] no-underline relative hover:link">{{ social.name }}</a>
             </div>
         </div>
     </footer>
