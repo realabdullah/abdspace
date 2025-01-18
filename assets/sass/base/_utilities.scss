@@ -537,42 +537,42 @@ $word-breaks: (
 }
 
 .text-one {
-    @include font-properties(6rem, 97.2%, -1.8px);
+    @include font-properties(6rem, 150%, 0px);
 
     @media (max-width: 600px) {
-        @include font-properties(4.8rem, 97.2%, -1.44px);
+        @include font-properties(4.8rem, 150%, 1px);
     }
 }
 
 .text-two {
-    @include font-properties(3.2rem, 117%, -0.96px);
+    @include font-properties(3.2rem, 150%, 1px);
 
     @media (max-width: 600px) {
-        @include font-properties(2.56rem, 117%, -0.768px);
+        @include font-properties(2.56rem, 150%, 1px);
     }
 }
 
 .text-three {
-    @include font-properties(2.1rem, 120%, -0.63px);
+    @include font-properties(2.1rem, 150%, 1px);
 
     @media (max-width: 600px) {
-        @include font-properties(1.68rem, 120%, -0.504px);
+        @include font-properties(1.68rem, 150%, 1px);
     }
 }
 
 .text-four {
-    @include font-properties(1.8rem, 121.5%, -0.54px);
+    @include font-properties(1.8rem, 150%, 1px);
 
     @media (max-width: 600px) {
-        @include font-properties(1.44rem, 121.5%, -0.432px);
+        @include font-properties(1.44rem, 150%, 1px);
     }
 }
 
 .text-five {
-    @include font-properties(1.4rem, 121.5%, -0.42px);
+    @include font-properties(1.4rem, 150%, 1px);
 
     @media (max-width: 600px) {
-        @include font-properties(1.12rem, 121.5%, -0.336px);
+        @include font-properties(1.12rem, 150%, 1px);
     }
 }
 

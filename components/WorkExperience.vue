@@ -5,6 +5,12 @@
 			<li class="col-text text-four weight-400">
 				<span class="weight-500">Frontend Engineer</span>
 				at
+				<a href="https://mycover.ai" target="_blank" class="col-text weight-500">MyCover.ai</a>
+				(Feb, 2024 - Present)
+			</li>
+			<li class="col-text text-four weight-400">
+				<span class="weight-500">Frontend Engineer</span>
+				at
 				<span class="col-text weight-500"><span class="blurry-text" @contextmenu.prevent>unknown 🫣</span></span>
 				(Sept, 2023 - Present)
 			</li>
