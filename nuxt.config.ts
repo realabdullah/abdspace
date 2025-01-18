@@ -38,9 +38,16 @@ export default defineNuxtConfig({
 		port: 2000,
 	},
 	devtools: { enabled: false },
+	imports: {
+		dirs: ["types/**/*"],
+	},
+	modules: ["@nuxtjs/supabase", "@nuxt/content"],
 	content: {
 		preview: {
 			api: process.env.STUDIO_URL
 		}
-	}
+	},
+	supabase: {
+		redirect: false,
+	},
 });
