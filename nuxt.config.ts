@@ -22,7 +22,7 @@ export default defineNuxtConfig({
 			preprocessorOptions: {
 				scss: {
 					additionalData: `
-						@import "@/assets/sass/abstracts/_variables.scss"; 
+						@import "@/assets/sass/abstracts/_variables.scss";
 						@import "@/assets/sass/abstracts/_mixins.scss";
 					`,
 				},
@@ -37,5 +37,12 @@ export default defineNuxtConfig({
 	devServer: {
 		port: 2000,
 	},
+	imports: {
+		dirs: ["types/**/*"],
+	},
 	devtools: { enabled: false },
+	modules: ["@nuxtjs/supabase", "@nuxt/content"],
+	supabase: {
+		redirect: false,
+	},
 });
