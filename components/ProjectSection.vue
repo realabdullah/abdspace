@@ -20,9 +20,9 @@ const { data: projects } = await useAsyncData<IProject[]>("projects", async () =
 						Tools/Skills:
 						<span v-for="(tag, idx) in project.tags" :key="idx" class="weight-400">{{ tag + (idx !== project.tags.length - 1 ? "," : ".") }}</span>
 					</span>
-					<div class="links d-flex items-center gap-5 mt-15">
-						<a v-if="!!project.live_url" :href="project.live_url" target="_blank" class="link text-five col-text">View Live</a>
-						<a :href="project.github_url" target="_blank" class="link text-five col-text">View Source</a>
+					<div v-if="project.live_url || project.github_url" class="links d-flex items-center gap-5 mt-15">
+						<a v-if="project.live_url" :href="project.live_url" target="_blank" class="link text-five col-text">View Live</a>
+						<a v-if="project.github_url" :href="project.github_url" target="_blank" class="link text-five col-text">View Source</a>
 					</div>
 				</div>
 			</li>
