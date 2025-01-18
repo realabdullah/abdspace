@@ -1,68 +1,11 @@
 <script lang="ts" setup>
-const projects = [
-	{
-		title: "MD Editor",
-		description:
-			"I've developed a dynamic web application using Nuxt.js, which offers users a real-time Markdown content preview. With this application, users can effortlessly compose and format Markdown text while receiving instant visual feedback",
-		tags: ["Vue.js", "Nuxt.js", "Typescript", "Pinia", "Remarkable", "IndexedDB"],
-		live_url: "https://dotmd-editor.vercel.app/",
-		github_url: "https://github.com/realabdullah/markdown-editor",
-	},
-	{
-		title: "Smart Pass",
-		description:
-			"A password manager designed to help users securely store and manage their passwords. It utilizes REST API calls to interact with a server, allowing users to store their sensitive login information in a safe and organized manner.",
-		tags: ["Vue.js", "Nuxt.js", "Typescript", "Pinia", "Axios"],
-		live_url: "https://smaartpass.vercel.app/",
-		github_url: "https://github.com/realabdullah/password-manager",
-	},
-	{
-		title: "Taskgid (WIP 🚧)",
-		description:
-			"Building an intuitive task management system with customizable workspaces and task organization. Upcoming features include seamless team collaboration through workspace invites.",
-		tags: ["Vue.js", "Nuxt.js", "Typescript", "Pinia", "Supabase", "Nodemailer", "V-Calendar"],
-		live_url: "https://www.taskgid.xyz/",
-		github_url: "https://github.com/realabdullah/task-management",
-	},
-	{
-		title: "Taskgid API",
-		description:
-			"Working on a project focused on building a backend infrastructure for Taskgid, a task management system. This project is also me trying my hands on backend development for the first time.",
-		tags: ["Node.js", "JavaScript", "MongoDB", "Express", "Knocklabs"],
-		live_url: "",
-		github_url: "https://github.com/realabdullah/taskgid-api",
-	},
-	{
-		title: "WebAuthn Experiment",
-		description:
-			"My exploration into the world of WebAuthn – a cutting-edge authentication technology. This project showcases the potential for secure and passwordless login experiences on the web, offering a glimpse into the future of online security.",
-		tags: ["HTML", "CSS", "Node.js", "Parcel", "Express", "LowDB", "Simple WebAuthn"],
-		live_url: "",
-		github_url: "https://github.com/realabdullah/webauthn",
-	},
-	{
-		title: "Audiophile",
-		description:
-			"Discover and shop for premium audio gadgets, including speakers, headphones, and earphones, in this side project e-commerce web app. Explore a curated selection of high-quality audio equipment for enthusiasts and discover the perfect audio gear for your needs.",
-		tags: ["Vue.js", "Nuxt.js", "Typescript", "Pinia", "IDB"],
-		live_url: "https://audiophilee.vercel.app/",
-		github_url: "https://github.com/realabdullah/audiophile",
-	},
-];
+const client = useSupabaseClient();
 
-// const client = useSupabaseClient();
-
-// const { data: restaurant } = await useAsyncData("projects", async () => {
-
-// 	return data;
-// });
-
-// try {
-// 	const { data } = await client.from("projects").select("*");
-// 	console.log("data", data);
-// } catch (error) {
-// 	console.log("error is => ", error);
-// }
+const { data: projects } = await useAsyncData<IProject[]>("projects", async () => {
+	const { data, error } = await client.from("projects").select("*");
+	if (error) throw error;
+	return data;
+});
 </script>
 
 <template>
@@ -73,13 +16,13 @@ const projects = [
 				<div class="details">
 					<h3 class="title text-three col-text">{{ project.title }}</h3>
 					<p class="desc text-four col-text mt-6">{{ project.description }}</p>
-					<span class="tools text-four col-text mt-20 weight-500 d-flex flex-wrap items-center gap-2">
+					<span class="text-four col-text mt-20 weight-500 d-flex flex-wrap items-center gap-2">
 						Tools/Skills:
-						<span v-for="(tools, idx) in project.tools" :key="idx" class="weight-400">{{ tools + (idx !== project.tools.length - 1 ? "," : ".") }}</span>
+						<span v-for="(tag, idx) in project.tags" :key="idx" class="weight-400">{{ tag + (idx !== project.tags.length - 1 ? "," : ".") }}</span>
 					</span>
 					<div class="links d-flex items-center gap-5 mt-15">
-						<a v-if="!!project.live" :href="project.live" target="_blank" class="link text-five col-text">View Live</a>
-						<a :href="project.source" target="_blank" class="link text-five col-text">View Source</a>
+						<a v-if="!!project.live_url" :href="project.live_url" target="_blank" class="link text-five col-text">View Live</a>
+						<a :href="project.github_url" target="_blank" class="link text-five col-text">View Source</a>
 					</div>
 				</div>
 			</li>

@@ -37,10 +37,11 @@ export default defineNuxtConfig({
 	devServer: {
 		port: 2000,
 	},
-
+	imports: {
+		dirs: ["types/**/*"],
+	},
 	devtools: { enabled: false },
-	compatibilityDate: "2025-01-17",
-	modules: ["@nuxtjs/supabase"],
+	modules: ["@nuxtjs/supabase", "@nuxt/content"],
 	supabase: {
 		redirect: false,
 	},
