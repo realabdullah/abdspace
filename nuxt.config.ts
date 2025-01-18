@@ -22,7 +22,6 @@ export default defineNuxtConfig({
 			preprocessorOptions: {
 				scss: {
 					additionalData: `
-						@import "@/assets/sass/abstracts/_variables.scss"; 
 						@import "@/assets/sass/abstracts/_mixins.scss";
 					`,
 				},
@@ -42,12 +41,8 @@ export default defineNuxtConfig({
 		dirs: ["types/**/*"],
 	},
 	modules: ["@nuxtjs/supabase"],
-	content: {
-		preview: {
-			api: process.env.STUDIO_URL
-		}
-	},
 	supabase: {
 		redirect: false,
 	},
+	compatibilityDate: "2025-01-18",
 });

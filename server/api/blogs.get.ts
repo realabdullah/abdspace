@@ -1,30 +1,20 @@
 export default defineEventHandler(async () => {
-    const graphqlUrl = process.env.GRAPHQL_URL!;
-    const username = process.env.BLOG_USERNAME!;
+	const graphqlUrl = process.env.GRAPHQL_URL!;
+	const host = process.env.BLOG_HOST!;
 
-    const query = `
+	const query = `
         query {
-            user(username: "${username}") {
-                id
-                username
-                name
-                publications(first: 20) {
+            publication(host: "${host}") {
+                posts(first: 20) {
                     edges {
                         node {
+                            id
+                            slug
                             title
-                            posts(first: 20) {
-                            edges {
-                                node {
-                                    id
-                                    slug
-                                    title
-                                    brief
-                                    coverImage {
-                                        attribution
-                                        photographer
-                                    }
-                                }
-                                }
+                            brief
+                            coverImage {
+                                attribution
+                                photographer
                             }
                         }
                     }
@@ -33,15 +23,15 @@ export default defineEventHandler(async () => {
         }
     `;
 
-    const response = await fetch(graphqlUrl, {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ query }),
-    });
+	const response = await fetch(graphqlUrl, {
+		method: "POST",
+		headers: {
+			"Content-Type": "application/json",
+		},
+		body: JSON.stringify({ query }),
+	});
 
-    const data = await response.json();
+	const data = await response.json();
 
-    return data.data.user.publications.edges[0].node.posts.edges;
+	return data.data.publication.posts.edges?.map((edge: any) => edge.node);
 });

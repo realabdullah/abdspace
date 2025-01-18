@@ -1,23 +1,10 @@
 <script lang="ts" setup>
 import hljs from "highlight.js";
-
-interface Post {
-	title: string;
-	publishedAt: string;
-	updatedAt: string;
-	content: string;
-	coverImage: string;
-	ogImage: string;
-	author: {
-		name: string;
-		photo: string;
-	};
-	readTime: string;
-}
+import type { IPost } from "~/types";
 
 const config = useRuntimeConfig();
 const { params } = useRoute();
-const post = ref<Post>({
+const post = ref<IPost>({
 	title: "",
 	publishedAt: "",
 	updatedAt: "",
@@ -38,7 +25,7 @@ const getPost = async () => {
 	}
 
 	if (data.value) {
-		post.value = data.value as Post;
+		post.value = data.value as IPost;
 	}
 };
 

@@ -5,6 +5,7 @@
     --secondary-color: #2429AF;
     --text-color: #181717;
     --white: #FFFFFF;
+    --primary-font: "DM Sans";
 }
 
 @media (prefers-color-scheme: dark) {
@@ -27,7 +28,7 @@ html {
 
     body {
         background-color: var(--main-color);
-        font-family: $primary-font;
+        font-family: var(--primary-font), sans-serif;
         font-size: 1.6rem;
     }
 }

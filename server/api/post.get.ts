@@ -52,7 +52,7 @@ export default defineEventHandler(async (event) => {
 		publishedAt: data.post.publishedAt,
 		updatedAt: data.post.updatedAt,
 		content: data.post.content.html,
-		coverImage: data.post.coverImage.url,
+		coverImage: data.post.coverImage?.url ?? ogImage,
 		ogImage,
 		author: {
 			name: data.post.author.name,
