@@ -13,17 +13,14 @@
     "postinstall": "nuxt prepare"
   },
   "devDependencies": {
-    "@libsql/client": "*",
     "@nuxt/devtools": "latest",
     "@nuxtjs/supabase": "1.4.5",
     "nuxt": "^3.7.4",
-    "pg": "*",
     "sass": "^1.68.0",
     "vue": "^3.3.4",
     "vue-router": "^4.2.5"
   },
   "dependencies": {
-    "@nuxt/content": "^3.0.0",
     "highlight.js": "^11.9.0"
   }
 }

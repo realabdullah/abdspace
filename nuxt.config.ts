@@ -41,7 +41,7 @@ export default defineNuxtConfig({
 	imports: {
 		dirs: ["types/**/*"],
 	},
-	modules: ["@nuxtjs/supabase", "@nuxt/content"],
+	modules: ["@nuxtjs/supabase"],
 	content: {
 		preview: {
 			api: process.env.STUDIO_URL
