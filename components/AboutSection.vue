@@ -72,12 +72,6 @@ const skills = [
 
 	&-content {
 		gap: 3rem;
-
-		span {
-			@media screen and (max-width: 768px) {
-				text-align: justify;
-			}
-		}
 	}
 }
 </style>

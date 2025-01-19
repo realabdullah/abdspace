@@ -1,19 +1,29 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,100..1000&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500&display=swap');
 
 :root {
-    --main-color: #F3F3F3;
+    --main-color: #fffafb;
     --secondary-color: #2429AF;
     --text-color: #181717;
     --white: #FFFFFF;
-    --primary-font: "Roboto Flex";
+    --primary-font: "DM Sans";
+
+    --card-bg: transparent;
+
+    --box-shadow: 0px 3px 6px #18181b05, 0px 2px 7px #18181b0a, 0 0 0 1px #18181b14;
+    --box-shadow-hover: 0px 3px 6px #18181b0d, 0px 8px 15px #18181b1a, 0 0 0 1px #18181b26;
 }
 
 @media (prefers-color-scheme: dark) {
     :root {
-        --main-color: #181717;
+        --main-color: #18181B;
         --secondary-color: #2429AF;
-        --text-color: #F3F3F3;
+        --text-color: #A1A1AA;
         --white: #000000;
+
+        --card-bg: #ffffff04;
+
+        --box-shadow: 0px 3px 6px #0000000d, 0px 8px 15px #0000001a, 0 0 0 1px #ffffff1a;
+        --box-shadow-hover: 0px 3px 6px #0000000a, 0px 15px 25px #0000004d, 0 0 0 1px #ffffff33;
     }
 }
 

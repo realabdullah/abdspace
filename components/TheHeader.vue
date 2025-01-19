@@ -41,19 +41,20 @@ const navs = [
 				<span class="text-five col-text">Not listening atm 🫣</span>
 			</template>
 
-			<div v-show="isModalOpen" class="playing__modal position-absolute z-2 d-flex items-center gap-6 w-auto h-auto">
-				<img :src="playingData.l_cover_art" alt="cover_art" />
-				<div class="details d-flex flex-column gap-2">
-					<a :href="playingData.link" target="_blank" class="title text-five weight-500 col-text">{{
-						playingData.title }}</a>
-					<p class="artists text-nowrap text-five weight-400 col-text">{{ playingData.artists }}</p>
+			<UICard v-show="isModalOpen" class="playing__modal position-absolute z-2">
+				<div class="playing__modal-content d-flex items-center gap-6 w-auto h-auto">
+					<img :src="playingData.l_cover_art" alt="cover_art" />
+					<div class="details d-flex flex-column gap-2">
+						<a :href="playingData.link" target="_blank" class="title text-five weight-500 col-text">{{ playingData.title }}</a>
+						<p class="artists text-nowrap text-five weight-400 col-text">{{ playingData.artists }}</p>
+					</div>
+					<div class="bar d-flex content-between ml-5">
+						<span></span>
+						<span></span>
+						<span></span>
+					</div>
 				</div>
-				<div class="bar d-flex content-between ml-5">
-					<span></span>
-					<span></span>
-					<span></span>
-				</div>
-			</div>
+			</UICard>
 		</div>
 	</header>
 </template>
@@ -85,55 +86,57 @@ const navs = [
 }
 
 .playing__modal {
-	padding: 1rem;
-	padding-right: 3rem;
-	box-shadow: 0 1rem 3rem rgba(#8d9097, 0.05);
+	position: absolute !important;
 	top: 4rem;
 	right: 0;
 	opacity: 0;
 	animation: ellastic 1s ease-out forwards 0.15s;
-	background-color: var(--white);
-	backdrop-filter: blur(1rem);
 
-	img {
-		@include sizing(5rem, 5rem);
-		object-fit: cover;
-		border-radius: 0.5rem;
-		box-shadow: #64646f33 0 0.7rem 2.9rem 0;
-	}
+	&-content {
+		padding: 1rem;
+		padding-right: 3rem;
 
-	&::after {
-		content: "";
-		background-color: var(--white);
-		@include sizing(2rem, 2rem);
-		position: absolute;
-		right: 0.35rem;
-		top: -0.8rem;
-		transform: rotate(45deg);
-		z-index: 0;
-	}
-
-	.details {
-		.title {
-			@include ellipsis;
+		img {
+			@include sizing(5rem, 5rem);
+			object-fit: cover;
+			border-radius: 0.5rem;
+			box-shadow: var(--box-shadow);
 		}
-	}
 
-	.bar {
-		@include sizing(1.3rem, 1.3rem);
+		// &::after {
+		// 	content: "";
+		// 	background-color: var(--main-color);
+		// 	box-shadow: var(--box-shadow);
+		// 	@include sizing(2rem, 2rem);
+		// 	position: absolute;
+		// 	right: 0.35rem;
+		// 	top: -0.8rem;
+		// 	transform: rotate(45deg);
+		// 	z-index: -1;
+		// }
 
-		span {
-			@include sizing(0.3rem, 100%);
-			background-color: var(--text-color);
-			border-radius: 0.3rem;
-			animation: bar 2.2s ease infinite alternate;
-
-			&:nth-of-type(2) {
-				animation-delay: -2.2s;
+		.details {
+			.title {
+				@include ellipsis;
 			}
+		}
 
-			&:nth-of-type(3) {
-				animation-delay: -3.7s;
+		.bar {
+			@include sizing(1.3rem, 1.3rem);
+
+			span {
+				@include sizing(0.3rem, 100%);
+				background-color: var(--text-color);
+				border-radius: 0.3rem;
+				animation: bar 2.2s ease infinite alternate;
+
+				&:nth-of-type(2) {
+					animation-delay: -2.2s;
+				}
+
+				&:nth-of-type(3) {
+					animation-delay: -3.7s;
+				}
 			}
 		}
 	}
@@ -183,4 +186,5 @@ const navs = [
 	100% {
 		transform: scaleY(0.6);
 	}
-}</style>
+}
+</style>
