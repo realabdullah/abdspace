@@ -16,7 +16,7 @@ useSeoMeta({
 <template>
 	<section class="intro d-flex items-start content-between">
 		<h1 class="col-text weight-500 text-one">Hello, I’m Abdullahi.</h1>
-		<p class="col-text weight-400 text-two text-right">An experienced Frontend Engineer with passion for building beautiful and functional user interfaces.</p>
+		<p class="col-text weight-400 text-three text-right">An experienced Frontend Engineer with passion for building beautiful and functional user interfaces.</p>
 	</section>
 
 	<AboutSection />

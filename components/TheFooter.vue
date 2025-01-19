@@ -11,15 +11,15 @@ const socials = [
 <template>
     <footer class="footer d-flex flex-column">
         <div class="footer__contact d-flex items-start content-between">
-            <h2 class="footer__contact-text col-text weight-400 text-two">I am eager to discuss your next project with you.
+            <h2 class="footer__contact-text col-text weight-400 text-three">I am eager to discuss your next project with you.
                 <IconsUtility icon="arrow-right" />
             </h2>
 
             <div class="footer__contact-ctas d-flex flex-column items-start">
                 <a href="mailto:abdulodesanmi@gmail.com"
-                    class="footer__contact-ctas--item col-text text-two weight-400 text-none break-all">abdulodesanmi@gmail.com</a>
+                    class="footer__contact-ctas--item col-text text-three weight-400 text-none break-all">abdulodesanmi@gmail.com</a>
                 <a href="https://docs.google.com/document/d/1kRlBn5TDxDaHplEORpbV0NLQw75PNbdHh9GMb3xS62Y/edit?usp=sharing" target="_blank"
-                    class="footer__contact-ctas--item col-text text-four weight-400 text-none">View
+                    class="footer__contact-ctas--item col-text text-five weight-400 text-none">View
                     Resume</a>
             </div>
         </div>
@@ -68,7 +68,7 @@ const socials = [
         }
 
         &-ctas {
-            gap: 2.7rem;
+            gap: 1.2rem;
 
             @media screen and (max-width: 900px) {
                 text-align: left;

@@ -29,7 +29,7 @@ const navs = [
 		<div class="listening col-text position-relative">
 			<template v-if="isCurrentlyPlaying">
 				<img :src="playingData.cover_art" alt="cover" class="cover_art" />
-				<span class="text-five col-text">
+				<span class="text-six col-text">
 					Listening to
 					<button class="bg-transparent col-text cursor-pointer" @click="isModalOpen = !isModalOpen">
 						<strong>{{ playingData.title }}</strong>
@@ -38,7 +38,7 @@ const navs = [
 			</template>
 			<template v-else>
 				<IconsSpotify />
-				<span class="text-five col-text">Not listening atm 🫣</span>
+				<span class="text-six col-text">Not listening atm 🫣</span>
 			</template>
 
 			<UICard v-show="isModalOpen" class="playing__modal position-absolute z-2">

@@ -576,6 +576,14 @@ $word-breaks: (
     }
 }
 
+.text-six {
+    @include font-properties(1.2rem, 150%, 1px);
+
+    @media (max-width: 600px) {
+        @include font-properties(1.12rem, 150%, 1px);
+    }
+}
+
 .hover\:link {
     &::after {
         content: "";
