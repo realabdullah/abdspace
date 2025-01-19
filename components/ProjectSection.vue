@@ -17,13 +17,13 @@ const { data: projects } = await useAsyncData<IProject[]>("projects", async () =
 					<div class="details">
 						<h3 class="title text-three col-text">{{ project.title }}</h3>
 						<p class="desc text-five col-text mt-6">{{ project.description }}</p>
-						<span class="text-five col-text mt-20 weight-500 d-flex flex-wrap items-center gap-2">
+						<span class="text-five col-text mt-10 weight-500 d-flex flex-wrap items-center gap-2">
 							Tools/Skills:
 							<span v-for="(tag, idx) in project.tags" :key="idx" class="weight-400">{{ tag + (idx !==
 								project.tags.length - 1 ? "," : ".") }}</span>
 						</span>
 						<div v-if="project.live_url || project.github_url"
-							class="links d-flex items-center gap-5 mt-15">
+							class="links d-flex items-center gap-5 mt-10">
 							<a v-if="project.live_url" :href="project.live_url" target="_blank"
 								class="link text-six col-text">View Live</a>
 							<a v-if="project.github_url" :href="project.github_url" target="_blank"

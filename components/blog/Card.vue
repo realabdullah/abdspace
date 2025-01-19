@@ -12,8 +12,8 @@ defineProps<{
 	<UICard>
 		<article class="card w-100">
 			<h4 class="card__title text-four col-text weight-500 position-relative">{{ blog.title }}</h4>
-			<p class="card__brief text-five col-text mt-16 weight-400">{{ blog.brief }}</p>
-			<NuxtLink :to="`/blog/${blog.id}`" class="d-block text-six col-text mt-12">Read more</NuxtLink>
+			<p class="card__brief text-five col-text mt-10 weight-400">{{ blog.brief }}</p>
+			<NuxtLink :to="`/blog/${blog.id}`" class="d-block text-six col-text mt-10">Read more</NuxtLink>
 		</article>
 	</UICard>
 </template>
