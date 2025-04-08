@@ -11,7 +11,7 @@
 			<li class="col-text text-four weight-400">
 				<span class="weight-500">Frontend Engineer</span>
 				at
-				<a href="https://deeja.co" target="_blank" class="col-text weight-500">MyCover.ai</a>
+				<a href="https://deeja.co" target="_blank" class="col-text weight-500">Deeja</a>
 				(Sept, 2023 - Jan, 2024)
 			</li>
 			<li class="col-text text-four weight-400">
