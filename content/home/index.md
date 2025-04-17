@@ -13,5 +13,5 @@ links:
     -   name: hugeicons:mail-at-sign-02
         link: mailto:abdulodesanmi@gmail.com
     -   name: hugeicons:new-twitter
-        link: https://x.com/realabd_
+        link: https://x.com/_realabd
 ---
