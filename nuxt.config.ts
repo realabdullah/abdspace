@@ -5,6 +5,11 @@ export default defineNuxtConfig({
 	modules: ["@nuxt/content", "@nuxt/eslint", "@nuxt/fonts", "@nuxt/image", "@nuxt/icon"],
 	devtools: { enabled: true },
 	css: ["~/assets/main.css"],
+	content: {
+		preview: {
+			api: "https://api.nuxt.studio",
+		},
+	},
 	compatibilityDate: "2024-11-01",
 	vite: {
 		plugins: [tailwindcss()],
