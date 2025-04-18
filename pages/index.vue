@@ -10,6 +10,8 @@ useSeoMeta({
 	title: home.value?.title,
 	description: home.value?.description,
 });
+
+const isMenuActive = ref(false);
 </script>
 
 <template>
@@ -28,7 +30,21 @@ useSeoMeta({
 				</span>
 			</div>
 
-			<button class="cursor-pointer md:hidden">MENU</button>
+			<div class="relative md:hidden">
+				<button class="text-eerie_black-100 dark:text-french_gray-900 cursor-pointer" @click="isMenuActive = !isMenuActive">
+					{{ isMenuActive ? "CLOSE" : "MENU" }}
+				</button>
+
+				<div
+					class="absolute top-12 right-0 h-[200px] max-w-[400px] overflow-hidden transition-all duration-200 ease-in-out"
+					:class="[isMenuActive ? 'max-h-[120px] opacity-100' : 'pointer-events-none max-h-0 opacity-0']"
+				>
+					<nav class="flex flex-col gap-4 py-5">
+						<NuxtLink to="/projects" class="text-eerie_black-100 dark:text-french_gray-900 py-2 pl-4 text-right text-xl uppercase hover:underline"> Projects </NuxtLink>
+						<NuxtLink to="/blog" class="text-eerie_black-100 dark:text-french_gray-900 py-2 pl-4 text-right text-xl uppercase hover:underline"> Blog </NuxtLink>
+					</nav>
+				</div>
+			</div>
 		</div>
 
 		<div class="col-span-10 row-span-2 grid grid-cols-subgrid grid-rows-subgrid md:col-span-6 xl:col-span-5 xl:row-span-3">

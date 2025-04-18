@@ -10,7 +10,6 @@ useSeoMeta({
 });
 </script>
 
-<!-- overflow-x-hidden overflow-y-auto  -->
 <template>
 	<main class="h-dvh px-4 pt-8">
 		<div class="container mx-auto">
