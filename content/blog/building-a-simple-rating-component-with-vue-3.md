@@ -26,7 +26,7 @@ We'll begin by creating a new Single File Component (SFC) named "Rate.vue" withi
 
 The above code block will render the following UI:
 
-![](https://cdn.hashnode.com/res/hashnode/image/upload/v1697142132842/b55975cd-b4ca-46fa-9c52-0ac4fca86f83.png align="center")
+![](https://cdn.hashnode.com/res/hashnode/image/upload/v1697142132842/b55975cd-b4ca-46fa-9c52-0ac4fca86f83.png)
 
 Next, let's introduce some JavaScript code to enhance the interactivity of our user interface. This involves specifying props, emits, and a function to update/emit ratings as needed.
 
@@ -134,7 +134,7 @@ Currently, there may not be any noticeable changes, but if you hover over the st
 
 With this modification, you can now observe the current rating value in the user interface, represented with varying colors to distinguish between filled and unfilled stars.
 
-![](https://cdn.hashnode.com/res/hashnode/image/upload/v1697141096435/ff56bece-c871-40a8-966f-d740123e2639.png align="center")
+![](https://cdn.hashnode.com/res/hashnode/image/upload/v1697141096435/ff56bece-c871-40a8-966f-d740123e2639.png)
 
 The final piece to complete our implementation is to introduce a functionality for setting new ratings. We will create a `setRating` function for updating the rating and emitting the new value to the parent component. This function will then be attached to the `span` element as a click event handler.
 

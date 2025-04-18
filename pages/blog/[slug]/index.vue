@@ -26,7 +26,7 @@ useSeoMeta({
 					<span>{{ blog?.readTime }} min read</span>
 				</div>
 
-				<div class="text-eerie_black-100 dark:text-french_gray-900 mt-12 space-y-6 leading-relaxed [&_p]:py-4">
+				<div class="text-eerie_black-100 dark:text-french_gray-900 [&_a]:text-french_gray-300 mt-12 space-y-6 leading-relaxed [&_a]:underline [&_p]:py-4">
 					<ContentRenderer v-if="blog?.body" :value="blog?.body" />
 					<div v-else>
 						<p>No content found</p>
