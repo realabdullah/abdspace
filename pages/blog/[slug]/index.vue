@@ -35,7 +35,7 @@ useSeoMeta({
 			</article>
 		</div>
 
-		<div class="bg-french_gray-900 dark:bg-eerie_black-100 border-french_gray-700 dark:border-french_gray-300 fixed right-0 bottom-0 left-0 mx-auto border-t py-8">
+		<div class="bg-french_gray-900 dark:bg-eerie_black-100 border-french_gray-700 dark:border-french_gray-300 fixed right-0 bottom-0 left-0 mx-auto border-t p-4 md:px-0 md:py-8">
 			<div class="mx-auto max-w-2xl">
 				<NuxtLink to="/blog" class="border-french_gray-700 dark:border-french_gray-300 text-french_gray-300 border-b pb-px text-xs tracking-widest uppercase hover:border-stone-800">
 					← Back to all articles
