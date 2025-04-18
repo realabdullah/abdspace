@@ -96,3 +96,7 @@ body {
 	font-family: "Quicksand", sans-serif;
 	@apply bg-french_gray-900 dark:bg-eerie_black-100;
 }
+
+pre {
+	@apply bg-french_gray-800 dark:bg-eerie_black-300 my-4 overflow-auto p-4;
+}

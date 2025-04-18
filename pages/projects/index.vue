@@ -5,10 +5,7 @@ const { data: projects } = await useAsyncData("projects", () => {
 	return queryCollection("projects").order("created_at", "DESC").all();
 });
 
-useSeoMeta({
-	title: home.value?.title,
-	description: home.value?.description,
-});
+useSeoMeta({ title: home.value?.title, description: home.value?.description });
 </script>
 
 <template>

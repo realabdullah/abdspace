@@ -9,6 +9,39 @@ export default defineNuxtConfig({
 		preview: {
 			api: "https://api.nuxt.studio",
 		},
+		build: {
+			markdown: {
+				highlight: {
+					theme: {
+						default: "vitesse-light",
+						dark: "vitesse-black",
+					},
+					langs: [
+						"json",
+						"js",
+						"ts",
+						"html",
+						"css",
+						"vue",
+						"shell",
+						"mdc",
+						"md",
+						"yaml",
+						"markdown",
+						"bash",
+						"diff",
+						"graphql",
+						"javascript",
+						"json",
+						"markdown",
+						"scss",
+						"sql",
+						"typescript",
+						"yaml",
+					],
+				},
+			},
+		},
 	},
 	compatibilityDate: "2024-11-01",
 	vite: {
