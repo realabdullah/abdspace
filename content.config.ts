@@ -24,5 +24,29 @@ export default defineContentConfig({
 				),
 			}),
 		}),
+		projectsPage: defineCollection({
+			type: "page",
+			source: "projects/**.md",
+			schema: z.object({
+				header: z.string(),
+				subheader: z.string(),
+				nav: z.object({
+					text: z.string(),
+					link: z.string(),
+				}),
+			}),
+		}),
+		projects: defineCollection({
+			type: "data",
+			source: "projects/**.yml",
+			schema: z.object({
+				title: z.string(),
+				description: z.string(),
+				live_url: z.string().optional(),
+				github_url: z.string().optional(),
+				tags: z.array(z.string()),
+				created_at: z.string(),
+			}),
+		}),
 	},
 });

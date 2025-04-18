@@ -1,10 +1,10 @@
 <script setup lang="ts">
-const { data: home } = await useAsyncData(() => queryCollection("home").first());
+const { data: home } = await useAsyncData("home", () => queryCollection("home").first());
 
 const { data: spotify } = await useAsyncData<{
 	isPlaying: boolean;
 	data?: { link: string; title: string };
-}>("spotify", () => $fetch("/api/playing"));
+}>("spotify", () => $fetch("/api/playing"), { lazy: true });
 
 useSeoMeta({
 	title: home.value?.title,
@@ -33,7 +33,7 @@ useSeoMeta({
 
 		<div class="col-span-10 row-span-2 grid grid-cols-subgrid grid-rows-subgrid md:col-span-6 xl:col-span-5 xl:row-span-3">
 			<div class="col-span-8 row-start-1 ml-auto hidden items-start gap-4 md:flex">
-				<NuxtLink v-for="(nav, index) in home?.navs" :key="index" :to="nav.link">{{ nav.name }}</NuxtLink>
+				<NuxtLink v-for="(nav, index) in home?.navs" :key="index" :to="nav.link" class="text-eerie_black-100 dark:text-french_gray-900 hover:text-blue-500">{{ nav.name }}</NuxtLink>
 			</div>
 
 			<div class="col-span-8 col-start-1 row-start-2 m-auto mb-0 md:mr-0 md:text-right xl:row-start-3">

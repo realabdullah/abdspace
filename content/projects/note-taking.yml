@@ -1,0 +1,15 @@
+title: Note Taking
+description: A versatile note-taking web application featuring flexible storage options (local IndexedDB and cloud appwrite sync), note organization through tags and archives, and customizable themes - all wrapped in a responsive modern interface.
+live_url: https://notes.abdspace.xyz
+github_url: https://github.com/realabdullah/note-taking
+created_at: "2025-01-18 16:14:02.534169+00"
+tags:
+    - Nuxt.js
+    - Typescript
+    - Nuxt UI
+    - Pinia
+    - Appwrite
+    - DexieDB
+    - IndexedDB
+    - Zod
+    - Bcryptjs

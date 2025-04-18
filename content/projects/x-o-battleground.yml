@@ -1,0 +1,10 @@
+title: x-o-battleground
+description: x-o battleground offers a simple interface to play multiplayer tic-tac-toe. it establishes a real-time connection to the server for game updates and utilizes local storage to maintain consistent player IDs between sessions.
+live_url: https://xo.abdspace.xyz
+github_url: https://github.com/realabdullah/x-o-battleground
+created_at: "2025-04-08 15:13:58.086298+00"
+tags:
+    - Nuxt.js
+    - Socket.IO
+    - Nuxt UI
+    - Notivue

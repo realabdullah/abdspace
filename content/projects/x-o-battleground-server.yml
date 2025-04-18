@@ -1,0 +1,10 @@
+title: x-o-battleground ws server
+description: The server for x-o-battleground is responsible for maintaining game data in real time. It tracks moves, updates scores, and supports reconnection so that players can continue their game even after a refresh.
+live_url: null
+github_url: https://github.com/realabdullah/x-o-battleground-websocket-server
+created_at: "2025-04-08 15:16:33.814889+00"
+tags:
+    - Node.js
+    - Express
+    - Typescript
+    - Socket.IO

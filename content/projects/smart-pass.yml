@@ -1,0 +1,11 @@
+title: Smart Pass
+description: A password manager designed to help users securely store and manage their passwords. It utilizes REST API calls to interact with a server, allowing users to store their sensitive login information in a safe and organized manner.
+live_url: https://password.abdspace.xyz
+github_url: https://github.com/realabdullah/password-manager
+created_at: "2025-01-17 15:30:01.859402+00"
+tags:
+    - Vue.js
+    - Nuxt.js
+    - Typescript
+    - Pinia
+    - Axios
