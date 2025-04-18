@@ -14,4 +14,13 @@ links:
         link: mailto:abdulodesanmi@gmail.com
     -   name: hugeicons:new-twitter
         link: https://x.com/_realabd
+navs:
+    -   name: Home
+        link: /
+    -   name: About
+        link: /about/
+    -   name: Projects
+        link: /projects/
+    -   name: Blog
+        link: /blog/
 ---

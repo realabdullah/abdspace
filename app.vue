@@ -1,7 +1,7 @@
 <template>
-  <NuxtLayout>
-    <div class="w-full max-w-[1500px] mx-auto">
-      <NuxtPage />
-    </div>
-  </NuxtLayout>
+	<NuxtLayout>
+		<div class="mx-auto w-full max-w-[1500px]">
+			<NuxtPage />
+		</div>
+	</NuxtLayout>
 </template>

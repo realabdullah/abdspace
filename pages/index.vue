@@ -1,55 +1,65 @@
 <script setup lang="ts">
-const { data: home } = await useAsyncData(() =>
-    queryCollection("home").first()
-);
+const { data: home } = await useAsyncData(() => queryCollection("home").first());
 
-const { data: spotify } = await useAsyncData<{isPlaying: boolean, data?: { link: string; title: string } }>(
-  'spotify',
-  () => $fetch('/api/playing')
-)
+const { data: spotify } = await useAsyncData<{
+	isPlaying: boolean;
+	data?: { link: string; title: string };
+}>("spotify", () => $fetch("/api/playing"));
 
 useSeoMeta({
-    title: home.value?.title,
-    description: home.value?.description,
+	title: home.value?.title,
+	description: home.value?.description,
 });
 </script>
 
 <template>
-    <div class="h-dvh relative grid grid-rows-2 grid-cols-10 xl:grid-rows-3">
-        <div class="col-span-8 md:col-span-4 pl-5 md:pl-10 pt-10 xl:pl-24">
-            <div class="flex items-center gap-2">
-                <Icon name="hugeicons:spotify" class="text-eerie_black-100 dark:text-french_gray-900" :size="24" />
-                <span class="text-xs text-eerie_black-100 dark:text-french_gray-900">
-                    <template v-if="spotify?.isPlaying && spotify?.data">
-                        Listening to
-                        <NuxtLink :to="spotify.data?.link" target="_blank" rel="noopener noreferrer" class="underline" external>
-                            {{ spotify.data?.title }}
-                        </NuxtLink>
-                    </template>
-                    <template v-else>Not listening atm 🙂‍↕️</template>
-                </span>
-            </div>
-        </div>
-        <div
-            class="row-span-2 col-span-10 md:col-span-6 xl:row-span-3 xl:col-span-5 grid grid-cols-subgrid grid-rows-subgrid">
-            <div
-                class="col-span-8 row-start-2 col-start-1 xl:row-start-3 md:text-right m-auto mb-0 md:mr-0 p-5 pt-20 md:p-10 xl:pr-0 xl:pb-24">
-                <h1 class="text-3xl sm:text-4xl font-bold text-eerie_black-100 dark:text-french_gray-900">{{
-                    home?.header }}</h1>
-                <p class="mt-2 text-sm sm:text-base text-eerie_black-100 dark:text-french_gray-900">{{ home?.brief }}
-                </p>
+	<div class="grid h-dvh grid-cols-10 grid-rows-2 px-5 py-10 md:px-10 xl:grid-rows-3 xl:px-24 xl:py-14">
+		<div class="col-span-10 flex items-start justify-between gap-2 md:col-span-4">
+			<div class="flex items-center gap-2">
+				<Icon name="hugeicons:spotify" class="text-eerie_black-100 dark:text-french_gray-900" :size="24" />
+				<span class="text-eerie_black-100 dark:text-french_gray-900 text-xs">
+					<template v-if="spotify?.isPlaying && spotify?.data">
+						Listening to
+						<NuxtLink :to="spotify.data?.link" target="_blank" rel="noopener noreferrer" class="underline" external>
+							{{ spotify.data?.title }}
+						</NuxtLink>
+					</template>
+					<template v-else>Not listening atm 🙂‍↕️</template>
+				</span>
+			</div>
 
-                <template v-if="home?.links?.length">
-                    <div class="flex items-center md:justify-end mt-4 gap-4">
-                        <NuxtLink 
-                            v-for="link in home.links" :key="link.name" :to="link.link"
-                            class="text-eerie_black-100 dark:text-french_gray-900 hover:text-blue-500" target="_blank"
-                            rel="noopener noreferrer" external>
-                            <Icon :name="link.name" size="20px" />
-                        </NuxtLink>
-                    </div>
-                </template>
-            </div>
-        </div>
-    </div>
+			<button class="cursor-pointer md:hidden">MENU</button>
+		</div>
+
+		<div class="col-span-10 row-span-2 grid grid-cols-subgrid grid-rows-subgrid md:col-span-6 xl:col-span-5 xl:row-span-3">
+			<div class="col-span-8 row-start-1 ml-auto hidden items-start gap-4 md:flex">
+				<NuxtLink v-for="(nav, index) in home?.navs" :key="index" :to="nav.link">{{ nav.name }}</NuxtLink>
+			</div>
+
+			<div class="col-span-8 col-start-1 row-start-2 m-auto mb-0 md:mr-0 md:text-right xl:row-start-3">
+				<h1 class="text-eerie_black-100 dark:text-french_gray-900 text-3xl font-bold sm:text-4xl">
+					{{ home?.header }}
+				</h1>
+				<p class="text-eerie_black-100 dark:text-french_gray-900 mt-2 text-sm sm:text-base">
+					{{ home?.brief }}
+				</p>
+
+				<template v-if="home?.links?.length">
+					<div class="mt-4 flex items-center gap-4 md:justify-end">
+						<NuxtLink
+							v-for="link in home.links"
+							:key="link.name"
+							:to="link.link"
+							class="text-eerie_black-100 dark:text-french_gray-900 hover:text-blue-500"
+							target="_blank"
+							rel="noopener noreferrer"
+							external
+						>
+							<Icon :name="link.name" size="20px" />
+						</NuxtLink>
+					</div>
+				</template>
+			</div>
+		</div>
+	</div>
 </template>
