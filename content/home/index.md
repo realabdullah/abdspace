@@ -4,7 +4,7 @@ description: Frontend Engineer focused on building beautiful and functional user
 header: Abdullahi Odesanmi
 brief: Frontend Engineer focused on building beautiful and functional user
   interfaces. Specializing in Vue, Nuxt, TypeScript and other web technologies.
-  - oops ganbaru (頑張る)
+  - ganbaru (頑張る)
 pillText: Available for new projects
 pillColor: bg-blue-500
 links:
