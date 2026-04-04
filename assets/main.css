@@ -2,6 +2,8 @@
 
 @theme {
 	--font-quicksand: "Quicksand", sans-serif;
+	--font-cormorant: "Cormorant Garamond", Georgia, serif;
+	--font-ibm-mono: "IBM Plex Mono", "Courier New", monospace;
 
 	--color-seasalt: #f8f9fa;
 	--color-seasalt-100: #29323a;
@@ -92,11 +94,77 @@
 	--color-eerie_black-900: #cfd4d8;
 }
 
+/* ── Editorial design tokens ─────────────────────────── */
+:root {
+	--bg: #f5f2ec;
+	--ink: #0d0d0d;
+	--accent: #b85c38;
+	--muted: #4a4a45;
+	--rule: #d8d3cb;
+	--ff-display: "Cormorant Garamond", Georgia, serif;
+	--ff-mono: "IBM Plex Mono", "Courier New", monospace;
+}
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+html {
+	scroll-behavior: smooth;
+}
+
 body {
-	font-family: "Quicksand", sans-serif;
-	@apply bg-french_gray-900 dark:bg-eerie_black-100;
+	font-family: var(--ff-mono);
+	background: var(--bg);
+	color: var(--ink);
+	cursor: none;
+}
+
+/* ── Custom cursor ────────────────────────────────────── */
+.site-cursor {
+	position: fixed;
+	width: 18px;
+	height: 18px;
+	border: 1px solid var(--ink);
+	border-radius: 50%;
+	pointer-events: none;
+	z-index: 9998;
+	transform: translate(-50%, -50%);
+	transition: opacity 0.15s;
+}
+
+/* ── Global link hover underline draw ────────────────── */
+.lh {
+	position: relative;
+	text-decoration: none;
+}
+.lh::after {
+	content: "";
+	position: absolute;
+	left: 0;
+	bottom: -1px;
+	width: 100%;
+	height: 1px;
+	background: currentColor;
+	transform: scaleX(0);
+	transform-origin: left;
+	transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.lh:hover::after {
+	transform: scaleX(1);
 }
 
 pre {
-	@apply bg-french_gray-800 dark:bg-eerie_black-300 my-4 overflow-auto p-4;
+	font-family: var(--ff-mono);
+	background: #eae7e1;
+	color: var(--ink);
+	margin: 1.5rem 0;
+	padding: 1.25rem;
+	overflow-x: auto;
+	font-size: 13px;
+	line-height: 1.65;
 }

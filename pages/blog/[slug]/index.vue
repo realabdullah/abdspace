@@ -11,35 +11,202 @@ useSeoMeta({
 </script>
 
 <template>
-	<main class="h-dvh px-4 pt-8">
-		<div class="container mx-auto">
-			<h1 class="text-eerie_black-100 dark:text-french_gray-900 pb-24 text-2xl font-normal tracking-tight">abd's blog</h1>
-			<article class="mx-auto max-w-3xl pb-32">
-				<ClientOnly>
-					<div class="text-french_gray-300 mb-2 text-xs">{{ formatDate(blog?.createdAt) }}</div>
-				</ClientOnly>
-				<h1 class="text-eerie_black-100 dark:text-french_gray-900 text-4xl">{{ blog?.title }}</h1>
-				<div class="text-french_gray-400 mt-4 flex items-center text-xs">
-					<span>By Abdullahi Odesanmi</span>
-					<span class="mx-2">•</span>
-					<span>{{ blog?.readTime }} min read</span>
+	<div class="art-pg">
+		<!-- ── TOP BAR ──────────────────────────────────── -->
+		<header class="art-hdr">
+			<NuxtLink to="/blog" class="lh back-a">← Writing</NuxtLink>
+			<span class="art-wordmark">AO.</span>
+		</header>
+
+		<hr class="art-rule" />
+
+		<!-- ── ARTICLE ──────────────────────────────────── -->
+		<main class="art-main">
+			<div class="art-col">
+				<!-- Meta -->
+				<div class="art-meta">
+					<ClientOnly>
+						<time class="art-date">{{ formatDate(blog?.createdAt) }}</time>
+					</ClientOnly>
+					<span class="art-sep">·</span>
+					<span class="art-readtime">{{ blog?.readTime }}&thinsp;min read</span>
 				</div>
 
-				<div class="text-eerie_black-100 dark:text-french_gray-900 [&_a]:text-french_gray-300 mt-12 space-y-6 leading-relaxed [&_a]:underline [&_p]:py-4">
+				<h1 class="art-title">{{ blog?.title }}</h1>
+
+				<p class="art-brief">{{ blog?.brief }}</p>
+
+				<hr class="art-rule art-rule--inner" />
+
+				<!-- Body -->
+				<div class="art-body">
 					<ContentRenderer v-if="blog?.body" :value="blog?.body" />
-					<div v-else>
-						<p>No content found</p>
-					</div>
+					<p v-else>No content found.</p>
 				</div>
-			</article>
-		</div>
-
-		<div class="bg-french_gray-900 dark:bg-eerie_black-100 border-french_gray-700 dark:border-french_gray-300 fixed right-0 bottom-0 left-0 mx-auto border-t p-4 md:px-0 md:py-8">
-			<div class="mx-auto max-w-2xl">
-				<NuxtLink to="/blog" class="border-french_gray-700 dark:border-french_gray-300 text-french_gray-300 border-b pb-px text-xs tracking-widest uppercase hover:border-stone-800">
-					← Back to all articles
-				</NuxtLink>
 			</div>
-		</div>
-	</main>
+		</main>
+
+		<hr class="art-rule" />
+
+		<footer class="art-ftr">
+			<NuxtLink to="/blog" class="lh back-a">← All articles</NuxtLink>
+			<span class="art-ftr-yr">© 2026</span>
+		</footer>
+	</div>
 </template>
+
+<style scoped>
+.art-pg {
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 0 clamp(1.25rem, 5vw, 5rem);
+}
+
+/* ── HEADER ──────────────────────────────────────────── */
+.art-hdr {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 1.5rem 0;
+}
+
+.back-a {
+	font-family: var(--ff-mono);
+	font-size: 11px;
+	letter-spacing: 0.1em;
+	color: var(--muted);
+}
+
+.art-wordmark {
+	font-family: var(--ff-display);
+	font-size: 15px;
+	font-weight: 600;
+	color: var(--ink);
+}
+
+.art-rule {
+	border: none;
+	border-top: 1px solid var(--rule);
+	margin: 0;
+}
+.art-rule--inner {
+	margin: 2.5rem 0;
+}
+
+/* ── ARTICLE BODY ────────────────────────────────────── */
+.art-main {
+	padding: clamp(3rem, 8vh, 6rem) 0;
+}
+
+.art-col {
+	max-width: 680px;
+}
+
+.art-meta {
+	display: flex;
+	align-items: center;
+	gap: 0.65rem;
+	margin-bottom: 1.5rem;
+}
+.art-date,
+.art-sep,
+.art-readtime {
+	font-family: var(--ff-mono);
+	font-size: 10px;
+	color: var(--muted);
+	letter-spacing: 0.05em;
+}
+
+.art-title {
+	font-family: var(--ff-display);
+	font-weight: 600;
+	font-size: clamp(2rem, 5vw, 3.5rem);
+	letter-spacing: -0.02em;
+	line-height: 1.1;
+	margin: 0 0 1.25rem;
+	color: var(--ink);
+}
+
+.art-brief {
+	font-family: var(--ff-mono);
+	font-size: 13px;
+	line-height: 1.8;
+	color: var(--muted);
+	margin: 0;
+	border-left: 2px solid var(--accent);
+	padding-left: 1rem;
+}
+
+/* ── PROSE ───────────────────────────────────────────── */
+.art-body {
+	font-family: var(--ff-mono);
+	font-size: 13.5px;
+	line-height: 1.85;
+	color: var(--ink);
+}
+
+.art-body :deep(h2) {
+	font-family: var(--ff-display);
+	font-weight: 600;
+	font-size: clamp(1.5rem, 3vw, 2.1rem);
+	letter-spacing: -0.015em;
+	margin: 3rem 0 0.75rem;
+	color: var(--ink);
+}
+
+.art-body :deep(h3) {
+	font-family: var(--ff-display);
+	font-weight: 500;
+	font-size: clamp(1.2rem, 2vw, 1.6rem);
+	letter-spacing: -0.01em;
+	margin: 2rem 0 0.5rem;
+	color: var(--ink);
+}
+
+.art-body :deep(p) {
+	margin: 0 0 1.35rem;
+	color: var(--muted);
+}
+
+.art-body :deep(a) {
+	color: var(--accent);
+	text-decoration: underline;
+	text-underline-offset: 2px;
+}
+
+.art-body :deep(ul),
+.art-body :deep(ol) {
+	margin: 0 0 1.35rem;
+	padding-left: 1.25rem;
+	color: var(--muted);
+}
+.art-body :deep(li) {
+	margin-bottom: 0.35rem;
+}
+
+.art-body :deep(strong) {
+	font-weight: 500;
+	color: var(--ink);
+}
+
+.art-body :deep(blockquote) {
+	margin: 1.5rem 0;
+	padding-left: 1rem;
+	border-left: 2px solid var(--accent);
+	color: var(--muted);
+	font-style: italic;
+}
+
+/* ── FOOTER ──────────────────────────────────────────── */
+.art-ftr {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 1.75rem 0 3rem;
+}
+.art-ftr-yr {
+	font-family: var(--ff-mono);
+	font-size: 11px;
+	color: var(--muted);
+}
+</style>
