@@ -1,6 +1,9 @@
+packages:
+    - .
+
 onlyBuiltDependencies:
-  - '@parcel/watcher'
-  - better-sqlite3
-  - esbuild
-  - sharp
-  - unrs-resolver
+    - "@parcel/watcher"
+    - better-sqlite3
+    - esbuild
+    - sharp
+    - unrs-resolver
