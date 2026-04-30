@@ -1,9 +1,10 @@
 ---
 title: Building a simple rating component with Vue 3
-createdAt: 2023-10-12T21:06:23.034Z
-slug: building-a-simple-rating-component-with-vue-3
-readTime: 4
 brief: A rating component which is sometimes referred to as a star rating component, is a user-facing element that allows users to provide feedback or rate something, typically on a scale, and just to display the rating of something sometimes. It's used in ...
+createdAt: 2023-10-12T21:06:23.034Z
+description: A rating component which is sometimes referred to as a star rating component, is a user-facing element that allows users to provide feedback or rate something, typically on a scale, and just to display the rating of something sometimes. It's used in many applications and websites to collect user opinions, feedback, or reviews by assigning a certain number of stars or other symbols to represent a rating.
+readTime: "4"
+slug: building-a-simple-rating-component-with-vue-3
 ---
 
 A rating component which is sometimes referred to as a star rating component, is a user-facing element that allows users to provide feedback or rate something, typically on a scale, and just to display the rating of something sometimes. It's used in many applications and websites to collect user opinions, feedback, or reviews by assigning a certain number of stars or other symbols to represent a rating.
@@ -36,8 +37,8 @@ We start by declaring props using pure type annotations. Props can be defined us
 import { defineProps } from "vue";
 
 const props = defineProps<{
-	value: number;
-	totalRating: number;
+    value: number;
+    totalRating: number;
 }>();
 ```
 

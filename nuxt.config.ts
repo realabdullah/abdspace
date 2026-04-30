@@ -2,7 +2,7 @@
 import tailwindcss from "@tailwindcss/vite";
 
 export default defineNuxtConfig({
-	modules: ["@nuxt/content", "@nuxt/eslint", "@nuxt/fonts", "@nuxt/image", "@nuxt/icon"],
+	modules: ["@nuxt/content", "@nuxt/eslint", "@nuxt/fonts", "@nuxt/image", "@nuxt/icon", "nuxt-studio"],
 	devtools: { enabled: true },
 	css: ["~/assets/main.css"],
 	content: {
@@ -43,10 +43,24 @@ export default defineNuxtConfig({
 			},
 		},
 	},
+	studio: {
+		repository: {
+			provider: "github",
+			owner: "realabdullah",
+			repo: "abdspace",
+			branch: "master",
+		},
+		ai: {
+			experimental: {
+				collectionContext: true,
+			},
+		},
+	},
 	compatibilityDate: "2024-11-01",
 	nitro: {
 		prerender: {
-			routes: ["/projects", "/blog"],
+			routes: ["/", "/projects", "/blog"],
+			crawlLinks: true,
 		},
 	},
 	vite: {
