@@ -66,11 +66,19 @@ const gallery = computed(() => project.value?.screenshots || []);
 					</figcaption>
 				</figure>
 			</div>
-			<div v-else class="bg-ink text-paper my-20 grid min-h-[320px] place-items-center rounded-[2rem] p-8 text-center sm:my-28 sm:min-h-[480px]">
-				<div>
-					<span class="text-coral text-6xl">✳</span>
-					<p class="mt-6 font-mono text-[10px] tracking-[0.12em] text-stone-400 uppercase">A closer look at {{ project?.title }}</p>
-					<p class="mt-3 max-w-md text-sm leading-relaxed text-stone-400">Add screenshots and project stories through Nuxt Studio.</p>
+			<div v-else class="bg-ink text-paper my-20 rounded-[2rem] p-8 sm:my-28 sm:p-14">
+				<div class="grid gap-12 sm:grid-cols-[1fr_2fr] sm:items-end">
+					<div class="font-mono text-[10px] tracking-[0.12em] text-stone-400 uppercase">
+						<svg aria-hidden="true" class="text-coral block h-7 w-7" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+							<path d="M16 2.5 18.4 13.6 29.5 16l-11.1 2.4L16 29.5l-2.4-11.1L2.5 16l11.1-2.4L16 2.5Z" fill="currentColor" />
+							<circle cx="16" cy="16" r="3" fill="var(--color-paper)" />
+						</svg>
+						<span class="mt-6 block">Engineering notes</span>
+					</div>
+					<div>
+						<p class="max-w-2xl text-[clamp(1.6rem,3vw,2.8rem)] leading-[1.05] tracking-[-0.06em]">A closer look at the systems, decisions, and details behind {{ project?.title }}.</p>
+						<p class="mt-8 max-w-xl text-sm leading-relaxed text-stone-400">This project is best understood through its architecture and implementation rather than a visual gallery.</p>
+					</div>
 				</div>
 			</div>
 			<div v-if="project?.challenge || project?.approach || project?.learnings" class="border-ink/15 grid gap-10 border-t py-16 sm:grid-cols-3">
