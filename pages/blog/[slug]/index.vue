@@ -2,7 +2,7 @@
 const route = useRoute();
 const slug = route.params.slug as string;
 const { data: post } = await useAsyncData(`post-${slug}`, () => queryCollection("blog").where("slug", "=", slug).first());
-const canonicalUrl = `https://abdspace.xyz/blog/${slug}`;
+const canonicalUrl = `https://www.abdspace.xyz/blog/${slug}`;
 useSeoMeta({
 	title: `${post.value?.title} — Abdullahi Odesanmi`,
 	description: post.value?.brief,
@@ -25,7 +25,7 @@ useHead({
 				description: post.value?.brief,
 				datePublished: post.value?.createdAt,
 				mainEntityOfPage: canonicalUrl,
-				author: { "@type": "Person", name: "Abdullahi Odesanmi", url: "https://abdspace.xyz" },
+				author: { "@type": "Person", name: "Abdullahi Odesanmi", url: "https://www.abdspace.xyz" },
 			}),
 		},
 	],

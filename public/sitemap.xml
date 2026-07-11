@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://abdspace.xyz/</loc></url>
-  <url><loc>https://abdspace.xyz/projects</loc></url>
-  <url><loc>https://abdspace.xyz/blog</loc></url>
-  <url><loc>https://abdspace.xyz/blog/building-a-simple-rating-component-with-vue-3</loc></url>
-  <url><loc>https://abdspace.xyz/blog/sending-email-from-your-nuxt-3-app-with-mailgun</loc></url>
-  <url><loc>https://abdspace.xyz/projects/audiophile</loc></url>
-  <url><loc>https://abdspace.xyz/projects/damien</loc></url>
-  <url><loc>https://abdspace.xyz/projects/drummersville</loc></url>
-  <url><loc>https://abdspace.xyz/projects/md-editor</loc></url>
-  <url><loc>https://abdspace.xyz/projects/mocktail</loc></url>
-  <url><loc>https://abdspace.xyz/projects/note-taking</loc></url>
-  <url><loc>https://abdspace.xyz/projects/smart-pass</loc></url>
-  <url><loc>https://abdspace.xyz/projects/taskgid</loc></url>
-  <url><loc>https://abdspace.xyz/projects/taskgid-api</loc></url>
-  <url><loc>https://abdspace.xyz/projects/webauthn-experiment</loc></url>
-  <url><loc>https://abdspace.xyz/projects/x-o-battleground</loc></url>
-  <url><loc>https://abdspace.xyz/projects/x-o-battleground-server</loc></url>
+  <url><loc>https://www.abdspace.xyz/</loc></url>
+  <url><loc>https://www.abdspace.xyz/projects</loc></url>
+  <url><loc>https://www.abdspace.xyz/blog</loc></url>
+  <url><loc>https://www.abdspace.xyz/blog/building-a-simple-rating-component-with-vue-3</loc></url>
+  <url><loc>https://www.abdspace.xyz/blog/sending-email-from-your-nuxt-3-app-with-mailgun</loc></url>
+  <url><loc>https://www.abdspace.xyz/projects/audiophile</loc></url>
+  <url><loc>https://www.abdspace.xyz/projects/damien</loc></url>
+  <url><loc>https://www.abdspace.xyz/projects/drummersville</loc></url>
+  <url><loc>https://www.abdspace.xyz/projects/md-editor</loc></url>
+  <url><loc>https://www.abdspace.xyz/projects/mocktail</loc></url>
+  <url><loc>https://www.abdspace.xyz/projects/note-taking</loc></url>
+  <url><loc>https://www.abdspace.xyz/projects/smart-pass</loc></url>
+  <url><loc>https://www.abdspace.xyz/projects/taskgid</loc></url>
+  <url><loc>https://www.abdspace.xyz/projects/taskgid-api</loc></url>
+  <url><loc>https://www.abdspace.xyz/projects/webauthn-experiment</loc></url>
+  <url><loc>https://www.abdspace.xyz/projects/x-o-battleground</loc></url>
+  <url><loc>https://www.abdspace.xyz/projects/x-o-battleground-server</loc></url>
 </urlset>

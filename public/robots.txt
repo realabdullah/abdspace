@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://abdspace.xyz/sitemap.xml
+Sitemap: https://www.abdspace.xyz/sitemap.xml

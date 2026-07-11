@@ -13,7 +13,7 @@ export default defineNuxtConfig({
 	},
 	css: ["~/assets/main.css"],
 	site: {
-		url: process.env.NUXT_SITE_URL || "https://abdspace.xyz",
+		url: process.env.NUXT_SITE_URL || "https://www.abdspace.xyz",
 		name: "Abdullahi Odesanmi",
 	},
 	content: {

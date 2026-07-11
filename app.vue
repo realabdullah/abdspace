@@ -13,7 +13,7 @@ const onMove = (e: MouseEvent) => {
 onMounted(() => window.addEventListener("mousemove", onMove));
 onUnmounted(() => window.removeEventListener("mousemove", onMove));
 
-const canonicalUrl = computed(() => `https://abdspace.xyz${route.path === "/" ? "" : route.path}`);
+const canonicalUrl = computed(() => `https://www.abdspace.xyz${route.path === "/" ? "" : route.path}`);
 
 useSeoMeta({
 	ogSiteName: "Abdullahi Odesanmi",
@@ -38,7 +38,7 @@ useHead({
 				"@context": "https://schema.org",
 				"@type": "Person",
 				name: "Abdullahi Odesanmi",
-				url: "https://abdspace.xyz",
+				url: "https://www.abdspace.xyz",
 				jobTitle: "Software Engineer",
 				sameAs: ["https://github.com/realabdullah"],
 			}),
