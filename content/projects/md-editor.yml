@@ -1,5 +1,16 @@
 title: MD Editor
 description: I've developed a dynamic web application using Nuxt.js, which offers users a real-time Markdown content preview. With this application, users can effortlessly compose and format Markdown text while receiving instant visual feedback
+role: Product design and frontend engineering
+outcome: A fast, local-first writing surface with immediate feedback.
+challenge: Make writing and previewing Markdown feel continuous instead of like two separate tools.
+approach: Keep the editor direct, preserve local work and make the rendered result visible immediately.
+learnings: Small developer tools become valuable when they remove repeated context switching.
+status: Shipped
+hero_image: ''
+screenshots:
+  - https://res.cloudinary.com/dxvhsze0l/image/upload/v1783795450/asqdljokyfdo6ctc7prr.webp
+screenshot_captions:
+  - Markdown editor and live preview
 live_url: https://markdown.abdspace.xyz
 github_url: https://github.com/realabdullah/markdown-editor
 created_at: "2025-01-17 15:30:01.859402+00"

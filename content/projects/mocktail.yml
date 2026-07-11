@@ -1,5 +1,16 @@
 title: mockTail 🪄
 description: A webapp that generates mock data from user-provided type definitions using OpenAI or Gemini. Perfect for frontend developers, it simplifies testing and prototyping with a clean, intuitive interface powered by NuxtUI. Streamline your workflow with instant, structured mock data.
+role: Product design, frontend engineering and AI integration
+outcome: A quicker path from type definitions to useful mock data.
+challenge: Reduce the friction between a developer’s schema and the believable data needed to test an interface.
+approach: Combine a focused input surface with provider flexibility and clearly formatted output.
+learnings: AI features feel most useful when the surrounding workflow is more predictable than the model.
+status: Shipped
+hero_image: ''
+screenshots:
+  - https://res.cloudinary.com/dxvhsze0l/image/upload/v1783795450/dbwgr2n3vygikbkts2jh.webp
+screenshot_captions:
+  - Mock data generation workflow
 live_url: https://mocktail.abdspace.xyz
 github_url: https://github.com/realabdullah/mocktail
 created_at: "2025-02-02 01:07:09.787294+00"

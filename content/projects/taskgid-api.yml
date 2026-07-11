@@ -1,5 +1,12 @@
 title: Taskgid API
 description: Working on a project focused on building a backend infrastructure for Taskgid, a task management system. This project is also me trying my hands on backend development for the first time.
+role: Backend engineering
+outcome: The service layer supporting workspaces, tasks and collaboration.
+challenge: Translate a product’s collaborative concepts into dependable backend primitives.
+approach: Explore resource boundaries, persistence and event-driven updates from the API outward.
+learnings: Backend work gets easier to reason about when the domain language is explicit early.
+status: In progress
+hero_image: ''
 live_url: null
 github_url: https://github.com/realabdullah/taskgid-api
 created_at: "2025-01-17 15:30:01.859402+00"

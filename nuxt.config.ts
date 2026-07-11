@@ -4,6 +4,13 @@ import tailwindcss from "@tailwindcss/vite";
 export default defineNuxtConfig({
 	modules: ["@nuxt/content", "@nuxt/eslint", "@nuxt/fonts", "@nuxt/image", "@nuxt/icon", "nuxt-studio"],
 	devtools: { enabled: true },
+	app: {
+		head: {
+			charset: "utf-8",
+			viewport: "width=device-width, initial-scale=1",
+			meta: [{ name: "theme-color", content: "#f2f0e9" }],
+		},
+	},
 	css: ["~/assets/main.css"],
 	content: {
 		preview: {
@@ -43,19 +50,6 @@ export default defineNuxtConfig({
 			},
 		},
 	},
-	studio: {
-		repository: {
-			provider: "github",
-			owner: "realabdullah",
-			repo: "abdspace",
-			branch: "master",
-		},
-		ai: {
-			experimental: {
-				collectionContext: true,
-			},
-		},
-	},
 	compatibilityDate: "2024-11-01",
 	nitro: {
 		prerender: {
@@ -71,5 +65,24 @@ export default defineNuxtConfig({
 			stylistic: true,
 		},
 		checker: true,
+	},
+	fonts: {
+		families: [
+			{ name: "Manrope", weights: [400, 500, 600, 700] },
+			{ name: "DM Mono", weights: [400, 500] },
+		],
+	},
+	studio: {
+		repository: {
+			provider: "github",
+			owner: "realabdullah",
+			repo: "abdspace",
+			branch: "master",
+		},
+		ai: {
+			experimental: {
+				collectionContext: true,
+			},
+		},
 	},
 });
