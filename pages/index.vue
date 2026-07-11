@@ -1,253 +1,117 @@
 <script setup lang="ts">
-const { data: spotify } = await useAsyncData<{
-	isPlaying: boolean;
-	data?: { link: string; title: string };
-}>("spotify", () => $fetch("/api/playing"), { lazy: true });
+const { data: home } = await useAsyncData("home", () => queryCollection("home").first());
+const { data: projects } = await useAsyncData("featured-projects", () => queryCollection("projects").order("created_at", "DESC").limit(4).all());
 
-useSeoMeta({
+useSeoMeta({ title: "Abdullahi Odesanmi — Frontend Engineer", description: home.value?.description || "Frontend engineer building thoughtful digital products." });
+defineOgImage("Portfolio", {
 	title: "Abdullahi Odesanmi — Frontend Engineer",
-	description: "Frontend Engineer focused on building beautiful interfaces with Vue, Nuxt, and TypeScript.",
+	description: home.value?.description || "Software engineer building thoughtful digital products with care.",
+	section: "Portfolio",
 });
 
-const songTitle = computed(() => {
-	if (!spotify.value?.isPlaying || !spotify.value?.data?.title) return null;
-	const t = spotify.value.data.title;
-	return t.length > 24 ? t.slice(0, 24) + "…" : t;
-});
+const currentYear = new Date().getFullYear();
+const fallbackProjects = [
+	{ title: "Kudilog", description: "A local-first budgeting experience.", created_at: "2026", tags: ["Product", "Engineering"] },
+	{ title: "TaskGid", description: "A collaborative task management platform.", created_at: "2025", tags: ["Platform", "Systems"] },
+	{ title: "Lifestack", description: "A small experiment in personal systems.", created_at: "2026", tags: ["Experiment", "Interface"] },
+];
+const featuredProjects = computed(() => (projects.value?.length ? projects.value : fallbackProjects));
+const formatYear = (date: string) => new Intl.DateTimeFormat("en", { year: "numeric" }).format(new Date(date));
+const projectUrl = (project: { title?: string; path?: string; stem?: string }) => {
+	if (project.path?.startsWith("/")) return project.path;
+	if (project.path?.startsWith("projects/")) return `/${project.path}`;
+	return project.path ? `/${project.path}` : `/${project.stem}`;
+};
 </script>
 
 <template>
-	<div class="pg">
-		<header class="hdr">
-			<div class="now" aria-label="Currently listening">
-				<ClientOnly>
-					<template v-if="songTitle && spotify?.data">
-						<span class="dot dot--on" aria-hidden="true" />
-						<a :href="spotify.data.link" target="_blank" rel="noopener noreferrer" class="lh now-txt">
-							{{ songTitle }}
-						</a>
-					</template>
-					<template v-else>
-						<span class="dot" aria-hidden="true" />
-						<span class="now-txt">not listening</span>
-					</template>
-				</ClientOnly>
-			</div>
-
-			<nav aria-label="Primary navigation">
-				<NuxtLink to="/projects" class="lh nav-a">Projects</NuxtLink>
-				<NuxtLink to="/blog" class="lh nav-a">Blog</NuxtLink>
-			</nav>
+	<div class="mx-auto min-h-screen max-w-[1440px] px-6 sm:px-10 lg:px-20">
+		<header class="border-ink/15 flex h-20 items-center justify-between border-b font-mono text-[10px] tracking-[0.12em] uppercase">
+			<NuxtLink to="/" class="text-lg font-semibold tracking-[-0.035em]">ABD<span class="text-coral ml-0.5">·</span></NuxtLink>
+			<div class="hidden gap-6 text-stone-500 sm:flex"><span>Lagos, NG</span><span>Available for select work</span></div>
+			<NuxtLink to="#contact" class="hover:text-coral transition-colors">Contact <span class="text-coral">↗</span></NuxtLink>
 		</header>
 
-		<section class="hero" aria-labelledby="hero-name">
-			<h1 id="hero-name" class="name">
-				<span class="nw nw1">Abdullahi</span>
-				<span class="nw nw2">Odesanmi</span>
-			</h1>
-
-			<div class="hero-meta">
-				<div class="hero-role">
-					<p class="role">Frontend Engineer</p>
-					<p class="bio">Frontend Engineer focused on building beautiful interfaces. Vue · Nuxt · TypeScript</p>
+		<main>
+			<section class="flex min-h-[calc(100svh-5rem)] flex-col justify-between py-10 sm:py-14 lg:py-16">
+				<p class="font-mono text-[10px] tracking-[0.12em] text-stone-500 uppercase">Software engineer / builder / curious human</p>
+				<div class="mt-12 grid items-end gap-10 lg:mt-16 lg:grid-cols-[minmax(0,1fr)_240px]">
+					<h1 class="text-[clamp(4rem,11vw,10.5rem)] leading-[0.86] font-medium tracking-[-0.095em]">
+						{{ home?.header || "Abdullahi Odesanmi" }}<br /><em class="font-serif font-normal tracking-[-0.1em]">with care.</em>
+					</h1>
+					<div class="max-w-[220px] pb-2">
+						<span class="text-coral mb-5 block text-3xl">✳</span>
+						<p class="text-sm leading-relaxed">{{ home?.brief || "Thoughtful products, useful systems and the occasional beautiful rabbit hole." }}</p>
+					</div>
 				</div>
-			</div>
+				<div class="mt-10 flex items-end justify-between gap-6 font-mono text-[10px] tracking-[0.12em] text-stone-500 uppercase">
+					<span>Scroll to explore <b class="text-ink pl-1 text-lg">↓</b></span
+					><span class="text-ink text-right">06°26′N / 03°27′E</span>
+				</div>
+			</section>
 
-			<aside class="ganbaru" aria-label="Personal motto">ganbaru (頑張る)</aside>
-		</section>
+			<section id="work" class="py-28 sm:py-36">
+				<div class="border-ink grid grid-cols-[48px_1fr] gap-5 border-t pt-4 font-mono text-[10px] tracking-[0.12em] uppercase sm:grid-cols-[1fr_2fr_1fr]">
+					<span>(01)</span>
+					<h2 class="font-sans text-4xl leading-none font-medium tracking-[-0.07em] sm:text-6xl">Selected work</h2>
+					<span class="col-start-2 text-stone-500 sm:col-start-3 sm:justify-self-end">Things I’ve made</span>
+				</div>
+				<div class="border-ink/15 mt-16 border-t">
+					<NuxtLink
+						v-for="(project, index) in featuredProjects"
+						:key="project.title"
+						:to="projectUrl(project)"
+						class="group border-ink/15 grid min-h-28 grid-cols-[34px_1fr_55px] items-center gap-2 border-b transition-colors hover:bg-white/50 sm:grid-cols-[1fr_2fr_1.5fr_.6fr_130px] sm:gap-0 sm:px-0 sm:hover:px-4"
+					>
+						<span class="font-mono text-[10px] text-stone-500">{{ String(index + 1).padStart(2, "0") }}</span
+						><span class="text-2xl tracking-[-0.07em] sm:text-4xl">{{ project.title }}</span
+						><span class="hidden font-mono text-[10px] tracking-[0.12em] text-stone-500 uppercase sm:block">{{ project.tags?.join(" / ") }}</span
+						><span class="row-start-2 font-mono text-[10px] text-stone-500 sm:row-start-auto">{{ formatYear(project.created_at) }}</span
+						><span class="bg-ink/25 group-hover:bg-coral h-px w-10 justify-self-end transition-all group-hover:w-16 sm:w-16 sm:group-hover:w-24"></span>
+					</NuxtLink>
+				</div>
+				<p class="mt-8 ml-0 text-sm leading-relaxed text-stone-500 sm:ml-[33.33%]">A small selection from a much larger archive.<br />More stories coming soon.</p>
+			</section>
+
+			<section class="bg-ink text-paper -mx-6 grid gap-16 px-6 py-28 sm:-mx-10 sm:px-10 lg:-mx-20 lg:grid-cols-[1fr_2fr] lg:px-20 lg:py-36">
+				<p class="font-mono text-[10px] tracking-[0.12em] text-stone-400 uppercase">A little context</p>
+				<p class="max-w-3xl text-[clamp(2.2rem,5vw,4.6rem)] leading-[0.98] tracking-[-0.08em]">
+					I like the space between a good idea and the moment it becomes <em class="text-coral font-serif font-normal">real.</em>
+				</p>
+			</section>
+
+			<section id="contact" class="py-24 sm:py-32">
+				<div class="border-ink grid min-w-0 gap-10 border-t pt-4 lg:grid-cols-[1fr_2fr] lg:gap-16">
+					<div class="flex justify-between font-mono text-[10px] tracking-[0.12em] uppercase lg:block">
+						<span>(02) / Contact</span>
+						<span class="text-stone-500 lg:mt-4 lg:block">Open to thoughtful work</span>
+					</div>
+					<div class="min-w-0">
+						<h2 class="max-w-4xl text-[clamp(3rem,8vw,7.5rem)] leading-[0.88] font-medium tracking-[-0.085em]">
+							Let’s make something <em class="text-coral font-serif font-normal">useful.</em>
+						</h2>
+						<div class="border-ink/15 mt-10 grid gap-8 border-t pt-6 sm:grid-cols-[1fr_auto] sm:items-end">
+							<p class="max-w-md text-sm leading-relaxed text-stone-500">Have a product, system, or idea that deserves careful engineering? Tell me what you’re working on.</p>
+							<a
+								href="mailto:abdulodesanmi@gmail.com"
+								class="group border-ink hover:border-coral hover:text-coral inline-flex max-w-full min-w-0 items-center justify-between gap-5 rounded-full border px-5 py-4 font-mono text-[11px] tracking-[0.04em] transition-colors sm:text-xs"
+							>
+								<span class="min-w-0 break-all">abdulodesanmi@gmail.com</span>
+								<span class="text-coral shrink-0 text-base transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5">↗</span>
+							</a>
+						</div>
+					</div>
+				</div>
+			</section>
+		</main>
+		<NowPlaying />
+
+		<footer class="border-ink/15 grid min-h-20 grid-cols-2 items-center gap-4 border-t py-5 font-mono text-[10px] tracking-[0.1em] text-stone-500 uppercase sm:grid-cols-3">
+			<span>© {{ currentYear }} Abdullahi Odesanmi</span>
+			<div class="flex justify-end gap-4 sm:justify-center">
+				<NuxtLink to="/projects">Work</NuxtLink><NuxtLink to="/blog">Notes</NuxtLink><a href="https://github.com/realabdullah" target="_blank">GitHub ↗</a>
+			</div>
+			<span class="col-span-2 sm:col-span-1 sm:justify-self-end">Built with intention</span>
+		</footer>
 	</div>
 </template>
-
-<style scoped>
-.pg {
-	max-width: 1200px;
-	margin: 0 auto;
-	padding: 0 clamp(1.25rem, 5vw, 5rem);
-	min-height: 100vh;
-	display: flex;
-	flex-direction: column;
-}
-
-.hdr {
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-	padding: 1.5rem 0;
-	position: sticky;
-	top: 0;
-	background: var(--bg);
-	z-index: 20;
-}
-
-.now {
-	display: flex;
-	align-items: center;
-	gap: 0.5rem;
-}
-
-.dot {
-	width: 5px;
-	height: 5px;
-	border-radius: 50%;
-	background: var(--muted);
-	flex-shrink: 0;
-}
-.dot--on {
-	background: var(--accent);
-	animation: blink 2.4s ease-in-out infinite;
-}
-
-@keyframes blink {
-	0%,
-	100% {
-		opacity: 1;
-	}
-	50% {
-		opacity: 0.2;
-	}
-}
-
-.now-txt {
-	font-family: var(--ff-mono);
-	font-size: 10px;
-	color: var(--muted);
-	text-decoration-color: currentColor;
-	letter-spacing: 0.04em;
-}
-
-nav {
-	display: flex;
-	gap: 2.5rem;
-}
-.nav-a {
-	font-family: var(--ff-mono);
-	font-size: 11px;
-	letter-spacing: 0.18em;
-	text-transform: uppercase;
-	color: var(--ink);
-}
-
-.hero {
-	flex: 1;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	padding: clamp(3.5rem, 10vh, 8rem) 0 clamp(3rem, 8vh, 6rem);
-}
-
-.name {
-	font-family: var(--ff-display);
-	font-weight: 600;
-	font-size: clamp(4rem, 12.5vw, 13.5rem);
-	line-height: 0.87;
-	letter-spacing: -0.025em;
-	margin: 0 0 clamp(2rem, 5vh, 3.5rem);
-	color: var(--ink);
-}
-
-.nw {
-	display: block;
-	opacity: 0;
-	animation: wrdIn 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-}
-.nw1 {
-	animation-delay: 0.06s;
-}
-.nw2 {
-	animation-delay: 0.24s;
-	padding-left: clamp(1.5rem, 8vw, 9rem);
-}
-
-@keyframes wrdIn {
-	from {
-		opacity: 0;
-		transform: translateY(30px);
-	}
-	to {
-		opacity: 1;
-		transform: translateY(0);
-	}
-}
-
-.hero-meta {
-	display: flex;
-	align-items: flex-end;
-	justify-content: space-between;
-	flex-wrap: wrap;
-	gap: 1.5rem;
-	animation: fdIn 0.7s ease 0.45s both;
-}
-
-.hero-role {
-	display: flex;
-	flex-direction: column;
-	gap: 0.75rem;
-}
-.role {
-	font-family: var(--ff-mono);
-	font-size: 13px;
-	letter-spacing: 0.1em;
-	text-transform: uppercase;
-	color: var(--ink);
-	margin: 0;
-}
-.stack {
-	display: none;
-	margin: 0;
-}
-
-.bio {
-	font-family: var(--ff-mono);
-	font-size: clamp(13px, 1.4vw, 15px);
-	line-height: 1.8;
-	color: var(--muted);
-	max-width: 54ch;
-	margin: 0;
-}
-
-.ganbaru {
-	display: block;
-	margin-top: clamp(1.25rem, 3vh, 2.25rem);
-	font-family: var(--ff-mono);
-	font-size: 11px;
-	font-style: italic;
-	color: var(--muted);
-	letter-spacing: 0.04em;
-	animation: fdIn 0.5s ease 0.6s both;
-}
-
-@keyframes fdIn {
-	from {
-		opacity: 0;
-	}
-	to {
-		opacity: 1;
-	}
-}
-
-@media (max-width: 600px) {
-	.hdr {
-		position: static;
-		align-items: flex-start;
-		gap: 1rem;
-		flex-direction: column;
-	}
-
-	.name {
-		font-size: clamp(3.2rem, 18vw, 5.5rem);
-		line-height: 0.9;
-	}
-	.nw2 {
-		padding-left: clamp(1rem, 5vw, 2rem);
-	}
-
-	nav {
-		gap: 1.5rem;
-	}
-
-	.hero-meta {
-		flex-direction: column;
-		align-items: flex-start;
-	}
-}
-</style>

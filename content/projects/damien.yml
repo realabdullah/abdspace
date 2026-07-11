@@ -1,5 +1,16 @@
 title: Damien's Photography Portfolio (WIP 🚧)
 description: A visually appealing portfolio website designed for Damien, a fictional photographer, to showcase his work. The site features vibrant layouts, images grid, and dynamic visuals that enhance the presentation of his photography. This project combines creative design and technical expertise to deliver an engaging and immersive user experience.
+role: Creative direction and frontend engineering
+outcome: An image-led portfolio experiment with expressive motion.
+challenge: Let photography lead the experience while keeping navigation and context discoverable.
+approach: Build a flexible visual grid with motion used as emphasis rather than decoration.
+learnings: A portfolio can be expressive without asking every element to perform.
+status: In progress
+hero_image: ''
+screenshots:
+  - https://res.cloudinary.com/dxvhsze0l/image/upload/v1783795450/w7ixmepd1mfbpswvmwvl.webp
+screenshot_captions:
+  - Damien photography portfolio direction
 live_url: https://damien.abdspace.xyz/
 github_url: https://github.com/realabdullah/damien-portfolio
 created_at: "2025-01-18 16:34:57.286716+00"

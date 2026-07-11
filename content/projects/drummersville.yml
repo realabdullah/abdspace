@@ -1,5 +1,16 @@
 title: Drummersville
 description: A website showcasing a podcast series dedicated to the art of drumming, featuring in-depth interviews with drummers and music industry experts. The platform seamlessly integrates content from Strapi CMS and offers an embedded podcast player, blog content consumption, allowing visitors to explore articles and stream episodes directly on the site while discovering valuable insights from the drumming community.
+role: Frontend engineering and CMS integration
+outcome: A content platform connecting podcast episodes, stories and listeners.
+challenge: Bring long-form editorial content, audio discovery and CMS-managed updates into one clear experience.
+approach: Treat episodes and stories as related parts of one publishing system.
+learnings: Content architecture is part of the interface; good structure makes the design feel calmer.
+status: Shipped
+hero_image: ''
+screenshots:
+  - https://res.cloudinary.com/dxvhsze0l/image/upload/v1783795715/s9d7xs5nsa77snuzqyly.webp
+screenshot_captions:
+  - Drummersville editorial and podcast experience
 live_url: https://www.drummersville.com
 github_url: null
 created_at: "2025-01-18 16:21:48.99193+00"

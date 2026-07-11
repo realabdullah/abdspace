@@ -2,9 +2,20 @@
 import tailwindcss from "@tailwindcss/vite";
 
 export default defineNuxtConfig({
-	modules: ["@nuxt/content", "@nuxt/eslint", "@nuxt/fonts", "@nuxt/image", "@nuxt/icon", "nuxt-studio"],
+	modules: ["@nuxt/content", "@nuxt/eslint", "@nuxt/fonts", "@nuxt/image", "@nuxt/icon", "nuxt-og-image", "nuxt-studio"],
 	devtools: { enabled: true },
+	app: {
+		head: {
+			charset: "utf-8",
+			viewport: "width=device-width, initial-scale=1",
+			meta: [{ name: "theme-color", content: "#f2f0e9" }],
+		},
+	},
 	css: ["~/assets/main.css"],
+	site: {
+		url: "https://abdspace.xyz",
+		name: "Abdullahi Odesanmi",
+	},
 	content: {
 		preview: {
 			api: "https://api.nuxt.studio",
@@ -43,18 +54,10 @@ export default defineNuxtConfig({
 			},
 		},
 	},
-	studio: {
-		repository: {
-			provider: "github",
-			owner: "realabdullah",
-			repo: "abdspace",
-			branch: "master",
-		},
-		ai: {
-			experimental: {
-				collectionContext: true,
-			},
-		},
+	runtimeConfig: {
+		spotifyClientId: "",
+		spotifyClientSecret: "",
+		spotifyRefreshToken: "",
 	},
 	compatibilityDate: "2024-11-01",
 	nitro: {
@@ -71,5 +74,24 @@ export default defineNuxtConfig({
 			stylistic: true,
 		},
 		checker: true,
+	},
+	fonts: {
+		families: [
+			{ name: "Manrope", weights: [400, 500, 600, 700] },
+			{ name: "DM Mono", weights: [400, 500] },
+		],
+	},
+	studio: {
+		repository: {
+			provider: "github",
+			owner: "realabdullah",
+			repo: "abdspace",
+			branch: "master",
+		},
+		ai: {
+			experimental: {
+				collectionContext: true,
+			},
+		},
 	},
 });

@@ -1,5 +1,16 @@
 title: Note Taking
 description: A versatile note-taking web application featuring flexible storage options (local IndexedDB and cloud appwrite sync), note organization through tags and archives, and customizable themes - all wrapped in a responsive modern interface.
+role: Product design and full-stack engineering
+outcome: Flexible notes that work locally first and sync when needed.
+challenge: Balance local ownership, cloud sync and organization without overwhelming the note-taking flow.
+approach: Start with fast local capture, then make tags, archives and sync available as supporting layers.
+learnings: Offline-first products need to communicate state clearly and quietly.
+status: Shipped
+hero_image: ''
+screenshots:
+  - https://res.cloudinary.com/dxvhsze0l/image/upload/v1783795450/hcy5hoelpauukifx4s65.webp
+screenshot_captions:
+  - Note-taking workspace
 live_url: https://notes.abdspace.xyz
 github_url: https://github.com/realabdullah/note-taking
 created_at: "2025-01-18 16:14:02.534169+00"

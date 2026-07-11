@@ -104,15 +104,15 @@ Now, if you fill out the form and click the "Sign up" button, your form details 
 To send an email to the user's email after a successful signup, we will use Nuxt 3's server directory to create an API endpoint. This endpoint will handle email sending. Follow these steps:
 
 * Create an `api` folder inside the `server` folder at the root of the application.
-    
+
 * In Nuxt 3, to create an API endpoint, you create a new file in the `api` folder with the method attached to the name of the file. For instance, if you want to create a `GET` endpoint named "hello," you would create a file named `hello.get.ts` if you're using TypeScript or `hello.get.js` if you're using JavaScript. In this case, we're creating an email endpoint with the `POST` method since we're sending data.
-    
+
 * Create a file named `email.post.ts` in the `api` folder.
-    
+
 * In the `email.post.ts` endpoint file, we'll export a default function defined with `defineEventHandler()`. This function will be an asynchronous arrow function that defines the event handler. It'll have an `event` object as its argument, which represents an incoming event or request.
-    
+
 * We'll asynchronously read the body content of the event by calling a `readBody` function. Then we assign the content of the event's body to a `body` variable. This `body` variable will contain the data that we receive in the request body.
-    
+
 
 This endpoint we just created will eventually be responsible for processing the data from our sign-up form and sending an email to the user's email address.
 
@@ -154,11 +154,11 @@ Upon submitting the form, you will notice that the name and email are logged to 
 In this tutorial, we will utilize Mailgun's sandbox domain, which has limitations allowing only authorized email addresses to receive emails. If you wish to send emails to all user email addresses and also connect your domain, consider upgrading your Mailgun account.
 
 * Visit your [Mailgun dashboard](https://app.mailgun.com/app/sending/domains) to copy the domain associated with your Sandbox account.
-    
+
 * We then create a `.env` file in the root of our application and paste the copied domain into it.
-    
+
 * To send emails from our application, we'll need an API key from Mailgun. You can create an API key by following this [link](https://app.mailgun.com/settings/api_security).
-    
+
 
 ```bash
 MAILGUN_DOMAIN=sandboxxxxxxxxxxxxxxxxxxxxxc.mailgun.org
@@ -182,7 +182,7 @@ import Mailgun from "mailgun.js";
 
 export default defineEventHandler(async (event) => {
     const body = await readBody(event);
-    
+
     const mailgun = new Mailgun(formData);
 	const mg = mailgun.client({
 		username: "api",
