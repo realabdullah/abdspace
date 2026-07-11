@@ -106,6 +106,26 @@ const projectUrl = (project: { title?: string; path?: string; stem?: string }) =
 					</div>
 				</div>
 			</section>
+
+			<section class="border-ink/15 border-t py-10 sm:py-14">
+				<div class="grid gap-8 sm:grid-cols-[1fr_2fr] sm:gap-12">
+					<p class="font-mono text-[10px] tracking-[0.12em] text-stone-500 uppercase">(03) / Credits</p>
+					<div>
+						<p class="max-w-2xl text-sm leading-relaxed text-stone-500">
+							This site is my own work, developed with help from Codex by OpenAI. Its visual language was shaped by studying thoughtful details across these portfolios, with gratitude to
+							the people who made them.
+						</p>
+						<!-- <NuxtLink to="/credits" class="text-coral mt-5 inline-block font-mono text-[10px] tracking-[0.08em] uppercase hover:underline">Read the full notes ↗</NuxtLink> -->
+						<nav aria-label="Design inspiration credits" class="mt-6 flex flex-wrap gap-x-5 gap-y-3 font-mono text-[10px] tracking-[0.08em] uppercase">
+							<a href="https://www.likandokayombo.com/" target="_blank" rel="noopener noreferrer" class="hover:text-coral transition-colors">Likando Kayombo ↗</a>
+							<a href="https://animationsdev-microinteractions.vercel.app/" target="_blank" rel="noopener noreferrer" class="hover:text-coral transition-colors">Animations.dev ↗</a>
+							<a href="https://ayanfe-olarinde.vinyldavyl.xyz/" target="_blank" rel="noopener noreferrer" class="hover:text-coral transition-colors">Ayanfe Olarinde ↗</a>
+							<a href="https://www.adura.design/" target="_blank" rel="noopener noreferrer" class="hover:text-coral transition-colors">Adura ↗</a>
+							<a href="https://devdami.live/" target="_blank" rel="noopener noreferrer" class="hover:text-coral transition-colors">DevDami ↗</a>
+						</nav>
+					</div>
+				</div>
+			</section>
 		</main>
 		<NowPlaying />
 
