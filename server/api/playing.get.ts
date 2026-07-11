@@ -57,7 +57,18 @@ export default defineCachedEventHandler(
 				},
 			};
 		} catch (error: any) {
-			console.error("Unable to load Spotify playback", error.data);
+			console.error(
+				"couldn't load spotify playback",
+				error.data ?? {
+					message: error.message,
+					status: error.status ?? error.statusCode,
+					statusText: error.statusText,
+					name: error.name,
+					cause: error.cause,
+					stack: error.stack,
+				},
+				error
+			);
 			return { isPlaying: false, isConfigured: true };
 		}
 	},
