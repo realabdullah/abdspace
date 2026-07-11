@@ -40,7 +40,10 @@ const projectUrl = (project: { title?: string; path?: string; stem?: string }) =
 						{{ home?.header || "Abdullahi Odesanmi" }}<br /><em class="font-serif font-normal tracking-[-0.1em]">with care.</em>
 					</h1>
 					<div class="max-w-[220px] pb-2">
-						<span class="text-coral mb-5 block text-3xl">✳</span>
+						<svg aria-hidden="true" class="text-coral mb-5 block h-8 w-8" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+							<path d="M16 2.5 18.4 13.6 29.5 16l-11.1 2.4L16 29.5l-2.4-11.1L2.5 16l11.1-2.4L16 2.5Z" fill="currentColor" />
+							<circle cx="16" cy="16" r="3" fill="var(--color-paper)" />
+						</svg>
 						<p class="text-sm leading-relaxed">{{ home?.brief || "Thoughtful products, useful systems and the occasional beautiful rabbit hole." }}</p>
 					</div>
 				</div>
