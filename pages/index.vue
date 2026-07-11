@@ -3,6 +3,11 @@ const { data: home } = await useAsyncData("home", () => queryCollection("home").
 const { data: projects } = await useAsyncData("featured-projects", () => queryCollection("projects").order("created_at", "DESC").limit(4).all());
 
 useSeoMeta({ title: "Abdullahi Odesanmi — Frontend Engineer", description: home.value?.description || "Frontend engineer building thoughtful digital products." });
+defineOgImage("Portfolio", {
+	title: "Abdullahi Odesanmi — Frontend Engineer",
+	description: home.value?.description || "Software engineer building thoughtful digital products with care.",
+	section: "Portfolio",
+});
 
 const currentYear = new Date().getFullYear();
 const fallbackProjects = [
@@ -12,7 +17,7 @@ const fallbackProjects = [
 ];
 const featuredProjects = computed(() => (projects.value?.length ? projects.value : fallbackProjects));
 const formatYear = (date: string) => new Intl.DateTimeFormat("en", { year: "numeric" }).format(new Date(date));
-const projectUrl = (project: { path?: string; stem?: string }) => {
+const projectUrl = (project: { title?: string; path?: string; stem?: string }) => {
 	if (project.path?.startsWith("/")) return project.path;
 	if (project.path?.startsWith("projects/")) return `/${project.path}`;
 	return project.path ? `/${project.path}` : `/${project.stem}`;
@@ -99,6 +104,7 @@ const projectUrl = (project: { path?: string; stem?: string }) => {
 				</div>
 			</section>
 		</main>
+		<NowPlaying />
 
 		<footer class="border-ink/15 grid min-h-20 grid-cols-2 items-center gap-4 border-t py-5 font-mono text-[10px] tracking-[0.1em] text-stone-500 uppercase sm:grid-cols-3">
 			<span>© {{ currentYear }} Abdullahi Odesanmi</span>

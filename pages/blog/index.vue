@@ -2,6 +2,11 @@
 const { data: page } = await useAsyncData("blog-page", () => queryCollection("blog").path("/blog").first());
 const { data: posts } = await useAsyncData("blog-posts", () => queryCollection("blog").order("createdAt", "DESC").where("slug", "IS NOT NULL", "/blog").all());
 useSeoMeta({ title: page.value?.title || "Notes — Abdullahi Odesanmi", description: page.value?.description || "Notes on building digital products." });
+defineOgImage("Portfolio", {
+	title: page.value?.title || "Notes & observations",
+	description: page.value?.description || "Writing on frontend engineering, tools, experiments and what I’m learning.",
+	section: "Journal",
+});
 </script>
 
 <template>

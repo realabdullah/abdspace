@@ -2,7 +2,7 @@
 import tailwindcss from "@tailwindcss/vite";
 
 export default defineNuxtConfig({
-	modules: ["@nuxt/content", "@nuxt/eslint", "@nuxt/fonts", "@nuxt/image", "@nuxt/icon", "nuxt-studio"],
+	modules: ["@nuxt/content", "@nuxt/eslint", "@nuxt/fonts", "@nuxt/image", "@nuxt/icon", "nuxt-og-image", "nuxt-studio"],
 	devtools: { enabled: true },
 	app: {
 		head: {
@@ -12,6 +12,10 @@ export default defineNuxtConfig({
 		},
 	},
 	css: ["~/assets/main.css"],
+	site: {
+		url: "https://abdspace.xyz",
+		name: "Abdullahi Odesanmi",
+	},
 	content: {
 		preview: {
 			api: "https://api.nuxt.studio",
@@ -49,6 +53,11 @@ export default defineNuxtConfig({
 				},
 			},
 		},
+	},
+	runtimeConfig: {
+		spotifyClientId: "",
+		spotifyClientSecret: "",
+		spotifyRefreshToken: "",
 	},
 	compatibilityDate: "2024-11-01",
 	nitro: {

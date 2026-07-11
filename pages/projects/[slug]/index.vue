@@ -1,6 +1,7 @@
 <script setup lang="ts">
-const slug = computed(() => useRoute().params.slug as string);
-const { data: project } = await useAsyncData(`project-${slug.value}`, async () => {
+const route = useRoute();
+const slug = route.params.slug as string;
+const { data: project } = await useAsyncData(`project-${slug}`, async () => {
 	const projects = await queryCollection("projects").all();
 	const projectTitles: Record<string, string> = {
 		audiophile: "Audiophile",
@@ -21,13 +22,16 @@ const { data: project } = await useAsyncData(`project-${slug.value}`, async () =
 			.toLowerCase()
 			.replace(/[^a-z0-9]+/g, "-")
 			.replace(/-wip-?$/, "");
-		return (
-			item.title === projectTitles[slug.value] || item.stem === slug.value || item.path?.endsWith(`/${slug.value}`) || item.path?.endsWith(`/${slug.value}.yml`) || normalizedTitle === slug.value
-		);
+		return item.title === projectTitles[slug] || item.stem === slug || item.stem?.endsWith(`/${slug}`) || normalizedTitle === slug;
 	});
 });
 if (!project.value) throw createError({ statusCode: 404, statusMessage: "Project not found" });
 useSeoMeta({ title: `${project.value.title} — Abdullahi Odesanmi`, description: project.value.description, ogTitle: project.value.title, ogDescription: project.value.description });
+defineOgImage("Portfolio", {
+	title: project.value.title,
+	description: project.value.description,
+	section: "Project",
+});
 const year = computed(() => new Intl.DateTimeFormat("en", { year: "numeric" }).format(new Date(project.value?.created_at || "")));
 const gallery = computed(() => project.value?.screenshots || []);
 </script>

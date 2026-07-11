@@ -1,7 +1,8 @@
 <script setup lang="ts">
-const slug = computed(() => useRoute().params.slug as string);
-const { data: post } = await useAsyncData(`post-${slug.value}`, () => queryCollection("blog").where("slug", "=", slug.value).first());
-const canonicalUrl = computed(() => `https://abdspace.xyz/blog/${slug.value}`);
+const route = useRoute();
+const slug = route.params.slug as string;
+const { data: post } = await useAsyncData(`post-${slug}`, () => queryCollection("blog").where("slug", "=", slug).first());
+const canonicalUrl = `https://abdspace.xyz/blog/${slug}`;
 useSeoMeta({
 	title: `${post.value?.title} — Abdullahi Odesanmi`,
 	description: post.value?.brief,
@@ -23,11 +24,16 @@ useHead({
 				headline: post.value?.title,
 				description: post.value?.brief,
 				datePublished: post.value?.createdAt,
-				mainEntityOfPage: canonicalUrl.value,
+				mainEntityOfPage: canonicalUrl,
 				author: { "@type": "Person", name: "Abdullahi Odesanmi", url: "https://abdspace.xyz" },
 			}),
 		},
 	],
+});
+defineOgImage("Portfolio", {
+	title: post.value?.title,
+	description: post.value?.brief,
+	section: "Journal",
 });
 </script>
 

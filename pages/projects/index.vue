@@ -3,6 +3,11 @@ const { data: page } = await useAsyncData("projects-page", () => queryCollection
 const { data: projects } = await useAsyncData("projects", () => queryCollection("projects").order("created_at", "DESC").all());
 
 useSeoMeta({ title: page.value?.title || "Projects — Abdullahi Odesanmi", description: page.value?.description || "A collection of digital products and experiments." });
+defineOgImage("Portfolio", {
+	title: page.value?.title || "Selected projects",
+	description: page.value?.description || "A collection of useful systems, experiments and interfaces built with care.",
+	section: "Work",
+});
 
 const formatYear = (date: string) => new Intl.DateTimeFormat("en", { year: "numeric" }).format(new Date(date));
 const projectUrl = (project: { path?: string; stem?: string }) => {
