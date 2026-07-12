@@ -19,11 +19,13 @@ const returnHome = async () => {
 </script>
 
 <template>
-	<div class="bg-ink text-paper relative min-h-screen overflow-hidden">
+	<div class="bg-paper text-ink dark:bg-ink dark:text-paper relative min-h-screen overflow-hidden">
 		<div class="border-coral/30 pointer-events-none absolute -top-24 -right-24 h-80 w-80 rounded-full border sm:h-[32rem] sm:w-[32rem]"></div>
 		<div class="border-lime/20 pointer-events-none absolute -bottom-32 -left-24 h-64 w-64 rounded-full border sm:h-96 sm:w-96"></div>
 
-		<header class="relative z-10 mx-auto flex h-20 max-w-[1440px] items-center justify-between border-b border-white/15 px-6 font-mono text-[10px] tracking-[0.12em] uppercase sm:px-10 lg:px-20">
+		<header
+			class="border-ink/15 relative z-10 mx-auto flex h-20 max-w-[1440px] items-center justify-between border-b px-6 font-mono text-[10px] tracking-[0.12em] uppercase sm:px-10 lg:px-20 dark:border-white/15"
+		>
 			<NuxtLink to="/" class="text-lg font-semibold tracking-[-0.035em]">ABD<span class="text-coral ml-0.5">·</span></NuxtLink>
 			<span class="text-stone-500">Error / {{ statusCode }}</span>
 		</header>
@@ -35,7 +37,7 @@ const returnHome = async () => {
 			</div>
 
 			<div class="grid gap-12 lg:grid-cols-[1fr_2fr] lg:items-end lg:gap-20">
-				<div class="font-mono text-[clamp(7rem,22vw,19rem)] leading-[0.7] tracking-[-0.14em] text-white/10">{{ statusCode }}</div>
+				<div class="text-ink/10 font-mono text-[clamp(7rem,22vw,19rem)] leading-[0.7] tracking-[-0.14em] dark:text-white/10">{{ statusCode }}</div>
 				<div>
 					<h1 class="max-w-4xl text-[clamp(3.5rem,10vw,9rem)] leading-[0.84] font-medium tracking-[-0.1em]">{{ title }}</h1>
 					<p class="mt-8 max-w-xl text-base leading-relaxed text-stone-400 sm:text-lg">{{ description }}</p>
@@ -46,7 +48,7 @@ const returnHome = async () => {
 				</div>
 			</div>
 
-			<div class="flex items-end justify-between gap-6 border-t border-white/15 pt-5 font-mono text-[10px] tracking-[0.1em] text-stone-500 uppercase">
+			<div class="border-ink/15 flex items-end justify-between gap-6 border-t pt-5 font-mono text-[10px] tracking-[0.1em] text-stone-500 uppercase dark:border-white/15">
 				<span>ABD / Lagos, NG</span>
 				<span class="text-right">Keep exploring<br />06°26′N / 03°27′E</span>
 			</div>

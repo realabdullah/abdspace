@@ -9,6 +9,11 @@ export default defineNuxtConfig({
 			charset: "utf-8",
 			viewport: "width=device-width, initial-scale=1",
 			meta: [{ name: "theme-color", content: "#f2f0e9" }],
+			script: [
+				{
+					innerHTML: `try{if(localStorage.getItem("abdspace-theme")==="dark"){document.documentElement.classList.add("dark")}}catch(e){}`,
+				},
+			],
 		},
 	},
 	css: ["~/assets/main.css"],

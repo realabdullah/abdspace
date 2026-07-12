@@ -73,14 +73,19 @@ const projectUrl = (project: { title?: string; path?: string; stem?: string }) =
 					</NuxtLink>
 				</div>
 				<p class="mt-8 ml-0 text-sm leading-relaxed text-stone-500 sm:ml-[33.33%]">
-					A small selection from a much larger archive.<br /><NuxtLink to="/projects" class="text-coral hover:underline">Explore all projects ↗</NuxtLink>
+					A small selection from a much larger archive.<br /><NuxtLink to="/projects" class="text-coral inline-flex items-center gap-1 hover:underline">
+						Explore all projects
+						<svg aria-hidden="true" viewBox="0 0 12 12" class="size-3" fill="none">
+							<path d="M2.25 9.75 9.75 2.25M4.5 2.25h5.25V7.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.25" />
+						</svg>
+					</NuxtLink>
 				</p>
 			</section>
 
-			<section class="bg-ink text-paper -mx-6 grid gap-16 px-6 py-28 sm:-mx-10 sm:px-10 lg:-mx-20 lg:grid-cols-[1fr_2fr] lg:px-20 lg:py-36">
-				<p class="font-mono text-[10px] tracking-[0.12em] text-stone-400 uppercase">A little context</p>
+			<section class="-mx-6 grid gap-16 bg-[#171714] px-6 py-28 text-[#f2f0e9] sm:-mx-10 sm:px-10 lg:-mx-20 lg:grid-cols-[1fr_2fr] lg:px-20 lg:py-36">
+				<p class="font-mono text-[10px] tracking-[0.12em] text-[#a9a79e] uppercase">A little context</p>
 				<p class="max-w-3xl text-[clamp(2.2rem,5vw,4.6rem)] leading-[0.98] tracking-[-0.08em]">
-					I like the space between a good idea and the moment it becomes <em class="text-coral font-serif font-normal">real.</em>
+					I like the space between a good idea and the moment it becomes <em class="font-serif font-normal text-[#e65d43]">real.</em>
 				</p>
 			</section>
 

@@ -49,6 +49,7 @@ useHead({
 
 <template>
 	<div aria-hidden="true" class="site-cursor" :style="{ left: cx + 'px', top: cy + 'px', opacity: cv ? 1 : 0 }" />
+	<div class="fixed right-5 bottom-5 z-[100] sm:right-8 sm:bottom-8"><ThemeToggle /></div>
 	<NuxtLayout>
 		<NuxtPage :transition="{ name: 'page', mode: 'out-in' }" />
 	</NuxtLayout>
