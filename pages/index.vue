@@ -16,7 +16,6 @@ const fallbackProjects = [
 	{ title: "Lifestack", description: "A small experiment in personal systems.", created_at: "2026", tags: ["Experiment", "Interface"] },
 ];
 const featuredProjects = computed(() => (projects.value?.length ? projects.value : fallbackProjects));
-const formatYear = (date: string) => new Intl.DateTimeFormat("en", { year: "numeric" }).format(new Date(date));
 const projectUrl = (project: { title?: string; path?: string; stem?: string }) => {
 	if (project.path?.startsWith("/")) return project.path;
 	if (project.path?.startsWith("projects/")) return `/${project.path}`;
@@ -56,7 +55,7 @@ const projectUrl = (project: { title?: string; path?: string; stem?: string }) =
 			<section id="work" class="py-28 sm:py-36">
 				<div class="border-ink grid grid-cols-[48px_1fr] gap-5 border-t pt-4 font-mono text-[10px] tracking-[0.12em] uppercase sm:grid-cols-[1fr_2fr_1fr]">
 					<span>(01)</span>
-					<h2 class="font-sans text-4xl leading-none font-medium tracking-[-0.07em] sm:text-6xl">Selected work</h2>
+					<h2 class="font-sans text-4xl leading-none font-medium tracking-[-0.07em] sm:text-6xl">Selected projects</h2>
 					<span class="col-start-2 text-stone-500 sm:col-start-3 sm:justify-self-end">Things I’ve made</span>
 				</div>
 				<div class="border-ink/15 mt-16 border-t">
@@ -69,11 +68,13 @@ const projectUrl = (project: { title?: string; path?: string; stem?: string }) =
 						<span class="font-mono text-[10px] text-stone-500">{{ String(index + 1).padStart(2, "0") }}</span
 						><span class="text-2xl tracking-[-0.07em] sm:text-4xl">{{ project.title }}</span
 						><span class="hidden font-mono text-[10px] tracking-[0.12em] text-stone-500 uppercase sm:block">{{ project.tags?.join(" / ") }}</span
-						><span class="row-start-2 font-mono text-[10px] text-stone-500 sm:row-start-auto">{{ formatYear(project.created_at) }}</span
+						><span class="row-start-2 font-mono text-[10px] text-stone-500 sm:row-start-auto">{{ formatProjectDate(project.created_at) }}</span
 						><span class="bg-ink/25 group-hover:bg-coral h-px w-10 justify-self-end transition-all group-hover:w-16 sm:w-16 sm:group-hover:w-24"></span>
 					</NuxtLink>
 				</div>
-				<p class="mt-8 ml-0 text-sm leading-relaxed text-stone-500 sm:ml-[33.33%]">A small selection from a much larger archive.<br />More stories coming soon.</p>
+				<p class="mt-8 ml-0 text-sm leading-relaxed text-stone-500 sm:ml-[33.33%]">
+					A small selection from a much larger archive.<br /><NuxtLink to="/projects" class="text-coral hover:underline">Explore all projects ↗</NuxtLink>
+				</p>
 			</section>
 
 			<section class="bg-ink text-paper -mx-6 grid gap-16 px-6 py-28 sm:-mx-10 sm:px-10 lg:-mx-20 lg:grid-cols-[1fr_2fr] lg:px-20 lg:py-36">
@@ -132,7 +133,7 @@ const projectUrl = (project: { title?: string; path?: string; stem?: string }) =
 		<footer class="border-ink/15 grid min-h-20 grid-cols-2 items-center gap-4 border-t py-5 font-mono text-[10px] tracking-[0.1em] text-stone-500 uppercase sm:grid-cols-3">
 			<span>© {{ currentYear }} Abdullahi Odesanmi</span>
 			<div class="flex justify-end gap-4 sm:justify-center">
-				<NuxtLink to="/projects">Work</NuxtLink><NuxtLink to="/blog">Notes</NuxtLink><a href="https://github.com/realabdullah" target="_blank">GitHub ↗</a>
+				<NuxtLink to="/projects">Projects</NuxtLink><NuxtLink to="/blog">Notes</NuxtLink><a href="https://github.com/realabdullah" target="_blank">GitHub ↗</a>
 			</div>
 			<span class="col-span-2 sm:col-span-1 sm:justify-self-end">Built with intention</span>
 		</footer>

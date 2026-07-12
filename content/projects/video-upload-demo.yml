@@ -1,0 +1,20 @@
+title: Video Upload Demo
+description: A progressive video recording and upload system that streams MediaRecorder chunks into resumable S3-compatible storage.
+role: Full-stack engineer
+outcome: A working reference implementation for resilient browser video uploads with progress telemetry and finalization.
+challenge: Uploading a recording only after it finishes creates a fragile experience for large files and unreliable connections. The system needed to move bytes while recording was still in progress.
+approach: The browser emits MediaRecorder chunks into a deferred-length tus upload. A NestJS API backed by @tus/server and @tus/s3-store handles resumability, while MinIO provides a local S3-compatible development target.
+learnings: "Resumable uploads need an explicit lifecycle: accepted chunks, completion, finalization, and cleanup for abandoned multipart state."
+status: Engineering demo
+screenshots:
+  - https://res.cloudinary.com/dxvhsze0l/image/upload/v1783856556/lwonnasajcr8wzp5oicm.webp
+screenshot_captions:
+  - Recording controls and progressive upload telemetry
+github_url: https://github.com/realabdullah/video-upload-demo
+created_at: "2026-07-11T16:55:35.000Z"
+tags:
+  - Nuxt
+  - NestJS
+  - tus
+  - S3
+  - MediaRecorder

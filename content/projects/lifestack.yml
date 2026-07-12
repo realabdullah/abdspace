@@ -1,0 +1,16 @@
+title: Lifestack
+description: A personal metrics exporter that turns GitHub, WakaTime, and Spotify activity into Prometheus data for hosted dashboards.
+role: Backend engineer
+outcome: A lightweight, cloud-friendly observability service with protected metrics, scheduled collection, and Grafana Cloud remote write support.
+challenge: Personal activity is spread across several APIs, each with different credentials, response shapes, and rate limits. The service needed to collect those signals without making dashboard scrapes depend on third-party availability.
+approach: A Node.js and Express exporter polls external services on background intervals, stores the latest values in Prometheus gauges, exposes a bearer-protected /metrics endpoint, and optionally pushes time series to Grafana Cloud.
+learnings: Separating collection from scraping keeps dashboards responsive and makes failures observable without discarding the last successful measurement.
+status: Infrastructure experiment
+github_url: https://github.com/realabdullah/lifestack
+tags:
+  - Node.js
+  - Prometheus
+  - Grafana
+  - Observability
+  - APIs
+created_at: "2026-06-20T17:53:21Z"

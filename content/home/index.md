@@ -2,8 +2,9 @@
 title: Abdullahi Odesanmi - Frontend Engineer
 description: Frontend Engineer focused on building beautiful and functional user interfaces.
 header: Abdullahi Odesanmi
-brief: Frontend Engineer focused on building beautiful and functional user
-  interfaces. Specializing in Vue, Nuxt, TypeScript and other web technologies.
+brief: Frontend engineer crafting clear, useful digital experiences with a
+  strong eye for interaction, product thinking, and the systems behind the
+  interface.
   - ganbaru (頑張る)
 pillText: Available for new projects
 pillColor: bg-blue-500

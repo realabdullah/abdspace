@@ -54,11 +54,6 @@ export default defineNuxtConfig({
 			},
 		},
 	},
-	runtimeConfig: {
-		spotifyClientId: "",
-		spotifyClientSecret: "",
-		spotifyRefreshToken: "",
-	},
 	compatibilityDate: "2024-11-01",
 	nitro: {
 		prerender: {

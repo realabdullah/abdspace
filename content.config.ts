@@ -75,7 +75,7 @@ export default defineContentConfig({
 				live_url: z.string().optional(),
 				github_url: z.string().optional(),
 				tags: z.array(z.string()),
-				created_at: z.string(),
+				created_at: z.string().refine((value) => !Number.isNaN(Date.parse(value)), "created_at must be a valid ISO date"),
 			}),
 		}),
 	},

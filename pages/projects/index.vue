@@ -6,10 +6,9 @@ useSeoMeta({ title: page.value?.title || "Projects — Abdullahi Odesanmi", desc
 defineOgImage("Portfolio", {
 	title: page.value?.title || "Selected projects",
 	description: page.value?.description || "A collection of useful systems, experiments and interfaces built with care.",
-	section: "Work",
+	section: "Projects",
 });
 
-const formatYear = (date: string) => new Intl.DateTimeFormat("en", { year: "numeric" }).format(new Date(date));
 const projectUrl = (project: { path?: string; stem?: string }) => {
 	if (project.path?.startsWith("/")) return project.path;
 	if (project.path?.startsWith("projects/")) return `/${project.path}`;
@@ -20,7 +19,7 @@ const projectUrl = (project: { path?: string; stem?: string }) => {
 <template>
 	<div class="mx-auto min-h-screen max-w-[1440px] px-6 sm:px-10 lg:px-20">
 		<header class="border-ink/15 flex h-20 items-center justify-between border-b font-mono text-[10px] tracking-[0.12em] uppercase">
-			<NuxtLink to="/" class="hover:text-coral transition-colors">← Index</NuxtLink><span class="text-stone-500">Selected work / {{ projects?.length || 0 }} projects</span>
+			<NuxtLink to="/" class="hover:text-coral transition-colors">← Index</NuxtLink><span class="text-stone-500">Selected project / {{ projects?.length || 0 }} projects</span>
 		</header>
 		<main class="py-20 sm:py-28">
 			<div class="border-ink grid gap-12 border-t pt-4 lg:grid-cols-[1fr_2fr]">
@@ -45,7 +44,7 @@ const projectUrl = (project: { path?: string; stem?: string }) => {
 						<span v-for="tag in project.tags" :key="tag" class="border-ink/15 border px-2 py-1 font-mono text-[9px] tracking-[0.08em] text-stone-500 uppercase">{{ tag }}</span>
 					</div>
 					<div class="text-coral flex gap-4 font-mono text-[10px] tracking-[0.1em] uppercase sm:block sm:pt-2">
-						<span class="text-stone-500">{{ formatYear(project.created_at) }}</span
+						<span class="text-stone-500">{{ formatProjectDate(project.created_at) }}</span
 						><a v-if="project.live_url" :href="project.live_url" target="_blank" rel="noopener noreferrer" class="ml-4 sm:mt-5 sm:ml-0 sm:block">Live ↗</a
 						><a v-if="project.github_url" :href="project.github_url" target="_blank" rel="noopener noreferrer" class="ml-4 sm:mt-2 sm:ml-0 sm:block">Source ↗</a>
 					</div>

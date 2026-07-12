@@ -1,0 +1,26 @@
+title: Metrik Compass
+description: A guided product-metrics planner that turns feature context into recommended measures, baselines, targets, guardrails, and definitions.
+role: Product engineer
+outcome: A focused planning tool that helps product teams move from a feature idea to a measurable success plan without starting from a blank page.
+challenge: Teams often choose metrics after a feature ships, or confuse activity counts with evidence of value. Metrik Compass guides the planning conversation before implementation begins.
+approach: A Nuxt UI wizard collects feature type, affected users, behavior change, business goal, experiment context, rollout scope, and baseline availability. A typed metrics engine then maps that context to primary metrics, formulas, benchmark ranges, targets, guardrails, and a searchable glossary.
+learnings: Good metric recommendations depend as much on asking the right questions as they do on the final formula. The wizard makes assumptions visible before it produces an answer.
+screenshots:
+  - https://res.cloudinary.com/dxvhsze0l/image/upload/v1783856555/mktpulqly4pegcliwb46.webp
+  - https://res.cloudinary.com/dxvhsze0l/image/upload/v1783856556/k27rp32uzjv3njls0wbe.webp
+  - https://res.cloudinary.com/dxvhsze0l/image/upload/v1783856555/qnko3hpmgux8ajb31ysp.webp
+  - https://res.cloudinary.com/dxvhsze0l/image/upload/v1783856556/golzbrocdmr89yekdfxv.webp
+screenshot_captions:
+  - Feature context intake and guided planning flow
+  - Recommended metrics with baseline and target ranges
+  - Guardrails and measurement guidance for the selected feature
+  - Product metrics glossary with definitions and formulas
+live_url: https://metrik-compass.abdspace.xyz/
+github_url: https://github.com/realabdullah/metrik-compass
+tags:
+  - Nuxt
+  - Nuxt UI
+  - Product Analytics
+  - Metrics
+  - TypeScript
+created_at: "2026-03-05T21:58:37Z"

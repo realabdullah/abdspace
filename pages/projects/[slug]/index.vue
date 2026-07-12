@@ -16,6 +16,12 @@ const { data: project } = await useAsyncData(`project-${slug}`, async () => {
 		"webauthn-experiment": "WebAuthn Experiment",
 		"x-o-battleground": "x-o-battleground",
 		"x-o-battleground-server": "x-o-battleground ws server",
+		"video-upload-demo": "Video Upload Demo",
+		lifestack: "Lifestack",
+		kudilog: "KudiLog",
+		"spatial-web": "Spatial Web",
+		"metrik-compass": "Metrik Compass",
+		"context-window": "Context Window",
 	};
 	return projects.find((item) => {
 		const normalizedTitle = item.title
@@ -25,6 +31,7 @@ const { data: project } = await useAsyncData(`project-${slug}`, async () => {
 		return item.title === projectTitles[slug] || item.stem === slug || item.stem?.endsWith(`/${slug}`) || normalizedTitle === slug;
 	});
 });
+
 if (!project.value) throw createError({ statusCode: 404, statusMessage: "Project not found" });
 useSeoMeta({ title: `${project.value.title} — Abdullahi Odesanmi`, description: project.value.description, ogTitle: project.value.title, ogDescription: project.value.description });
 defineOgImage("Portfolio", {
@@ -32,20 +39,20 @@ defineOgImage("Portfolio", {
 	description: project.value.description,
 	section: "Project",
 });
-const year = computed(() => new Intl.DateTimeFormat("en", { year: "numeric" }).format(new Date(project.value?.created_at || "")));
+const projectDate = computed(() => formatProjectDate(project.value?.created_at, "long"));
 const gallery = computed(() => project.value?.screenshots || []);
 </script>
 
 <template>
 	<div class="mx-auto min-h-screen max-w-[1440px] px-6 sm:px-10 lg:px-20">
 		<header class="border-ink/15 flex h-20 items-center justify-between border-b font-mono text-[10px] tracking-[0.12em] uppercase">
-			<NuxtLink to="/projects" class="hover:text-coral transition-colors">← Work</NuxtLink
+			<NuxtLink to="/projects" class="hover:text-coral transition-colors">← Projects</NuxtLink
 			><NuxtLink to="/" class="text-lg font-semibold tracking-[-0.035em]">ABD<span class="text-coral ml-0.5">·</span></NuxtLink>
 		</header>
 		<main class="py-20 sm:py-28">
 			<div class="border-ink grid gap-14 border-t pt-4 lg:grid-cols-[1fr_2fr]">
 				<div class="font-mono text-[10px] tracking-[0.12em] text-stone-500 uppercase">
-					<span class="block">(05) / Project</span><span class="mt-4 block">{{ year }}</span
+					<span class="block">(05) / Project</span><span class="mt-4 block">{{ projectDate }}</span
 					><span v-if="project?.status" class="text-coral mt-4 block">{{ project.status }}</span>
 				</div>
 				<div>

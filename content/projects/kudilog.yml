@@ -1,0 +1,24 @@
+title: KudiLog
+description: A fast, local-first budgeting PWA for logging expenses, understanding monthly patterns, and keeping financial data on-device.
+role: Product engineer
+outcome: An installable offline-first budgeting tool with instant expense capture, analytics, backups, and multi-currency support.
+challenge: Budgeting tools often make a simple expense entry feel like administrative work, while sending personal financial records to a remote account. KudiLog needed to be quick, private, and useful without a backend.
+approach: A React and Vite PWA stores records in IndexedDB through Dexie live queries. A natural-language expense input, category detection, monthly analytics, recurring-expense detection, import/export, and Workbox caching keep the core experience available offline.
+learnings: Local-first products can feel substantially faster when persistence and reactivity are designed together, but portability and schema versioning need to be part of the first data model.
+screenshots:
+  - https://res.cloudinary.com/dxvhsze0l/image/upload/v1783856554/bxibla351svud6jlm9cg.webp
+  - https://res.cloudinary.com/dxvhsze0l/image/upload/v1783856555/cq20zloj0tjfjast7qbr.webp
+  - https://res.cloudinary.com/dxvhsze0l/image/upload/v1783856555/z28rrnmb2ckpbfpcxl7n.webp
+screenshot_captions:
+  - Fast expense entry for a new transaction
+  - Monthly spending overview and category breakdown
+  - Settings, data portability, and offline-first controls
+live_url: https://kudilog.abdspace.xyz/
+github_url: https://github.com/realabdullah/kudilog
+tags:
+  - React
+  - PWA
+  - IndexedDB
+  - Dexie
+  - Tailwind CSS
+created_at: "2026-04-29T10:31:33Z"

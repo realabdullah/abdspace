@@ -1,0 +1,24 @@
+title: Context Window
+description: An AI-assisted technical writing workspace that turns chronological engineering traces into accurate, structured drafts ready for review.
+role: Full-stack engineer
+outcome: A developer-focused workflow for preserving the messy context behind a feature and compiling it into a publishable technical narrative.
+challenge: Engineers lose the reasoning behind their work as soon as a feature ships. Starting from a blank document also makes technical writing feel disconnected from the actual debugging and design process.
+approach: Context Window captures timestamped traces—code, errors, and notes—in an IDE-like feed. A multi-model adapter layer compiles those traces into Markdown while a split-screen review preserves the source context for accuracy checking.
+learnings: AI becomes more useful as a writing partner when the raw evidence stays visible. The product treats provenance, soft editing, and review as first-class parts of generation.
+status: Product prototype
+screenshots:
+  - https://res.cloudinary.com/dxvhsze0l/image/upload/v1783856555/ce8ahrvpzjwf7favyu1w.webp
+  - https://res.cloudinary.com/dxvhsze0l/image/upload/v1783856554/wcgm75ml7y723diarozl.webp
+  - https://res.cloudinary.com/dxvhsze0l/image/upload/v1783856556/bv3qplh8pxtj7dqtgpzh.webp
+screenshot_captions:
+  - Chronological technical trace capture in the workspace
+  - Split-screen review of source traces and generated Markdown
+  - Compilation workflow for turning engineering context into an article
+github_url: https://github.com/realabdullah/context-window
+tags:
+  - React
+  - NestJS
+  - PostgreSQL
+  - Prisma
+  - LLMs
+created_at: "2026-02-22T18:52:36Z"

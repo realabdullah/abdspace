@@ -37,7 +37,7 @@ defineOgImage("Portfolio", {
 			</ol>
 		</main>
 		<footer class="border-ink/15 flex min-h-20 items-center justify-between border-t py-5 font-mono text-[10px] tracking-[0.1em] text-stone-500 uppercase">
-			<NuxtLink to="/">Abdullahi Odesanmi</NuxtLink><NuxtLink to="/projects">Work ↗</NuxtLink>
+			<NuxtLink to="/">Abdullahi Odesanmi</NuxtLink><NuxtLink to="/projects">Projects ↗</NuxtLink>
 		</footer>
 	</div>
 </template>

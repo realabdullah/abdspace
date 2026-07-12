@@ -1,0 +1,20 @@
+title: Spatial Web
+description: An experimental interface controlled by hand gestures, where webcam tracking turns the browser into a physical-feeling spatial canvas.
+role: Creative technologist
+outcome: A browser-based interaction study combining MediaPipe hand landmarks, gesture recognition, spring physics, inertia, and an immersive camera mode.
+challenge: Most web interfaces assume a mouse or touch surface. Spatial Web explores what happens when the user’s hand becomes the cursor and interface objects respond with weight, proximity, and momentum.
+approach: MediaPipe HandLandmarker tracks a camera stream while a requestAnimationFrame loop handles cursor mapping, pinch-to-grab interactions, collision checks, spring motion, and release velocity. The experience includes graceful camera-permission fallbacks and a mirrored immersive background.
+learnings: High-frequency interaction state belongs outside Vue reactivity; keeping the physics loop imperative makes gesture feedback smoother and easier to tune.
+screenshots:
+  - https://res.cloudinary.com/dxvhsze0l/image/upload/v1783856578/iteqojvalzbcqsduhjoq.webp
+screenshot_captions:
+  - Gesture-controlled spatial canvas with draggable interface objects
+live_url: https://spatial.abdspace.xyz/
+github_url: https://github.com/realabdullah/spatial-web
+tags:
+  - Nuxt
+  - MediaPipe
+  - GSAP
+  - Computer Vision
+  - Interaction
+created_at: "2026-04-03T19:13:02Z"
