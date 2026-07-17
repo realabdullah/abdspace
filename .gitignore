@@ -1,3 +1,7 @@
+.blog-source.json
+content/blog/
+content/.remote-blog/
+
 # Nuxt dev/build outputs
 .output
 .data

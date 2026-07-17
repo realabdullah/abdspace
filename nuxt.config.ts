@@ -2,7 +2,7 @@
 import tailwindcss from "@tailwindcss/vite";
 
 export default defineNuxtConfig({
-	modules: ["@nuxt/content", "@nuxt/eslint", "@nuxt/fonts", "@nuxt/image", "@nuxt/icon", "nuxt-og-image", "nuxt-studio"],
+	modules: ["@nuxt/content", "@nuxt/eslint", "@nuxt/fonts", "@nuxt/image", "@nuxt/icon", "nuxt-og-image"],
 	devtools: { enabled: true },
 	app: {
 		head: {
@@ -22,9 +22,6 @@ export default defineNuxtConfig({
 		name: "Abdullahi Odesanmi",
 	},
 	content: {
-		preview: {
-			api: "https://api.nuxt.studio",
-		},
 		build: {
 			markdown: {
 				highlight: {
@@ -60,12 +57,6 @@ export default defineNuxtConfig({
 		},
 	},
 	compatibilityDate: "2024-11-01",
-	nitro: {
-		prerender: {
-			routes: ["/", "/projects", "/blog"],
-			crawlLinks: true,
-		},
-	},
 	vite: {
 		plugins: [tailwindcss()],
 	},
@@ -80,18 +71,5 @@ export default defineNuxtConfig({
 			{ name: "Manrope", weights: [400, 500, 600, 700] },
 			{ name: "DM Mono", weights: [400, 500] },
 		],
-	},
-	studio: {
-		repository: {
-			provider: "github",
-			owner: "realabdullah",
-			repo: "abdspace",
-			branch: "master",
-		},
-		ai: {
-			experimental: {
-				collectionContext: true,
-			},
-		},
 	},
 });
