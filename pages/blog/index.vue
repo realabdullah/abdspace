@@ -1,10 +1,9 @@
 <script setup lang="ts">
-const { data: page } = await useAsyncData("blog-page", () => queryCollection("blog").path("/blog").first());
-const { data: posts } = await useAsyncData("blog-posts", () => queryCollection("blog").order("createdAt", "DESC").where("slug", "IS NOT NULL", "/blog").all());
-useSeoMeta({ title: page.value?.title || "Notes — Abdullahi Odesanmi", description: page.value?.description || "Notes on building digital products." });
+const { data: posts } = await useAsyncData("blog-posts", () => queryCollection("blog").order("createdAt", "DESC").where("slug", "IS NOT NULL").all());
+useSeoMeta({ title: "Notes — Abdullahi Odesanmi", description: "Notes on frontend engineering, tools, experiments and what I’m learning." });
 defineOgImage("Portfolio", {
-	title: page.value?.title || "Notes & observations",
-	description: page.value?.description || "Writing on frontend engineering, tools, experiments and what I’m learning.",
+	title: "Notes & observations",
+	description: "Writing on frontend engineering, tools, experiments and what I’m learning.",
 	section: "Journal",
 });
 </script>
@@ -26,12 +25,12 @@ defineOgImage("Portfolio", {
 				<li v-for="(post, index) in posts" :key="String(post.slug)" class="group border-ink/15 grid gap-6 border-b py-10 sm:grid-cols-[56px_1fr_160px] sm:items-start sm:gap-8 sm:py-14">
 					<span class="font-mono text-[10px] text-stone-500">{{ String(index + 1).padStart(2, "0") }}</span>
 					<div>
-						<NuxtLink :to="post.path" class="group-hover:text-coral text-3xl tracking-[-0.07em] transition-colors sm:text-5xl">{{ post.title }}</NuxtLink>
+						<NuxtLink :to="`/blog/${post.slug}`" class="group-hover:text-coral text-3xl tracking-[-0.07em] transition-colors sm:text-5xl">{{ post.title }}</NuxtLink>
 						<p class="mt-4 max-w-2xl text-sm leading-relaxed text-stone-500">{{ post.brief }}</p>
 					</div>
 					<div class="font-mono text-[10px] tracking-[0.1em] text-stone-500 uppercase sm:pt-2">
 						<ClientOnly>{{ formatDate(post.createdAt) }}</ClientOnly
-						><NuxtLink :to="post.path" class="text-coral mt-4 block">Read · {{ post.readTime }} min ↗</NuxtLink>
+						><NuxtLink :to="`/blog/${post.slug}`" class="text-coral mt-4 block">Read · {{ post.readTime }} min ↗</NuxtLink>
 					</div>
 				</li>
 			</ol>

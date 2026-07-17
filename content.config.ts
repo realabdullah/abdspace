@@ -26,23 +26,14 @@ export default defineContentConfig({
 		}),
 		blog: defineCollection({
 			type: "page",
-			source: "blog/*.md",
+			source: ".remote-blog/*.md",
 			schema: z.object({
 				title: z.string(),
 				createdAt: z.string(),
 				slug: z.string(),
-				readTime: z.string(),
+				readTime: z.coerce.number(),
 				brief: z.string(),
-				meta: z.object({
-					title: z.string(),
-					description: z.string(),
-					header: z.string(),
-					subheader: z.string(),
-					nav: z.object({
-						text: z.string(),
-						link: z.string(),
-					}),
-				}),
+				description: z.string(),
 			}),
 		}),
 		projectsPage: defineCollection({
