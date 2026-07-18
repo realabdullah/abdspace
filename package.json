@@ -3,9 +3,9 @@
 	"private": true,
 	"type": "module",
 	"scripts": {
-		"build": "pnpm sync:blog && pnpm assert:blog-source && nuxt build",
-		"sync:blog": "node scripts/sync-blog.mjs",
-		"assert:blog-source": "node scripts/assert-blog-source.mjs",
+		"build": "pnpm sync:writings && pnpm assert:writings-source && nuxt build",
+		"sync:writings": "node scripts/sync-writings.mjs",
+		"assert:writings-source": "node scripts/assert-writings-source.mjs",
 		"dev": "nuxt dev",
 		"generate": "nuxt generate",
 		"preview": "nuxt preview",

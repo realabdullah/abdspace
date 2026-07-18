@@ -2,9 +2,9 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://www.abdspace.xyz/</loc></url>
   <url><loc>https://www.abdspace.xyz/projects</loc></url>
-  <url><loc>https://www.abdspace.xyz/blog</loc></url>
-  <url><loc>https://www.abdspace.xyz/blog/building-a-simple-rating-component-with-vue-3</loc></url>
-  <url><loc>https://www.abdspace.xyz/blog/sending-email-from-your-nuxt-3-app-with-mailgun</loc></url>
+  <url><loc>https://www.abdspace.xyz/writings</loc></url>
+  <url><loc>https://www.abdspace.xyz/writings/building-a-simple-rating-component-with-vue-3</loc></url>
+  <url><loc>https://www.abdspace.xyz/writings/sending-email-from-your-nuxt-3-app-with-mailgun</loc></url>
   <url><loc>https://www.abdspace.xyz/projects/audiophile</loc></url>
   <url><loc>https://www.abdspace.xyz/projects/damien</loc></url>
   <url><loc>https://www.abdspace.xyz/projects/drummersville</loc></url>

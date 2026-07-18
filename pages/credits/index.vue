@@ -107,7 +107,7 @@ const influences = [
 		</main>
 
 		<footer class="border-ink/15 flex min-h-20 items-center justify-between border-t py-5 font-mono text-[10px] tracking-[0.1em] text-stone-500 uppercase">
-			<span>© {{ new Date().getFullYear() }} Abdullahi Odesanmi</span><NuxtLink to="/blog">Notes ↗</NuxtLink>
+			<span>© {{ new Date().getFullYear() }} Abdullahi Odesanmi</span><NuxtLink to="/writings">Writings ↗</NuxtLink>
 		</footer>
 	</div>
 </template>
