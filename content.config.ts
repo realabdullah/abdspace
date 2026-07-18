@@ -24,9 +24,9 @@ export default defineContentConfig({
 				),
 			}),
 		}),
-		blog: defineCollection({
+		writings: defineCollection({
 			type: "page",
-			source: ".remote-blog/*.md",
+			source: ".remote-writings/*.md",
 			schema: z.object({
 				title: z.string(),
 				createdAt: z.string(),

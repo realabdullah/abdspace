@@ -138,7 +138,7 @@ const projectUrl = (project: { title?: string; path?: string; stem?: string }) =
 		<footer class="border-ink/15 grid min-h-20 grid-cols-2 items-center gap-4 border-t py-5 font-mono text-[10px] tracking-[0.1em] text-stone-500 uppercase sm:grid-cols-3">
 			<span>© {{ currentYear }} Abdullahi Odesanmi</span>
 			<div class="flex justify-end gap-4 sm:justify-center">
-				<NuxtLink to="/projects">Projects</NuxtLink><NuxtLink to="/blog">Notes</NuxtLink><a href="https://github.com/realabdullah" target="_blank">GitHub ↗</a>
+				<NuxtLink to="/projects">Projects</NuxtLink><NuxtLink to="/writings">Writings</NuxtLink><a href="https://github.com/realabdullah" target="_blank">GitHub ↗</a>
 			</div>
 			<span class="col-span-2 sm:col-span-1 sm:justify-self-end">Built with intention</span>
 		</footer>

@@ -20,6 +20,6 @@ links:
 navs:
     - name: Projects
       link: /projects/
-    - name: Blog
-      link: /blog/
+    - name: Writings
+      link: /writings/
 ---
