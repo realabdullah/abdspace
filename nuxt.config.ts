@@ -42,7 +42,7 @@ export default defineNuxtConfig({
 	routeRules: {
 		"/credits": { redirect: { to: "/", statusCode: 301 } },
 	},
-	compatibilityDate: "2024-11-01",
+	compatibilityDate: "2026-10-01",
 	eslint: {
 		config: { stylistic: true },
 		checker: true,
