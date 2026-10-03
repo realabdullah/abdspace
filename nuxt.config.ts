@@ -30,6 +30,8 @@ export default defineNuxtConfig({
 		defaultLocale: "en",
 	},
 	content: {
+		// Node's built-in sqlite: no native binary to fall out of step with the runtime's Node version.
+		experimental: { sqliteConnector: "native" },
 		build: {
 			markdown: {
 				highlight: {
