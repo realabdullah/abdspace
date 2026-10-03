@@ -1,46 +1,46 @@
 <script setup lang="ts">
+const site = useSiteConfig();
 const route = useRoute();
-const cx = ref(0);
-const cy = ref(0);
-const cv = ref(false);
-
-const onMove = (e: MouseEvent) => {
-	cx.value = e.clientX;
-	cy.value = e.clientY;
-	if (!cv.value) cv.value = true;
-};
-
-onMounted(() => window.addEventListener("mousemove", onMove));
-onUnmounted(() => window.removeEventListener("mousemove", onMove));
-
-const canonicalUrl = computed(() => `https://www.abdspace.xyz${route.path === "/" ? "" : route.path}`);
+// One form per page, matching the sitemap: the root keeps its slash, nothing else ends in one.
+const canonicalUrl = computed(() => `${site.url}${route.path.replace(/\/+$/, "") || "/"}`);
 
 useSeoMeta({
-	ogSiteName: "Abdullahi Odesanmi",
-	ogLocale: "en_NG",
+	ogSiteName: site.name,
+	ogType: "website",
 	ogUrl: canonicalUrl,
 	twitterCard: "summary_large_image",
-	twitterCreator: "@realabdullah",
+	twitterSite: "@_realabd",
+	twitterCreator: "@_realabd",
 	robots: "index, follow, max-image-preview:large",
 });
 
 useHead({
 	htmlAttrs: { lang: "en" },
-	link: [
-		{ rel: "canonical", href: canonicalUrl },
-		{ rel: "icon", type: "image/svg+xml", href: "/favicon.svg" },
-		{ rel: "alternate icon", href: "/favicon.ico" },
-	],
+	link: [{ rel: "canonical", href: canonicalUrl }],
 	script: [
 		{
 			type: "application/ld+json",
 			innerHTML: JSON.stringify({
 				"@context": "https://schema.org",
-				"@type": "Person",
-				name: "Abdullahi Odesanmi",
-				url: "https://www.abdspace.xyz",
-				jobTitle: "Software Engineer",
-				sameAs: ["https://github.com/realabdullah"],
+				"@graph": [
+					{
+						"@type": "WebSite",
+						"@id": `${site.url}/#website`,
+						url: site.url,
+						name: site.name,
+						inLanguage: "en",
+						publisher: { "@id": `${site.url}/#person` },
+					},
+					{
+						"@type": "Person",
+						"@id": `${site.url}/#person`,
+						name: "Abdullahi Odesanmi",
+						url: site.url,
+						jobTitle: "Frontend engineer",
+						description: site.description,
+						sameAs: ["https://github.com/realabdullah", "https://www.linkedin.com/in/abdullahiodesanmi/", "https://x.com/_realabd"],
+					},
+				],
 			}),
 		},
 	],
@@ -48,9 +48,25 @@ useHead({
 </script>
 
 <template>
-	<div aria-hidden="true" class="site-cursor" :style="{ left: cx + 'px', top: cy + 'px', opacity: cv ? 1 : 0 }" />
-	<div class="fixed right-5 bottom-5 z-[100] sm:right-8 sm:bottom-8"><ThemeToggle /></div>
-	<NuxtLayout>
-		<NuxtPage :transition="{ name: 'page', mode: 'out-in' }" />
-	</NuxtLayout>
+	<div id="top">
+		<a href="#main" class="skip mono">skip to content</a>
+		<SiteHeader />
+		<NuxtPage />
+		<SiteFooter />
+	</div>
 </template>
+
+<style>
+.skip {
+	position: absolute;
+	left: var(--gutter);
+	top: 0.5rem;
+	padding: 0.5rem 0.75rem;
+	background: var(--fg);
+	color: var(--bg);
+	transform: translateY(-200%);
+}
+.skip:focus-visible {
+	transform: none;
+}
+</style>

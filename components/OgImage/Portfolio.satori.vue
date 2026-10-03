@@ -1,31 +1,42 @@
 <script setup lang="ts">
-withDefaults(
-	defineProps<{
-		title?: string;
-		description?: string;
-		section?: string;
-	}>(),
-	{
-		title: "Abdullahi Odesanmi",
-		description: "Software engineer building thoughtful digital products.",
-		section: "Portfolio",
-	}
-);
+// The home page as a printed page: name on the left, 頑張る written down the right edge.
+withDefaults(defineProps<{ kicker?: string; intro?: string }>(), {
+	kicker: "frontend engineer",
+	intro: "I make interfaces for the web and care about the small things: how it moves, how it reads, how it feels to use.",
+});
 </script>
 
 <template>
-	<div class="flex h-full w-full flex-col justify-between bg-[#f2f0e9] p-16 text-[#171714]">
-		<div class="flex items-center justify-between border-b border-[#171714]/20 pb-6 text-[20px] tracking-[0.14em] uppercase">
-			<span>ABD<span class="ml-1 text-[#e65d43]">·</span></span>
-			<span class="text-[#77766f]">{{ section }}</span>
+	<div style="display: flex; position: relative; width: 100%; height: 100%; background: #f4f3ef; color: #141413; font-family: Newsreader">
+		<div style="display: flex; flex-direction: column; justify-content: space-between; width: 100%; height: 100%; padding: 60px 64px 58px">
+			<div style="display: flex; font-family: IBM Plex Mono; font-size: 20px; color: #6b6a65">{{ kicker }}</div>
+			<div style="display: flex; flex-direction: column; margin-top: -24px">
+				<div style="display: flex; font-size: 168px; font-weight: 300; line-height: 0.9; letter-spacing: -6px">Abdullahi</div>
+				<div style="display: flex; font-size: 168px; font-weight: 300; font-style: italic; line-height: 0.92; letter-spacing: -6px">Odesanmi</div>
+			</div>
+			<div style="display: flex; width: 700px; font-size: 27px; font-weight: 300; line-height: 1.4; color: #141413">{{ intro }}</div>
 		</div>
-		<div class="flex max-w-[1040px] flex-col">
-			<h1 class="m-0 text-[82px] leading-[0.92] font-semibold tracking-[-0.065em]">{{ title }}</h1>
-			<p class="mt-8 max-w-[820px] text-[26px] leading-[1.35] text-[#77766f]">{{ description }}</p>
+
+		<!-- Gloss first in the source, but it reads after the kanji: vertical columns run right to left. -->
+		<div
+			style="
+				display: flex;
+				position: absolute;
+				top: 300px;
+				left: 765px;
+				width: 420px;
+				height: 24px;
+				transform: rotate(90deg);
+				font-family: IBM Plex Mono;
+				font-size: 17px;
+				color: #6b6a65;
+				white-space: nowrap;
+			"
+		>
+			<span style="font-style: italic">ganbaru</span><span>: to hold on, and do your best</span>
 		</div>
-		<div class="flex items-center justify-between border-t border-[#171714]/20 pt-6 text-[18px] tracking-[0.12em] uppercase">
-			<span>abdspace.xyz</span>
-			<span class="text-[#e65d43]">06°26′N / 03°27′E</span>
+		<div style="display: flex; flex-direction: column; position: absolute; top: 74px; right: 64px; font-family: Shippori Mincho B1; font-weight: 800; font-size: 136px; line-height: 1.06">
+			<span>頑</span><span>張</span><span>る</span>
 		</div>
 	</div>
 </template>
