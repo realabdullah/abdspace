@@ -2,8 +2,12 @@
 const { data: projects } = await useAsyncData("projects-all", () => queryCollection("projects").order("date", "DESC").all());
 
 const description = "Tools, experiments and small products I’ve built for myself, newest first.";
-useSeoMeta({ title: "Projects, Abdullahi Odesanmi", description, ogTitle: "Projects", ogDescription: description });
-defineOgImage("Portfolio", { title: "Projects", description });
+useSeoMeta({ title: "Projects, Abdullahi Odesanmi", description, ogTitle: "Projects, Abdullahi Odesanmi", ogDescription: description });
+defineOgImage(
+	"Index",
+	{ title: "Projects", description, path: "/projects", items: projects.value?.map((project) => project.title) ?? [] },
+	{ alt: "Projects by Abdullahi Odesanmi, their names written in vertical columns" }
+);
 </script>
 
 <template>

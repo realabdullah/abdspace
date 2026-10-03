@@ -1,6 +1,11 @@
 const STORAGE_KEY = "abdspace-theme";
 const THEME_COLORS = { light: "#f4f3ef", dark: "#0f0f0e" };
 
+/** The tab's 明 follows the switch: sun inked in light, moon inked in dark. */
+const syncFavicon = (dark: boolean) => {
+	document.querySelector('link[rel="icon"][type="image/svg+xml"]')?.setAttribute("href", dark ? "/favicon-moon.svg" : "/favicon-sun.svg");
+};
+
 export const useTheme = () => {
 	const isDark = useState("theme-is-dark", () => false);
 
@@ -8,6 +13,7 @@ export const useTheme = () => {
 		isDark.value = dark;
 		const root = document.documentElement;
 		root.classList.toggle("dark", dark);
+		syncFavicon(dark);
 		document.querySelector('meta[name="theme-color"]')?.setAttribute("content", dark ? THEME_COLORS.dark : THEME_COLORS.light);
 		try {
 			localStorage.setItem(STORAGE_KEY, dark ? "dark" : "light");
@@ -19,6 +25,7 @@ export const useTheme = () => {
 	/** Sync state with the class the inline head script already set. */
 	const hydrate = () => {
 		isDark.value = document.documentElement.classList.contains("dark");
+		syncFavicon(isDark.value);
 	};
 
 	/** Night falls in columns, top-down and right to left; day rises back the other way. */

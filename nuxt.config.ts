@@ -7,6 +7,12 @@ export default defineNuxtConfig({
 			charset: "utf-8",
 			viewport: "width=device-width, initial-scale=1",
 			meta: [{ name: "theme-color", content: "#f4f3ef" }],
+			link: [
+				{ rel: "icon", href: "/favicon.ico", sizes: "32x32" },
+				{ rel: "icon", href: "/favicon.svg", type: "image/svg+xml" },
+				{ rel: "apple-touch-icon", href: "/apple-touch-icon.png" },
+				{ rel: "manifest", href: "/site.webmanifest" },
+			],
 			script: [
 				{
 					// Runs before paint so the saved or system theme never flashes.
@@ -20,6 +26,8 @@ export default defineNuxtConfig({
 	site: {
 		url: process.env.NUXT_SITE_URL || "https://www.abdspace.xyz",
 		name: "Abdullahi Odesanmi",
+		description: "I make interfaces for the web and care about the small things: how it moves, how it reads, how it feels to use.",
+		defaultLocale: "en",
 	},
 	content: {
 		build: {
@@ -45,5 +53,8 @@ export default defineNuxtConfig({
 			{ name: "IBM Plex Mono", weights: [400, 500], styles: ["normal", "italic"] },
 			{ name: "Shippori Mincho B1", weights: [500, 800] },
 		],
+	},
+	ogImage: {
+		defaults: { width: 1200, height: 630 },
 	},
 });

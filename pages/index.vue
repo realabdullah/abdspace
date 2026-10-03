@@ -4,8 +4,8 @@ const { data: posts } = await useAsyncData("latest-writing", () => queryCollecti
 const { data: postCount } = await useAsyncData("writing-count", () => queryCollection("writings").count());
 
 const description = "I make interfaces for the web and care about the small things: how it moves, how it reads, how it feels to use.";
-useSeoMeta({ title: "Abdullahi Odesanmi, frontend engineer", description, ogTitle: "Abdullahi Odesanmi", ogDescription: description });
-defineOgImage("Portfolio", { title: "Abdullahi Odesanmi", description: "Frontend engineer." });
+useSeoMeta({ title: "Abdullahi Odesanmi, frontend engineer", description, ogTitle: "Abdullahi Odesanmi, frontend engineer", ogDescription: description });
+defineOgImage("Portfolio", { intro: description }, { alt: "Abdullahi Odesanmi, frontend engineer, with 頑張る (ganbaru) written down the right edge" });
 </script>
 
 <template>

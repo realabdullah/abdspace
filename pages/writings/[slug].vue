@@ -52,7 +52,13 @@ const remaining = computed(() => (progress.value >= 0.995 ? "finished" : minutes
 
 /* ─── Meta ─── */
 
-const canonicalUrl = `https://www.abdspace.xyz/writings/${slug}`;
+const site = useSiteConfig();
+const canonicalUrl = `${site.url}/writings/${slug}`;
+const [ogImage] = defineOgImage(
+	"Article",
+	{ title: post.value.title, description: post.value.description, date: formatFullDate(post.value.createdAt), minutes: post.value.readTime },
+	{ alt: `${post.value.title}, by Abdullahi Odesanmi` }
+);
 useSeoMeta({
 	title: `${post.value.title}, Abdullahi Odesanmi`,
 	description: post.value.description,
@@ -60,25 +66,33 @@ useSeoMeta({
 	ogDescription: post.value.description,
 	ogType: "article",
 	articlePublishedTime: post.value.createdAt,
+	articleAuthor: [site.url],
+	twitterLabel1: "Reading time",
+	twitterData1: `${post.value.readTime} min`,
 });
 useHead({
-	link: [{ rel: "canonical", href: canonicalUrl }],
 	script: [
 		{
 			type: "application/ld+json",
 			innerHTML: JSON.stringify({
 				"@context": "https://schema.org",
 				"@type": "BlogPosting",
+				"@id": `${canonicalUrl}#article`,
+				url: canonicalUrl,
+				mainEntityOfPage: canonicalUrl,
 				headline: post.value.title,
 				description: post.value.description,
 				datePublished: post.value.createdAt,
-				mainEntityOfPage: canonicalUrl,
-				author: { "@type": "Person", name: "Abdullahi Odesanmi", url: "https://www.abdspace.xyz" },
+				timeRequired: `PT${post.value.readTime}M`,
+				inLanguage: "en",
+				image: ogImage && new URL(ogImage, site.url).href,
+				author: { "@id": `${site.url}/#person`, "@type": "Person", name: "Abdullahi Odesanmi", url: site.url },
+				publisher: { "@id": `${site.url}/#person` },
+				isPartOf: { "@id": `${site.url}/#website` },
 			}),
 		},
 	],
 });
-defineOgImage("Portfolio", { title: post.value.title, description: `${formatFullDate(post.value.createdAt)} · ${post.value.readTime} min read` });
 </script>
 
 <template>

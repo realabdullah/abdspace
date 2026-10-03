@@ -1,33 +1,46 @@
 <script setup lang="ts">
+const site = useSiteConfig();
 const route = useRoute();
-const canonicalUrl = computed(() => `https://www.abdspace.xyz${route.path === "/" ? "" : route.path}`);
+// One form per page, matching the sitemap: the root keeps its slash, nothing else ends in one.
+const canonicalUrl = computed(() => `${site.url}${route.path.replace(/\/+$/, "") || "/"}`);
 
 useSeoMeta({
-	ogSiteName: "Abdullahi Odesanmi",
-	ogLocale: "en_NG",
+	ogSiteName: site.name,
+	ogType: "website",
 	ogUrl: canonicalUrl,
 	twitterCard: "summary_large_image",
+	twitterSite: "@_realabd",
 	twitterCreator: "@_realabd",
 	robots: "index, follow, max-image-preview:large",
 });
 
 useHead({
 	htmlAttrs: { lang: "en" },
-	link: [
-		{ rel: "canonical", href: canonicalUrl },
-		{ rel: "icon", type: "image/svg+xml", href: "/favicon.svg" },
-		{ rel: "alternate icon", href: "/favicon.ico" },
-	],
+	link: [{ rel: "canonical", href: canonicalUrl }],
 	script: [
 		{
 			type: "application/ld+json",
 			innerHTML: JSON.stringify({
 				"@context": "https://schema.org",
-				"@type": "Person",
-				name: "Abdullahi Odesanmi",
-				url: "https://www.abdspace.xyz",
-				jobTitle: "Frontend Engineer",
-				sameAs: ["https://github.com/realabdullah", "https://www.linkedin.com/in/abdullahiodesanmi/", "https://x.com/_realabd"],
+				"@graph": [
+					{
+						"@type": "WebSite",
+						"@id": `${site.url}/#website`,
+						url: site.url,
+						name: site.name,
+						inLanguage: "en",
+						publisher: { "@id": `${site.url}/#person` },
+					},
+					{
+						"@type": "Person",
+						"@id": `${site.url}/#person`,
+						name: "Abdullahi Odesanmi",
+						url: site.url,
+						jobTitle: "Frontend engineer",
+						description: site.description,
+						sameAs: ["https://github.com/realabdullah", "https://www.linkedin.com/in/abdullahiodesanmi/", "https://x.com/_realabd"],
+					},
+				],
 			}),
 		},
 	],
