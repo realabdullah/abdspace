@@ -9,14 +9,25 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - name: Reject portfolio writing edits
         shell: bash
+        env:
+          EVENT: ${{ github.event_name }}
+          PR_BASE: ${{ github.event.pull_request.base.sha }}
+          PR_HEAD: ${{ github.event.pull_request.head.sha }}
+          BEFORE: ${{ github.event.before }}
+          DEFAULT_BRANCH: ${{ github.event.repository.default_branch }}
         run: |
-          if [ "${{ github.event_name }}" = "pull_request" ]; then
-            files="$(git diff --name-only --diff-filter=AM "${{ github.event.pull_request.base.sha }}" "${{ github.event.pull_request.head.sha }}" -- 'content/blog/**' 'content/writings/**' 'content/.remote-blog/**' 'content/.remote-writings/**')"
+          if [ "$EVENT" = "pull_request" ]; then
+            base="$PR_BASE" head="$PR_HEAD"
           else
-            files="$(git diff --name-only --diff-filter=AM "${{ github.event.before }}" "${{ github.sha }}" -- 'content/blog/**' 'content/writings/**' 'content/.remote-blog/**' 'content/.remote-writings/**')"
+            base="$BEFORE" head="$GITHUB_SHA"
+            # A new branch has no previous commit, so compare it with the default branch.
+            if [[ "$base" =~ ^0+$ ]]; then base="$(git merge-base "origin/$DEFAULT_BRANCH" "$head")"; fi
           fi
+          files="$(git diff --name-only --diff-filter=AM "$base" "$head" -- 'content/blog/**' 'content/writings/**' 'content/.remote-blog/**' 'content/.remote-writings/**')"
           if [ -n "$files" ]; then
             echo "Writing content is owned by the abdspace-blog repository. Publish writings through https://writings.abdspace.xyz/admin."
             echo "$files"
