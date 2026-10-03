@@ -1,18 +1,5 @@
 <script setup lang="ts">
 const route = useRoute();
-const cx = ref(0);
-const cy = ref(0);
-const cv = ref(false);
-
-const onMove = (e: MouseEvent) => {
-	cx.value = e.clientX;
-	cy.value = e.clientY;
-	if (!cv.value) cv.value = true;
-};
-
-onMounted(() => window.addEventListener("mousemove", onMove));
-onUnmounted(() => window.removeEventListener("mousemove", onMove));
-
 const canonicalUrl = computed(() => `https://www.abdspace.xyz${route.path === "/" ? "" : route.path}`);
 
 useSeoMeta({
@@ -20,7 +7,7 @@ useSeoMeta({
 	ogLocale: "en_NG",
 	ogUrl: canonicalUrl,
 	twitterCard: "summary_large_image",
-	twitterCreator: "@realabdullah",
+	twitterCreator: "@_realabd",
 	robots: "index, follow, max-image-preview:large",
 });
 
@@ -39,8 +26,8 @@ useHead({
 				"@type": "Person",
 				name: "Abdullahi Odesanmi",
 				url: "https://www.abdspace.xyz",
-				jobTitle: "Software Engineer",
-				sameAs: ["https://github.com/realabdullah"],
+				jobTitle: "Frontend Engineer",
+				sameAs: ["https://github.com/realabdullah", "https://www.linkedin.com/in/abdullahiodesanmi/", "https://x.com/_realabd"],
 			}),
 		},
 	],
@@ -48,9 +35,25 @@ useHead({
 </script>
 
 <template>
-	<div aria-hidden="true" class="site-cursor" :style="{ left: cx + 'px', top: cy + 'px', opacity: cv ? 1 : 0 }" />
-	<div class="fixed right-5 bottom-5 z-[100] sm:right-8 sm:bottom-8"><ThemeToggle /></div>
-	<NuxtLayout>
-		<NuxtPage :transition="{ name: 'page', mode: 'out-in' }" />
-	</NuxtLayout>
+	<div id="top">
+		<a href="#main" class="skip mono">skip to content</a>
+		<SiteHeader />
+		<NuxtPage />
+		<SiteFooter />
+	</div>
 </template>
+
+<style>
+.skip {
+	position: absolute;
+	left: var(--gutter);
+	top: 0.5rem;
+	padding: 0.5rem 0.75rem;
+	background: var(--fg);
+	color: var(--bg);
+	transform: translateY(-200%);
+}
+.skip:focus-visible {
+	transform: none;
+}
+</style>

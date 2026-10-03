@@ -1,42 +1,82 @@
 <script setup lang="ts">
-const { data: posts } = await useAsyncData("writing-posts", () => queryCollection("writings").order("createdAt", "DESC").where("slug", "IS NOT NULL").all());
-useSeoMeta({ title: "Writings — Abdullahi Odesanmi", description: "Writings on frontend engineering, tools, experiments and what I’m learning." });
-defineOgImage("Portfolio", {
-	title: "Writings & observations",
-	description: "Writing on frontend engineering, tools, experiments and what I’m learning.",
-	section: "Writings",
-});
+const { data: posts } = await useAsyncData("writing-all", () => queryCollection("writings").order("createdAt", "DESC").all());
+
+const description = "Writing on frontend engineering, tools and the things I’m learning.";
+useSeoMeta({ title: "Writing, Abdullahi Odesanmi", description, ogTitle: "Writing", ogDescription: description });
+defineOgImage("Portfolio", { title: "Writing", description });
 </script>
 
 <template>
-	<div class="mx-auto min-h-screen max-w-[1440px] px-6 sm:px-10 lg:px-20">
-		<header class="border-ink/15 flex h-20 items-center justify-between border-b font-mono text-[10px] tracking-[0.12em] uppercase">
-			<NuxtLink to="/" class="hover:text-coral transition-colors">← Index</NuxtLink><span class="text-stone-500">Writings / {{ posts?.length || 0 }} essays</span>
+	<main id="main" class="wrap">
+		<header class="intro">
+			<h1 class="intro__title">Writing</h1>
+			<p class="intro__lede muted">{{ description }}</p>
 		</header>
-		<main class="py-20 sm:py-28">
-			<div class="border-ink grid gap-12 border-t pt-4 lg:grid-cols-[1fr_2fr]">
-				<p class="font-mono text-[10px] tracking-[0.12em] text-stone-500 uppercase">(04) / Writings</p>
-				<div>
-					<h1 class="text-[clamp(3.5rem,9vw,9rem)] leading-[0.86] font-medium tracking-[-0.095em]">Notes &<br /><em class="text-coral font-serif font-normal">observations.</em></h1>
-					<p class="mt-10 max-w-xl text-base leading-relaxed text-stone-500">Short writing on frontend engineering, tools, experiments and the things I’m learning along the way.</p>
-				</div>
-			</div>
-			<ol class="border-ink/15 mt-28 border-t">
-				<li v-for="(post, index) in posts" :key="String(post.slug)" class="group border-ink/15 grid gap-6 border-b py-10 sm:grid-cols-[56px_1fr_160px] sm:items-start sm:gap-8 sm:py-14">
-					<span class="font-mono text-[10px] text-stone-500">{{ String(index + 1).padStart(2, "0") }}</span>
-					<div>
-						<NuxtLink :to="`/writings/${post.slug}`" class="group-hover:text-coral text-3xl tracking-[-0.07em] transition-colors sm:text-5xl">{{ post.title }}</NuxtLink>
-						<p class="mt-4 max-w-2xl text-sm leading-relaxed text-stone-500">{{ post.brief }}</p>
-					</div>
-					<div class="font-mono text-[10px] tracking-[0.1em] text-stone-500 uppercase sm:pt-2">
-						<ClientOnly>{{ formatDate(post.createdAt) }}</ClientOnly
-						><NuxtLink :to="`/writings/${post.slug}`" class="text-coral mt-4 block">Read · {{ post.readTime }} min ↗</NuxtLink>
-					</div>
-				</li>
-			</ol>
-		</main>
-		<footer class="border-ink/15 flex min-h-20 items-center justify-between border-t py-5 font-mono text-[10px] tracking-[0.1em] text-stone-500 uppercase">
-			<NuxtLink to="/">Abdullahi Odesanmi</NuxtLink><NuxtLink to="/projects">Projects ↗</NuxtLink>
-		</footer>
-	</div>
+
+		<ol class="posts">
+			<li v-for="post in posts" :key="post.slug">
+				<NuxtLink :to="`/writings/${post.slug}`" class="post">
+					<span class="post__meta mono muted">{{ formatMonthYear(post.createdAt) }} · {{ post.readTime }} min</span>
+					<span class="post__title">{{ post.title }}</span>
+					<span class="post__brief muted">{{ post.description }}</span>
+				</NuxtLink>
+			</li>
+		</ol>
+	</main>
 </template>
+
+<style scoped>
+.intro {
+	padding-block: clamp(3rem, 10vw, 7rem) clamp(2.5rem, 6vw, 4rem);
+}
+.intro__title {
+	font-weight: 300;
+	font-size: clamp(3.25rem, 9vw, 7rem);
+	line-height: 0.95;
+	letter-spacing: -0.035em;
+}
+.intro__lede {
+	max-width: 30rem;
+	margin-top: 1.25rem;
+}
+.posts {
+	border-top: 1px solid var(--rule);
+	padding-bottom: clamp(4rem, 10vw, 7rem);
+}
+.post {
+	display: grid;
+	gap: 0.4rem;
+	padding-block: clamp(1.5rem, 4vw, 2.25rem);
+	border-bottom: 1px solid var(--rule);
+	transition: opacity 350ms ease;
+}
+.post__title {
+	font-size: clamp(1.625rem, 3.5vw, 2.25rem);
+	line-height: 1.15;
+	letter-spacing: -0.015em;
+	text-wrap: balance;
+}
+.post__brief {
+	max-width: 38rem;
+	font-size: 1rem;
+	text-wrap: pretty;
+}
+@media (hover: hover) {
+	.posts:has(.post:hover) .post:not(:hover) {
+		opacity: 0.32;
+	}
+	.post:hover .post__title {
+		font-style: italic;
+	}
+}
+@media (min-width: 52rem) {
+	.post {
+		grid-template-columns: var(--margin) minmax(0, 1fr);
+		column-gap: 0;
+	}
+	.post__meta {
+		grid-row: span 2;
+		padding-top: 0.6rem;
+	}
+}
+</style>

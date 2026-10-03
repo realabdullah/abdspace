@@ -1,31 +1,19 @@
 <script setup lang="ts">
-withDefaults(
-	defineProps<{
-		title?: string;
-		description?: string;
-		section?: string;
-	}>(),
-	{
-		title: "Abdullahi Odesanmi",
-		description: "Software engineer building thoughtful digital products.",
-		section: "Portfolio",
-	}
-);
+withDefaults(defineProps<{ title?: string; description?: string }>(), {
+	title: "Abdullahi Odesanmi",
+	description: "Frontend engineer.",
+});
 </script>
 
 <template>
-	<div class="flex h-full w-full flex-col justify-between bg-[#f2f0e9] p-16 text-[#171714]">
-		<div class="flex items-center justify-between border-b border-[#171714]/20 pb-6 text-[20px] tracking-[0.14em] uppercase">
-			<span>ABD<span class="ml-1 text-[#e65d43]">·</span></span>
-			<span class="text-[#77766f]">{{ section }}</span>
+	<div style="display: flex; width: 100%; height: 100%; padding: 72px; background: #f4f3ef; color: #141413; justify-content: space-between; font-family: Newsreader">
+		<div style="display: flex; flex-direction: column; justify-content: space-between; max-width: 860px">
+			<div style="display: flex; font-size: 22px; color: #6b6a65; font-family: IBM Plex Mono">abdspace.xyz</div>
+			<div style="display: flex; flex-direction: column">
+				<div style="display: flex; font-size: 88px; line-height: 1; letter-spacing: -2px; font-weight: 300">{{ title }}</div>
+				<div style="display: flex; margin-top: 28px; font-size: 30px; color: #6b6a65">{{ description }}</div>
+			</div>
 		</div>
-		<div class="flex max-w-[1040px] flex-col">
-			<h1 class="m-0 text-[82px] leading-[0.92] font-semibold tracking-[-0.065em]">{{ title }}</h1>
-			<p class="mt-8 max-w-[820px] text-[26px] leading-[1.35] text-[#77766f]">{{ description }}</p>
-		</div>
-		<div class="flex items-center justify-between border-t border-[#171714]/20 pt-6 text-[18px] tracking-[0.12em] uppercase">
-			<span>abdspace.xyz</span>
-			<span class="text-[#e65d43]">06°26′N / 03°27′E</span>
-		</div>
+		<div style="display: flex; flex-direction: column; font-size: 92px; line-height: 1.05; font-weight: 800; font-family: Shippori Mincho B1"><span>頑</span><span>張</span><span>る</span></div>
 	</div>
 </template>

@@ -11,7 +11,6 @@ interface SpotifyCurrentlyPlaying {
 		duration_ms: number;
 		external_urls: { spotify: string };
 		artists: Array<{ name: string }>;
-		album: { images: Array<{ url: string }> };
 	};
 	progress_ms?: number;
 }
@@ -87,10 +86,11 @@ export default defineCachedEventHandler(
 					title: data.item.name,
 					artist: data.item.artists.map((artist) => artist.name).join(", "),
 					url: data.item.external_urls.spotify,
-					artwork: data.item.album.images.at(-1)?.url || data.item.album.images[0]?.url,
 					progress: data.progress_ms || 0,
 					duration: data.item.duration_ms,
 				},
+				// Responses are cached, so the client needs to know when progress was read.
+				fetchedAt: Date.now(),
 			};
 		} catch (error) {
 			console.error("Spotify playback request failed after retries", error instanceof Error ? { name: error.name, message: error.message, cause: error.cause } : error);
