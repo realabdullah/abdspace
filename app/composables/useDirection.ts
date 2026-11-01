@@ -3,7 +3,6 @@ export const DIRECTIONS = [
 	{ id: "tension", glyph: "張", name: "tension", note: "one taut line. pluck it", morph: false },
 	{ id: "score", glyph: "譜", name: "score", note: "my years, played live", morph: false },
 	{ id: "joinery", glyph: "継", name: "joinery", note: "the underside, and how it fits", morph: false },
-	{ id: "rendered", glyph: "描", name: "rendered", note: "drawn by its own renderer", morph: true },
 ] as const;
 
 export type DirectionId = (typeof DIRECTIONS)[number]["id"];
