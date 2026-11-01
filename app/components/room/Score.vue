@@ -7,7 +7,6 @@ import { FULLSCREEN_VS, bindTarget, clamp, createFullscreenTriangle, createGL, c
  * 譜: a score. My years are cut as one spiral groove, one turn per year, oldest at the centre.
  * The needle starts on the outer edge, on whatever I'm listening to right now. Scrolling plays the record
  * backwards through time; every piece of work is a mark in the groove that rings as the needle crosses it.
- * Gaps are left as silence, because they are part of the record too.
  */
 
 const props = defineProps<{ content: RoomContent }>();
@@ -91,19 +90,14 @@ const hover = ref<Note | null>(null);
 const glReady = ref(false);
 const playing = computed(() => now.playing.value);
 
-/** What's under the needle: a piece of work, the present, or the silence between two things. */
+/** What's under the needle: the present, or the nearest piece of work. */
 const underNeedle = computed(() => {
 	const t = needleTime.value;
 	const list = notes.value;
 	if (!list.length || t > list[0]!.time + 20 * DAY) return { type: "now" as const };
 	let nearest = list[0]!;
 	for (const note of list) if (Math.abs(note.time - t) < Math.abs(nearest.time - t)) nearest = note;
-	if (Math.abs(nearest.time - t) < 24 * DAY) return { type: "note" as const, note: nearest };
-	const newer = [...list].reverse().find((note) => note.time > t);
-	const older = list.find((note) => note.time < t);
-	if (!newer || !older) return { type: "edge" as const };
-	const months = Math.max(1, Math.round((newer.time - older.time) / (30.44 * DAY)));
-	return { type: "silence" as const, months, newer, older };
+	return { type: "note" as const, note: nearest };
 });
 
 /* ─── DOM ─── */
@@ -449,7 +443,7 @@ const hoverStyle = computed(() => {
 						<NowLine class="needle__now" />
 						<p class="mono muted needle__hint">scroll, or turn the record, to play it back through the years</p>
 					</div>
-					<div v-else-if="underNeedle.type === 'note'" :key="underNeedle.note.key" class="needle__card">
+					<div v-else :key="underNeedle.note.key" class="needle__card">
 						<p class="mono muted">{{ underNeedle.note.side }}{{ underNeedle.note.number }} · {{ underNeedle.note.kind }}</p>
 						<NuxtLink
 							:to="underNeedle.note.href"
@@ -461,13 +455,6 @@ const hoverStyle = computed(() => {
 						>
 						<p class="needle__detail">{{ underNeedle.note.detail }}</p>
 						<p class="mono muted">{{ underNeedle.note.meta }}</p>
-					</div>
-					<div v-else-if="underNeedle.type === 'silence'" :key="`gap-${underNeedle.months}-${underNeedle.older.key}`" class="needle__card">
-						<p class="needle__silence">{{ underNeedle.months }} {{ underNeedle.months === 1 ? "month" : "months" }} of quiet</p>
-						<p class="mono muted">between {{ underNeedle.older.title }} and {{ underNeedle.newer.title }}</p>
-					</div>
-					<div v-else key="edge" class="needle__card">
-						<p class="needle__silence">the beginning of the record</p>
 					</div>
 				</Transition>
 			</div>
@@ -630,12 +617,6 @@ const hoverStyle = computed(() => {
 	color: var(--muted);
 	line-height: 1.45;
 	text-wrap: pretty;
-}
-.needle__silence {
-	font-size: clamp(1.5rem, 2.4vw, 2rem);
-	font-weight: 300;
-	font-style: italic;
-	color: var(--muted);
 }
 .needle-enter-active,
 .needle-leave-active {
