@@ -17,9 +17,7 @@ useSeoMeta({ title: () => `Abdullahi Odesanmi, frontend engineer · ${meta.value
 			<LazyRoomTension v-if="current === 'tension'" :content="content" />
 			<LazyRoomScore v-else-if="current === 'score'" :content="content" />
 			<LazyRoomJoinery v-else-if="current === 'joinery'" :content="content" />
-			<LazyRoomKage v-else-if="current === 'kage'" :content="content" />
-			<LazyRoomNami v-else-if="current === 'nami'" :content="content" />
-			<LazyRoomSai v-else-if="current === 'sai'" :content="content" />
+			<LazyRoomRendered v-else-if="current === 'rendered'" :content="content" />
 		</main>
 	</div>
 </template>

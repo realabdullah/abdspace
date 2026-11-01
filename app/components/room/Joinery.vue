@@ -58,16 +58,66 @@ const pieces = computed<Piece[]>(() => {
 	const on = (parentTop: number, height: number) => parentTop + height / 2;
 
 	list.push({ id: "app", label: "<App>", file: "app.vue", size: [13, 0.4, 18.4], rest: [0, 0, 0], axis: UP, reach: 0, content: { type: "app" } });
-	list.push({ id: "header", label: "<SiteHeader>", file: "SiteHeader.vue", parent: "app", size: [12, 0.35, 1], rest: [0, on(BASE_TOP, 0.35), -7.9], axis: UP, reach: 2.4, content: { type: "links" } });
+	list.push({
+		id: "header",
+		label: "<SiteHeader>",
+		file: "SiteHeader.vue",
+		parent: "app",
+		size: [12, 0.35, 1],
+		rest: [0, on(BASE_TOP, 0.35), -7.9],
+		axis: UP,
+		reach: 2.4,
+		content: { type: "links" },
+	});
 
 	const heroTop = BASE_TOP + 0.6;
-	list.push({ id: "hero", label: "<section.hero>", file: "pages/index.vue", parent: "app", size: [12, 0.6, 4.4], rest: [0, on(BASE_TOP, 0.6), -4.6], axis: UP, reach: 3.4, content: { type: "hero" } });
-	list.push({ id: "intro", label: "<h1> + intro", file: "pages/index.vue", parent: "hero", size: [6.4, 0.45, 2.1], rest: [-2.4, on(heroTop, 0.45), -5.4], axis: UP, reach: 2.4, content: { type: "intro" } });
+	list.push({
+		id: "hero",
+		label: "<section.hero>",
+		file: "pages/index.vue",
+		parent: "app",
+		size: [12, 0.6, 4.4],
+		rest: [0, on(BASE_TOP, 0.6), -4.6],
+		axis: UP,
+		reach: 3.4,
+		content: { type: "hero" },
+	});
+	list.push({
+		id: "intro",
+		label: "<h1> + intro",
+		file: "pages/index.vue",
+		parent: "hero",
+		size: [6.4, 0.45, 2.1],
+		rest: [-2.4, on(heroTop, 0.45), -5.4],
+		axis: UP,
+		reach: 2.4,
+		content: { type: "intro" },
+	});
 	list.push({ id: "now", label: "<NowLine>", file: "NowLine.vue", parent: "hero", size: [6.4, 0.3, 1], rest: [-2.4, on(heroTop, 0.3), -3.4], axis: UP, reach: 2, content: { type: "now" } });
-	list.push({ id: "ganbaru", label: "<GanbaruColumn>", file: "GanbaruColumn.vue", parent: "hero", size: [1.3, 2.6, 3.6], rest: [4.6, on(heroTop, 2.6), -4.6], axis: UP, reach: 2.6, content: { type: "ganbaru" } });
+	list.push({
+		id: "ganbaru",
+		label: "<GanbaruColumn>",
+		file: "GanbaruColumn.vue",
+		parent: "hero",
+		size: [1.3, 2.6, 3.6],
+		rest: [4.6, on(heroTop, 2.6), -4.6],
+		axis: UP,
+		reach: 2.6,
+		content: { type: "ganbaru" },
+	});
 
 	const projectsTop = BASE_TOP + 0.5;
-	list.push({ id: "projects", label: "<ProjectList>", file: "ProjectList.vue", parent: "app", size: [12, 0.5, 5.2], rest: [0, on(BASE_TOP, 0.5), 0.4], axis: UP, reach: 3.6, content: { type: "projects" } });
+	list.push({
+		id: "projects",
+		label: "<ProjectList>",
+		file: "ProjectList.vue",
+		parent: "app",
+		size: [12, 0.5, 5.2],
+		rest: [0, on(BASE_TOP, 0.5), 0.4],
+		axis: UP,
+		reach: 3.6,
+		content: { type: "projects" },
+	});
 	const featured = props.content.projects.filter((project) => project.featured).slice(0, 6);
 	const projectPitch = 4.6 / Math.max(1, featured.length);
 	featured.forEach((project, i) => {
@@ -85,7 +135,17 @@ const pieces = computed<Piece[]>(() => {
 	});
 
 	const writingTop = BASE_TOP + 0.5;
-	list.push({ id: "writings", label: "<section#writing>", file: "pages/index.vue", parent: "app", size: [12, 0.5, 3], rest: [0, on(BASE_TOP, 0.5), 4.8], axis: UP, reach: 3, content: { type: "writings" } });
+	list.push({
+		id: "writings",
+		label: "<section#writing>",
+		file: "pages/index.vue",
+		parent: "app",
+		size: [12, 0.5, 3],
+		rest: [0, on(BASE_TOP, 0.5), 4.8],
+		axis: UP,
+		reach: 3,
+		content: { type: "writings" },
+	});
 	const latest = props.content.writings.slice(0, 4);
 	const writingPitch = 2.6 / Math.max(1, latest.length);
 	latest.forEach((writing, i) => {
@@ -102,8 +162,28 @@ const pieces = computed<Piece[]>(() => {
 		});
 	});
 
-	list.push({ id: "contact", label: "<section#contact>", file: "pages/index.vue", parent: "app", size: [12, 0.4, 1.3], rest: [0, on(BASE_TOP, 0.4), 7.1], axis: UP, reach: 2.4, content: { type: "contact" } });
-	list.push({ id: "footer", label: "<SiteFooter>", file: "SiteFooter.vue", parent: "app", size: [12, 0.35, 1], rest: [0, on(BASE_TOP, 0.35), 8.45], axis: UP, reach: 2, content: { type: "footer" } });
+	list.push({
+		id: "contact",
+		label: "<section#contact>",
+		file: "pages/index.vue",
+		parent: "app",
+		size: [12, 0.4, 1.3],
+		rest: [0, on(BASE_TOP, 0.4), 7.1],
+		axis: UP,
+		reach: 2.4,
+		content: { type: "contact" },
+	});
+	list.push({
+		id: "footer",
+		label: "<SiteFooter>",
+		file: "SiteFooter.vue",
+		parent: "app",
+		size: [12, 0.35, 1],
+		rest: [0, on(BASE_TOP, 0.35), 8.45],
+		axis: UP,
+		reach: 2,
+		content: { type: "footer" },
+	});
 	profile.ganbaru.parts.forEach((part, i) => {
 		list.push({
 			id: `glyph-${i}`,
@@ -520,7 +600,11 @@ onMounted(() => {
 		const fit = Math.max(1, 1.25 / camera.aspect);
 		camera.distance = damp(camera.distance, 31 * fit * zoom, 6, delta);
 		const cosPitch = Math.cos(camera.pitch);
-		camera.eye = [target[0] + Math.sin(camera.yaw) * cosPitch * camera.distance, target[1] + Math.sin(camera.pitch) * camera.distance, target[2] + Math.cos(camera.yaw) * cosPitch * camera.distance];
+		camera.eye = [
+			target[0] + Math.sin(camera.yaw) * cosPitch * camera.distance,
+			target[1] + Math.sin(camera.pitch) * camera.distance,
+			target[2] + Math.cos(camera.yaw) * cosPitch * camera.distance,
+		];
 		camera.viewProj = multiply(perspective(FOV, camera.aspect, 0.5, 200), lookAt(camera.eye, target, Math.abs(camera.pitch) > 1.49 ? [0, 0, -1] : UP));
 
 		// Each piece moves on a stiff, lightly damped spring: it overshoots a hair and seats.
@@ -590,7 +674,8 @@ const showLabel = (piece: Piece) => piece.reach > 0 && (exploded.value || piece.
 
 		<article v-if="openPiece" ref="card" class="card" :class="`card--${openPiece.content.type}`">
 			<p class="card__file mono">
-				<span>{{ openPiece.label }}</span><span class="muted">{{ openPiece.file }}</span>
+				<span>{{ openPiece.label }}</span
+				><span class="muted">{{ openPiece.file }}</span>
 			</p>
 			<template v-if="openPiece.content.type === 'app'" />
 			<nav v-else-if="openPiece.content.type === 'links'" class="card__links mono" aria-label="Main">
@@ -601,16 +686,23 @@ const showLabel = (piece: Piece) => piece.reach > 0 && (exploded.value || piece.
 			</nav>
 			<template v-else-if="openPiece.content.type === 'hero'">
 				<p class="mono muted">{{ profile.kicker }}</p>
-				<p class="card__name">{{ profile.name.first }} <em>{{ profile.name.last }}</em></p>
+				<p class="card__name">
+					{{ profile.name.first }} <em>{{ profile.name.last }}</em>
+				</p>
 			</template>
 			<template v-else-if="openPiece.content.type === 'intro'">
-				<h1 class="card__name">{{ profile.name.first }} <em>{{ profile.name.last }}</em></h1>
+				<h1 class="card__name">
+					{{ profile.name.first }} <em>{{ profile.name.last }}</em>
+				</h1>
 				<p class="card__text">{{ profile.lede }} {{ profile.aside }}</p>
 			</template>
 			<NowLine v-else-if="openPiece.content.type === 'now'" class="card__text" />
 			<template v-else-if="openPiece.content.type === 'ganbaru'">
 				<p lang="ja" class="card__glyphs">{{ profile.ganbaru.word }}</p>
-				<p class="mono muted"><i>{{ profile.ganbaru.reading }}</i>: {{ profile.ganbaru.gloss }}</p>
+				<p class="mono muted">
+					<i>{{ profile.ganbaru.reading }}</i
+					>: {{ profile.ganbaru.gloss }}
+				</p>
 			</template>
 			<template v-else-if="openPiece.content.type === 'projects'">
 				<p class="mono muted">side projects · {{ content.projects.length }}</p>
@@ -649,7 +741,9 @@ const showLabel = (piece: Piece) => piece.reach > 0 && (exploded.value || piece.
 				>
 			</p>
 			<template v-else-if="openPiece.content.type === 'footer'">
-				<p class="card__text">{{ profile.ganbaru.sum }} <span class="muted">{{ profile.ganbaru.kept }}</span></p>
+				<p class="card__text">
+					{{ profile.ganbaru.sum }} <span class="muted">{{ profile.ganbaru.kept }}</span>
+				</p>
 			</template>
 			<template v-else-if="openPiece.content.type === 'glyph'">
 				<p lang="ja" class="card__glyphs">{{ openPiece.content.glyph }}</p>
@@ -741,7 +835,9 @@ const showLabel = (piece: Piece) => piece.reach > 0 && (exploded.value || piece.
 	padding: 0.9rem 1rem 1rem;
 	background: var(--bg);
 	border: 1px solid var(--fg);
-	box-shadow: 6px 6px 0 -1px var(--bg), 6px 6px 0 0 var(--fg);
+	box-shadow:
+		6px 6px 0 -1px var(--bg),
+		6px 6px 0 0 var(--fg);
 }
 .card--projects,
 .card--writings {

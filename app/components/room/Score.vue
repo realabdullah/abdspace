@@ -1,7 +1,21 @@
 <script setup lang="ts">
 import type { RoomContent } from "~/composables/useRoomContent";
 import { bell } from "~/lib/audio";
-import { FULLSCREEN_VS, bindTarget, clamp, createFullscreenTriangle, createGL, createProgram, damp, fitCanvas, prefersReducedMotion, readPalette, startLoop, watchPalette, type Palette } from "~/lib/gl";
+import {
+	FULLSCREEN_VS,
+	bindTarget,
+	clamp,
+	createFullscreenTriangle,
+	createGL,
+	createProgram,
+	damp,
+	fitCanvas,
+	prefersReducedMotion,
+	readPalette,
+	startLoop,
+	watchPalette,
+	type Palette,
+} from "~/lib/gl";
 
 /*
  * 譜: a score. My years are cut as one spiral groove, one turn per year, oldest at the centre.

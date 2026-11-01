@@ -3,9 +3,7 @@ export const DIRECTIONS = [
 	{ id: "tension", glyph: "張", name: "tension", note: "one taut line. pluck it", morph: false },
 	{ id: "score", glyph: "譜", name: "score", note: "my years, played live", morph: false },
 	{ id: "joinery", glyph: "継", name: "joinery", note: "the underside, and how it fits", morph: false },
-	{ id: "kage", glyph: "影", name: "light", note: "lit by the sun over Lagos, now", morph: true },
-	{ id: "nami", glyph: "波", name: "signal", note: "every project has a frequency", morph: true },
-	{ id: "sai", glyph: "細", name: "detail", note: "the small things, up close", morph: true },
+	{ id: "rendered", glyph: "描", name: "rendered", note: "drawn by its own renderer", morph: true },
 ] as const;
 
 export type DirectionId = (typeof DIRECTIONS)[number]["id"];
