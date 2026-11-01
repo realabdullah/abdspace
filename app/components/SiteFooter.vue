@@ -16,7 +16,9 @@ const { parts } = profile.ganbaru;
 						<span class="word__meaning">{{ part.meaning }}</span>
 					</li>
 				</ol>
-				<p class="word__sum">{{ profile.ganbaru.sum }} <span class="muted">{{ profile.ganbaru.kept }}</span></p>
+				<p class="word__sum">
+					{{ profile.ganbaru.sum }} <span class="muted">{{ profile.ganbaru.kept }}</span>
+				</p>
 			</div>
 		</section>
 
