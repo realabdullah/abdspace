@@ -5,7 +5,10 @@
 			<NuxtLink to="/projects" class="link">projects</NuxtLink>
 			<NuxtLink to="/writings" class="link">writing</NuxtLink>
 			<NuxtLink to="/#contact" class="link">contact</NuxtLink>
-			<ThemeToggle />
+			<span class="header__glyphs">
+				<DirectionSwitcher />
+				<ThemeToggle />
+			</span>
 		</nav>
 	</header>
 </template>
@@ -43,6 +46,11 @@
 	align-items: center;
 	gap: clamp(0.875rem, 3vw, 1.75rem);
 	color: var(--muted);
+}
+.header__glyphs {
+	display: inline-flex;
+	align-items: center;
+	gap: clamp(0.875rem, 2.5vw, 1.25rem);
 }
 .header__nav a:hover,
 .header__nav a.router-link-exact-active:not([href*="#"]) {
