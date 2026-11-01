@@ -325,24 +325,6 @@ html[data-shift="room"]::view-transition-new(root) {
 		room-line 1000ms cubic-bezier(0.7, 0, 0.2, 1) both;
 }
 
-/* Morphing in from a click: the new room is revealed as a circle from that point (animated from script),
-   and the chosen glyph travels to the room's seed element. */
-html[data-shift="morph"]::view-transition-old(root) {
-	animation: room-leave 1100ms cubic-bezier(0.7, 0, 0.15, 1) both;
-}
-html[data-shift="morph"]::view-transition-new(root) {
-	animation: none;
-}
-html[data-shift="morph"]::view-transition-group(room-seed) {
-	animation-duration: 1100ms;
-	animation-timing-function: cubic-bezier(0.7, 0, 0.15, 1);
-}
-html[data-shift="morph"]::view-transition-old(room-seed),
-html[data-shift="morph"]::view-transition-new(room-seed) {
-	height: 100%;
-	object-fit: contain;
-}
-
 @media (prefers-reduced-motion: reduce) {
 	html {
 		scroll-behavior: auto;

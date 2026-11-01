@@ -5,14 +5,9 @@ const open = ref(false);
 const root = ref<HTMLElement | null>(null);
 const listId = useId();
 
-// The glyph you chose is where the next room starts from.
-const choose = async (id: DirectionId, event: MouseEvent) => {
-	const glyph = (event.currentTarget as HTMLElement).querySelector<HTMLElement>(".door__glyph");
-	const rect = glyph?.getBoundingClientRect();
-	const x = rect ? rect.left + rect.width / 2 : event.clientX;
-	const y = rect ? rect.top + rect.height / 2 : event.clientY;
-	await go(id, { x, y, seed: glyph, onSwap: () => (open.value = false) });
+const choose = async (id: DirectionId) => {
 	open.value = false;
+	await go(id);
 };
 
 const onOutside = (event: PointerEvent) => {
@@ -51,7 +46,7 @@ onUnmounted(() => {
 		<Transition name="door">
 			<ul v-show="open" :id="listId" class="door__list mono">
 				<li v-for="direction in DIRECTIONS" :key="direction.id">
-					<button type="button" class="door__room" :aria-current="direction.id === current" @click="choose(direction.id, $event)">
+					<button type="button" class="door__room" :aria-current="direction.id === current" @click="choose(direction.id)">
 						<span lang="ja" class="door__glyph" aria-hidden="true">{{ direction.glyph }}</span>
 						<span class="door__name">{{ direction.name }}</span>
 						<span class="door__note">{{ direction.note }}</span>
