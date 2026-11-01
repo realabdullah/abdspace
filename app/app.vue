@@ -2,6 +2,7 @@
 const site = useSiteConfig();
 const route = useRoute();
 // One form per page, matching the sitemap: the root keeps its slash, nothing else ends in one.
+const { inRoom } = useDirection();
 const canonicalUrl = computed(() => `${site.url}${route.path.replace(/\/+$/, "") || "/"}`);
 
 useSeoMeta({
@@ -48,7 +49,8 @@ useHead({
 </script>
 
 <template>
-	<div id="top">
+	<RoomStage v-if="inRoom" />
+	<div v-else id="top">
 		<a href="#main" class="skip mono">skip to content</a>
 		<SiteHeader />
 		<NuxtPage />
