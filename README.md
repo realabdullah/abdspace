@@ -22,6 +22,10 @@ The glyph beside 明 in the header opens a second set of rooms. Each one is the 
 - **張 tension**: one taut line, drawn in WebGL, with the work hanging from it in time order. Cross the line to pluck it. The pitch comes from the length of string between two pieces of work (Karplus–Strong), and what's playing on Spotify sets the tension.
 - **譜 score**: the years as one spiral groove, one turn per year. Scroll, or turn the record by hand, and the needle plays it back. Gaps show up as silence.
 - **継 joinery**: the component tree as timber held together with tenons. Pull a piece out along its joint to read what it holds.
-- **留 dwell**: the page drawn through a GPU fluid simulation. Movement stirs the text and stillness settles it. Rest on a title to bring up its detail.
+- **影 light**: every piece of content is a sheet of paper on a table, lit by the sun over Lagos at this moment (its real elevation and direction). You hold a lamp. Pick a sheet up and its shadow lengthens and softens. Shadows are raymarched against every sheet's position and height.
+- **波 signal**: an XY oscilloscope. Each project is a Lissajous figure whose frequency ratio is a musical interval, and writing decays like a harmonograph. With sound on, the left channel is x and the right is y, so you hear the shape that's drawn. The cursor bends the beam like a magnet.
+- **細 detail**: "the small things", taken literally. The whole site is drawn small as an engineering drawing and read through a refracting loupe. Clicks through the glass land on the magnified link.
 
-The choice is stored in a cookie so the server renders the right room. Add `?room=<id>` to share one. Articles always stay on paper. The rooms live in `app/components/room/`, and the shared WebGL, audio and 3D helpers live in `app/lib/`.
+The three newest rooms open from the click: the glyph you picked flies to its place in the room, the room is revealed as a circle from that point, and each room starts its own entrance there.
+
+The choice is stored in a cookie so the server renders the right room. Add `?room=<id>` to share one. Articles always stay on paper. The rooms live in `app/components/room/`, and the shared WebGL, audio, text, sun and 3D helpers live in `app/lib/`.
