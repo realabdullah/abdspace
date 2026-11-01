@@ -3,7 +3,7 @@ const { data: featured } = await useAsyncData("projects-featured", () => queryCo
 const { data: posts } = await useAsyncData("latest-writing", () => queryCollection("writings").order("createdAt", "DESC").limit(4).all());
 const { data: postCount } = await useAsyncData("writing-count", () => queryCollection("writings").count());
 
-const description = "I make interfaces for the web and care about the small things: how it moves, how it reads, how it feels to use.";
+const description = profile.lede;
 useSeoMeta({ title: "Abdullahi Odesanmi, frontend engineer", description, ogTitle: "Abdullahi Odesanmi, frontend engineer", ogDescription: description });
 defineOgImage("Portfolio", { intro: description }, { alt: "Abdullahi Odesanmi, frontend engineer, with 頑張る (ganbaru) written down the right edge" });
 </script>
@@ -12,12 +12,9 @@ defineOgImage("Portfolio", { intro: description }, { alt: "Abdullahi Odesanmi, f
 	<main id="main">
 		<section class="hero wrap">
 			<div class="hero__text">
-				<p class="mono muted hero__kicker">frontend engineer</p>
+				<p class="mono muted hero__kicker">{{ profile.kicker }}</p>
 				<h1 class="hero__name">Abdullahi <em>Odesanmi</em></h1>
-				<p class="hero__intro">
-					I make interfaces for the web and care about the small things: how it moves, how it reads, how it feels to use. Outside the browser, I dabble in whatever I’m curious about at the
-					time.
-				</p>
+				<p class="hero__intro">{{ profile.lede }} {{ profile.aside }}</p>
 				<NowLine class="hero__now" />
 			</div>
 			<GanbaruColumn class="hero__ganbaru" />

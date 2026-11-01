@@ -1,12 +1,7 @@
 <script setup lang="ts">
 const year = new Date().getFullYear();
 
-// 頑張る, one piece at a time. Read top to bottom, like the hero.
-const parts = [
-	{ glyph: "頑", reading: "gan", meaning: "stubborn, firm, unwilling to give way" },
-	{ glyph: "張", reading: "ba", meaning: "to stretch, to pull tight, to hold out" },
-	{ glyph: "る", reading: "ru", meaning: "the ending that turns it into something you do" },
-];
+const { parts } = profile.ganbaru;
 </script>
 
 <template>
@@ -21,7 +16,7 @@ const parts = [
 						<span class="word__meaning">{{ part.meaning }}</span>
 					</li>
 				</ol>
-				<p class="word__sum">Put together: hold firm and keep going, especially when it’s hard. <span class="muted">A word I came across once and kept. It’s how I try to work.</span></p>
+				<p class="word__sum">{{ profile.ganbaru.sum }} <span class="muted">{{ profile.ganbaru.kept }}</span></p>
 			</div>
 		</section>
 
