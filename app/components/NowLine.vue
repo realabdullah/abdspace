@@ -1,12 +1,6 @@
 <script setup lang="ts">
-const { ready: mounted, clock, lateNight, track, playing, elapsed, progress: fraction } = useNowPlaying();
+const { ready: mounted, clock, lead, track, playing, elapsed, progress: fraction } = useNowPlaying();
 const progress = computed(() => fraction.value * 100);
-
-const lead = computed(() => {
-	if (playing.value) return lateNight.value ? ", and I’m still up, listening to " : ", and I’m listening to ";
-	if (track.value) return ". I just paused ";
-	return lateNight.value ? ". I’m probably asleep." : ". Nothing’s playing, so I’m probably deep in something.";
-});
 </script>
 
 <template>

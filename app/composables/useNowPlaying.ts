@@ -65,5 +65,12 @@ export const useNowPlaying = () => {
 		(ended) => ended && refresh()
 	);
 
-	return { ready, clock, lateNight, track, playing, elapsed, progress, refresh };
+	/** The words between the clock and the track, shared so every view says it the same way. */
+	const lead = computed(() => {
+		if (playing.value) return lateNight.value ? ", and I’m still up, listening to " : ", and I’m listening to ";
+		if (track.value) return ". I just paused ";
+		return lateNight.value ? ". I’m probably asleep." : ". Nothing’s playing, so I’m probably deep in something.";
+	});
+
+	return { ready, clock, lateNight, track, playing, elapsed, progress, lead, refresh };
 };
